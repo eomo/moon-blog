@@ -1,4 +1,4 @@
-package cn.moondev.spider.configuration;
+package cn.moondev.blog.configuration;
 
 import cn.moondev.framework.provider.mysql.MybatisConfigurationSupport;
 import cn.moondev.framework.provider.web.WebConfigurationSupport;
