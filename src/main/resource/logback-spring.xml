@@ -1,0 +1,17 @@
+<configuration>
+
+    <logger name="org.springframework.web" level="debug"/>
+    <logger name="cn.moondev.framework" level="debug"/>
+    <logger name="cn.moondev.spider" level="info"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
