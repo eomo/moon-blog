@@ -1,0 +1,72 @@
+.category-header {
+	padding-top: 95px;
+}
+
+.category-header-logo {
+	float: left;
+	width: 92px;
+	padding-right: 20px;
+}
+
+.category-header-image {
+	width: 92px;
+}
+
+.category-header-name {
+	font-size: 24px;
+	line-height: 1.2;
+	padding: 5px 0;
+}
+
+.category-header-desc {
+	font-size: 16px;
+	color: rgba(0,0,0,.44);
+	line-height: 1.4;
+	margin-bottom: 5px;
+}
+
+.category-wrapper {
+	margin-top: 110px;
+}
+
+.travel-wrapper {
+	margin-top: 110px;
+}
+
+@media (max-width:900px) {
+	.category-header {
+		padding-top: 65px;
+	}
+	.category-wrapper {
+		margin-top: 200px;
+	}
+	.travel-wrapper {
+		margin-top: 100px;
+	}
+}
+
+.travel-article-item {
+	width: 310px;
+	display: inline-block;
+	margin: 0 10px 40px 0;
+	height: 260px;
+	border: 1px solid rgba(0,0,0,.1);
+	background-color: #fff;
+}
+
+.travel-article-title {
+	font-size: 18px;
+	font-weight: 700;
+	height: 80px;
+	line-height: 80px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.travel-article-image {
+	background-origin: border-box;
+	background-position: 50%;
+	background-size: cover;
+	height: 180px;
+	display: block;
+}

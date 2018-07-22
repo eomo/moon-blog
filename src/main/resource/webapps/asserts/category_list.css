@@ -1,0 +1,152 @@
+.category-header {
+	padding-top: 95px;
+}
+
+@media (max-width:900px) {
+	.category-header {
+		padding-top: 45px;
+	}
+}
+
+.list--collection {
+	padding: 40px 0
+}
+
+.list {
+	padding: 15px 0;
+	position: relative;
+	overflow: hidden
+}
+
+.list--borderedBottom {
+	border-bottom: 1px solid rgba(0,0,0,.05)
+}
+
+.list--borderedBottom:last-child {
+	border-bottom: 0
+}
+
+.list-avatar {
+	float: left;
+	margin-right: 15px;
+	border-radius: 3px
+}
+
+.list-title {
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 1.4
+}
+
+.list-description {
+	font-size: 12px;
+	color: rgba(0,0,0,.44)
+}
+
+.list-action {
+	position: absolute;
+	right: 0;
+	top: 14px
+}
+
+.list--withIcon .button--circle {
+	float: left;
+	width: 40px;
+	height: 40px;
+	line-height: 1;
+	background-color: hsla(0,0%,100%,.97);
+	border-color: rgba(0,0,0,.05)
+}
+
+.list--withIcon .button--circle:focus,.list--withIcon .button--circle:hover {
+	border-color: rgba(0,0,0,.15)
+}
+
+.list--withIcon .list-itemInfo {
+	margin-left: 55px;
+	padding-bottom: 18px
+}
+
+.list-item {
+	border-top: 1px solid hsla(0,0%,100%,.2);
+	padding: 40px 0 35px
+}
+
+.list--withIcon .list-item {
+	padding: 0;
+	border: 0;
+	margin-top: 18px;
+	line-height: 1.4
+}
+
+.list-itemImage {
+	float: left
+}
+
+.list-itemImage img {
+	height: 40px;
+	width: 40px;
+	border-radius: 100%;
+	border: 1px solid rgba(0,0,0,.15);
+	display: block
+}
+
+.list--withIcon .list-itemTitle {
+	color: rgba(0,0,0,.8);
+	font-size: 14px;
+	max-width: 96%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap
+}
+
+.list-itemDescription {
+	color: rgba(0,0,0,.3);
+	font-size: 14px;
+	margin-bottom: 0;
+	margin-right: 20px
+}
+
+.list--withIcon .list-index {
+	color: rgba(0,0,0,.8);
+	font-size: 12px;
+	font-weight: 700
+}
+
+.listingSection {
+	letter-spacing: -.8em;
+	padding: 40px 0
+}
+
+.listingSection-bodyItem {
+	display: inline-block;
+	letter-spacing: 0;
+	margin-bottom: 20px;
+	vertical-align: top
+}
+
+.listingSection-bodyItem--half {
+	width: 49%;
+	margin-right: 2%
+}
+
+.listingSection-bodyItem--half .block--cardWithImage .block-image {
+	height: 272px
+}
+
+.listingSection-bodyItem--half:nth-child(2n) {
+	margin-right: 0
+}
+
+.listingSection-bodyItem--third {
+	width: 31.3333333%;
+	margin-right: 3%
+}
+
+.listingSection-bodyItem--third:nth-child(3n) {
+	margin-right: 0
+}
+
+.listingSection-bodyItem--third .block--cardWithImage .block-image {
+	height: 172px
+}

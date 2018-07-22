@@ -1,29 +1,8 @@
-a,abbr,acronym,address,applet,big,blockquote,body,caption,cite,code,dd,del,dfn,div,dl,dt,em,fieldset,figure,font,form,h1,h2,h3,h4,h5,h6,html,iframe,ins,kbd,label,legend,li,object,ol,p,pre,q,s,samp,small,span,strike,strong,sub,sup,table,tbody,td,tfoot,th,thead,tr,tt,ul,var {
-	border: 0;
-	font-family: inherit;
-	font-size: 100%;
-	font-style: inherit;
-	font-weight: inherit;
-	margin: 0;
-	outline: 0;
-	padding: 0;
-	vertical-align: baseline
-}
-
 html {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 	font-size: 100%;
 	overflow-y: scroll;
-}
-
-body {
-	line-height: 1.8;
-	color: rgba(0,0,0,.8);
-	font-family: PingFang SC,Hiragino Sans GB,Microsoft YaHei,STHeiti,WenQuanYi Micro Hei,Helvetica,Arial,sans-serif;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 
 button,input,textarea {
@@ -157,134 +136,6 @@ input[disabled] {
 	background-color: rgba(0,0,0,.05)
 }
 
-.u-float-left {
-    float: left;
-}
-
-.u-float-right {
-    float: right;
-}
-
-.u-padding-top50 {
-	padding-top: 50px;
-}
-
-.mid-dot-divider {
-	padding-left: .45em;
-    padding-right: .45em;
-}
-
-.mid-dot-divider::after {
-	content: "·";
-}
-
-.loading-button {
-    height: 32px;
-    line-height: 31px;
-    padding: 0 14px;
-    font-size: 12px;
-    display: inline-block;
-    position: relative;
-    color: rgba(0,0,0,.54);
-    background: transparent;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid rgba(0,0,0,.15);
-    white-space: nowrap;
-    text-rendering: auto;
-    box-sizing: border-box;
-    border-radius: 4px;
-}
-
-.loading-button:hover {
-    color: rgba(0,0,0,.6);
-    border-color: rgba(0,0,0,.15);
-}
-
-.heading-title {
-	border-bottom: 1px solid rgba(0,0,0,.05);
-	color: rgba(0,0,0,.6);
-	font-size: 14px;
-	padding-bottom: 4px
-}
-
-.header {
-    width: 100%;
-    background-color: #fff;
-    position: relative;
-}
-
-.site-title {
-	line-height: 1
-}
-
-@media screen and (max-width:900px) {
-	.site-title {
-		display: none;
-	}
-}
-
-@media screen and (min-width:900px) {
-	.header {
-		height: 65px;
-	}
-
-	.header-border {
-		box-shadow: 0 0 1px rgba(0,0,0,.15);
-	}
-}
-
-.logo {
-	position: relative;
-	z-index: 3;
-	display: inline-block;
-	margin: 10px 0 0 10px
-}
-
-.header-center {
-    left: 0;
-	position: absolute;
-	right: 0;
-	text-align: center
-}
-
-.navs {
-	text-align: left;
-	line-height: 65px;
-}
-
-.single-column-layout {
-    margin-left: auto;
-	margin-right: auto;
-	max-width: 780px;
-	width: 90%
-}
-
-.single-column-layout-wide {
-    max-width: 1000px;
-}
-
-.menu-li {
-	float: left;
-	margin-right: 20px;
-}
-
-.menu-li .menu-ul {
-	display: inline-block
-}
-
-.menu-ul:hover .menu-item:not(:hover) {
-	color: rgba(0,0,0,.3)
-}
-
-.menu-item {
-	color: rgba(0,0,0,.68);
-	display: inline-block;
-	font-size: 14px;
-	transition: color .5s ease-in-out 0s
-}
-
 .multi-column-layout {
 	display: inline-block;
 	letter-spacing: 0;
@@ -302,7 +153,8 @@ input[disabled] {
 	max-width: 1000px;
 	width: 90%;
 	margin-left: auto;
-	margin-right: auto
+	margin-right: auto;
+	padding-top: 65px;
 }
 
 .multi-column-layout-primary {
@@ -317,30 +169,13 @@ input[disabled] {
 	padding-left: 40px
 }
 
-@media screen and (max-width:1000px) {
-	.navs {
-		border-bottom: 1px solid #f0f0f0;
-		border-top: 1px solid #f0f0f0;
-		background-color: #fafafa;
-		line-height: 32px
-	}
-
-	.menu-item {
-		font-size: 12px
-	}
-}
-
 @media all and (max-width:900px) {
-	.xs-single-column-layout-wide {
-		width: auto
-	}
-
-	.single-column-layout {
-		height: 34px;
-	}
-
 	.multi-column-layout {
 		display: block;
+	}
+
+	.multi-column-layout-container {
+		padding-top: 0;
 	}
 
 	.multi-column-layout-primary {
@@ -481,7 +316,7 @@ input[disabled] {
 	display: block
 }
 
-@media (max-width:991px) {
+@media (max-width:900px) {
 	.block-list {
 		padding-top: 25px;
 		padding-bottom: 25px
@@ -685,11 +520,4 @@ input[disabled] {
 	font-size: 14px;
 	margin-bottom: 0;
 	margin-right: 20px
-}
-
-.footer {
-	border-top: 1px solid rgba(0,0,0,.05);
-	padding: 10px 0 15px;
-	color: rgba(0,0,0,.58);
-	font-size: 14px
 }

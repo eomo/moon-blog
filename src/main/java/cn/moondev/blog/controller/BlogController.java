@@ -29,6 +29,6 @@ public class BlogController {
      */
     @RequestMapping(value = "/article/{id}", method = RequestMethod.GET)
     public String getArticleById(@PathVariable String id) {
-        return "success";
+        return "article";
     }
 }
