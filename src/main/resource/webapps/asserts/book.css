@@ -25,7 +25,7 @@
 	margin-bottom: 5px;
 }
 
-.movie-wrapper {
+.book-wrapper {
 	 margin-top: 120px;
 }
 
@@ -37,7 +37,7 @@
 	.category-header {
 		padding-top: 65px;
 	}
-	.movie-wrapper {
+	.book-wrapper {
 		margin-top: 140px;
 	}
 
@@ -46,8 +46,8 @@
 	}
 }
 
-.movie-item {
-	width: 17%;
+.book-item {
+	width: 45%;
 	display: inline-block;
 	margin: 0 10px 60px 0;
 	height: 260px;
@@ -56,12 +56,13 @@
 }
 
 @media (max-width:900px) {
-	.movie-item {
-		width: 46%;
+	.book-item {
+		width: 100%;
 	}
 }
 
-.movie-image {
+.book-image {
+	width: 40%;
 	height: 260px;
 	-webkit-animation: b 1s;
 	animation: b 1s;
@@ -78,7 +79,7 @@
 	position: relative;
 }
 
-.movie-title {
+.book-title {
 	font-size: 14px;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -100,4 +101,52 @@
 	right: 5%;
 	text-align: center;
 	width: 30px;
+}
+
+.book-info {
+	width: 50%;
+    font-size: 13px;
+	margin-right: 20px;
+	float: right;
+	margin-top: -260px;
+}
+
+.book-info .title {
+    font-size: 15px;
+    height: auto;
+    margin: 0;
+    color: #3377aa;
+}
+
+.book-info .badge {
+	color: #f0f0f0;
+	display: inline-block;
+    padding: .25em .4em;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
+.book-info .douban {
+    background: #00b73c;
+}
+
+.book-info .jingdong {
+	background: #fa2037;
+	margin-left: 10px;
+}
+
+.book-info .duokan {
+	background: #ff7234;
+	margin-left: 10px;
+}
+
+.reviews {
+    color: #666;
+    clear: both;
+    padding-top: 10px;
 }
