@@ -1,0 +1,58 @@
+.modal-open {
+    overflow: auto !important;
+    padding-right: 0px !important;
+}
+.u-margin-right15 {
+    margin-right: 15px;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+.admin-container {
+    padding-top: 95px;
+}
+
+.navs {
+    line-height: 0;
+    padding-top: 15px;
+}
+
+.admin-header{
+    padding-top: 95px;
+}
+
+.admin-header-name {
+    font-size: 24px;
+    line-height: 1.2;
+    padding: 5px 0;
+}
+
+.admin-header-desc {
+    font-size: 16px;
+    color: rgba(0,0,0,.44);
+    line-height: 1.4;
+    margin-bottom: 5px;
+}
+
+.modal-width {
+    width: 800px; !important;
+}
+
+@media (min-width: 576px) {
+    .modal-width {
+        width: 800px; !important;
+    }
+}
+
+.card-item {
+    width: 33%;
+    display: inline-block;
+    background-color: #fff;
+}
+
+.align-self-end {
+    text-align: right;
+    margin-right: -16px;
+}

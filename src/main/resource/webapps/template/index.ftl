@@ -193,10 +193,7 @@
         </div>
         <footer class="single-column-layout single-column-layout-wide footer">
             <div class="site-info">
-                <p>blog since 2018. ❤️</p>
-                <p>
-                    <a href="mailto:luecsc@gmail.com">CHEN川</a>
-                    原创作品, 网站所有内容未经授权禁止用于商业用途</p>
+                <p>© 2018 Chen.Chuan️️ | Designed by <a class="u-color-red-purple" href="https://fatesinger.com/">bigfa</a> | <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p>
             </div>
         </footer>
     </div>

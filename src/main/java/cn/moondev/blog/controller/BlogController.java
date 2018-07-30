@@ -31,4 +31,12 @@ public class BlogController {
     public String getArticleById(@PathVariable String id) {
         return "article";
     }
+
+    /**
+     * 文章详情
+     */
+    @RequestMapping(value = "/category", method = RequestMethod.GET)
+    public String category() {
+        return "admin/admin-category";
+    }
 }
