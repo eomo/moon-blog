@@ -165,14 +165,14 @@
         }
         if (!!vm.category.id) {
             HttpUtils.post('/v1/category', vm.category).done(function (data) {
-                $.notify("新的文章分类已添加!", {className: "success", globalPosition: 'top center'});
+                UiTools.alert('新的文章分类已添加 !', 'success');
                 getCategoryList(vm);
                 vm.category = {};
                 vm.$refs.categoryModal.hide();
             })
         } else {
             HttpUtils.put('/v1/category', vm.category).done(function (data) {
-                $.notify("文章分类修改成功!", {className: "success", globalPosition: 'top center'});
+                UiTools.alert('文章分类修改成功 !', 'success');
                 getCategoryList(vm);
                 vm.category = {};
                 vm.$refs.categoryModal.hide();
@@ -182,7 +182,7 @@
 
     var deleteCatetory = function (vm, id) {
         HttpUtils.delete('/v1/category/' + id, null).done(function (data) {
-            $.notify("文章分类已删除!", {className: "success", globalPosition: 'top center'});
+            UiTools.alert('文章分类已删除 !', 'success');
             getCategoryList(vm);
         });
     };

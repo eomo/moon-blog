@@ -137,14 +137,14 @@
         }
         if (!!vm.topic.id) {
             HttpUtils.post('/v1/topic', vm.topic).done(function (data) {
-                $.notify("专题修改成功!", {className: "success", globalPosition: 'top center'});
+                UiTools.alert('专题修改成功 !', 'success');
                 getTopicList(vm);
                 vm.topic = {};
                 vm.$refs.topicModal.hide();
             })
         } else {
             HttpUtils.put('/v1/topic', vm.topic).done(function (data) {
-                $.notify("新的专题已添加!", {className: "success", globalPosition: 'top center'});
+                UiTools.alert('新的专题已添加 !', 'success');
                 getTopicList(vm);
                 vm.topic = {};
                 vm.$refs.topicModal.hide();
@@ -154,7 +154,7 @@
 
     var deleteTopic = function (vm, id) {
         HttpUtils.delete('/v1/topic/' + id, null).done(function (data) {
-            $.notify("专题已删除!", {className: "success", globalPosition: 'top center'});
+            UiTools.alert('专题已删除 !', 'success');
             getTopicList(vm);
         });
     };

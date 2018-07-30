@@ -6,6 +6,14 @@ var JsonTools = (function () {
     };
 })();
 
+var UiTools = (function () {
+    return {
+        alert: function (message, type) {
+            $.notify(message, {className: type, globalPosition: 'top center'});
+        }
+    };
+})();
+
 
 var HttpUtils = (function ($) {
     var ajax = function (method, url, param, contentType) {
@@ -23,7 +31,7 @@ var HttpUtils = (function ($) {
             if (res.result) {
                 deferred.resolve(res.data);
             } else {
-                $.notify(res.message, {className: "error", globalPosition: 'top center'});
+                UiTools.alert(res.message,'error');
                 deferred.reject(res);
             }
         }).fail(function () {
