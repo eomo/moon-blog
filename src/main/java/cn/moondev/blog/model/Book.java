@@ -1,5 +1,13 @@
 package cn.moondev.blog.model;
 
+import cn.moondev.framework.utils.JsonUtils;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.base.Joiner;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Book {
 
     public int id;
@@ -50,6 +58,11 @@ public class Book {
     public String publisher;
 
     /**
+     * 出版日期
+     */
+    public String pubdate;
+
+    /**
      * 图书isbn
      */
     public String isbn10;
@@ -94,5 +107,58 @@ public class Book {
      * 多看电子书链接
      */
     public String duokanUrl;
+
+    public Book() {
+
+    }
+
+    public Book(JSONObject json) {
+        this.rating = json.getJSONObject("rating").getString("average");
+        this.title = json.getString("title");
+        this.subtitle = json.getString("subtitle");
+        this.author = JsonUtils.parseJsonStringArray(json.getJSONArray("author"));
+        this.tag = parseTag(json.getJSONArray("tags"));
+        this.translator = JsonUtils.parseJsonStringArray(json.getJSONArray("translator"));
+        this.pages = json.getString("pages");
+        this.doubanId = json.getString("url");
+        this.publisher = json.getString("publisher");
+        this.pubdate = json.getString("pubdate");
+        this.isbn10 = json.getString("isbn10");
+        this.isbn13 = json.getString("isbn13");
+        this.doubanApi = json.getString("id");
+        this.authorIntro = json.getString("author_intro");
+        this.summary = json.getString("summary");
+        JSONObject images = json.getJSONObject("images");
+        this.doubanImage1 = images.getString("small");
+        this.doubanImage2 = images.getString("large");
+        this.doubanImage3 = images.getString("medium");
+        this.backupImage1 = "";
+        this.backupImage2 = "";
+        this.backupImage3 = "";
+        this.jingdongUrl = "";
+        this.duokanUrl = "";
+        this.doubanUrl = json.getString("alt");
+    }
+
+    /**
+     * 解析图片tag
+     */
+    public String parseTag(JSONArray jsonArray) {
+        List<String> list = new ArrayList<>();
+        int index = 1;
+        for (Object obj : jsonArray) {
+            JSONObject json = (JSONObject) obj;
+            String tagName = json.getString("name");
+            if (title.contains(tagName) || author.contains(tagName)) {
+                continue;
+            }
+            list.add(tagName);
+            index++;
+            if (index == 4) {
+                break;
+            }
+        }
+        return Joiner.on('/').join(list);
+    }
 
 }
