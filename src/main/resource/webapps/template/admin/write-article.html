@@ -1,0 +1,43 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>管理后台 - 编辑文章</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <style>
+        .CodeMirror {
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="wrapper">
+
+</div>
+<div>
+    <textarea id="editor" cols="30" rows="10"></textarea>
+</div>
+<#include "common/admin-js.html"/>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script>
+    var simplemde = new SimpleMDE({
+        element: document.getElementById("editor"),
+        autoDownloadFontAwesome: false
+    });
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            title: null
+        },
+        created: function () {
+        },
+        methods: {
+            search: function () {
+            }
+        }
+    });
+</script>
+</body>
+</html>

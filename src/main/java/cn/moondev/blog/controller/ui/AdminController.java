@@ -60,4 +60,12 @@ public class AdminController {
     public String article(Model model) {
         return "/admin/admin-article";
     }
+
+    /**
+     * 写文章
+     */
+    @RequestMapping(value = "/write/article", method = RequestMethod.GET)
+    public String writeArticle(Model model) {
+        return "/admin/write-article";
+    }
 }
