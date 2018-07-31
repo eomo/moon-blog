@@ -1,42 +1,106 @@
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html lang="en-us">
 <head>
     <meta charset="UTF-8">
     <title>管理后台 - 编辑文章</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <#include "common/admin-css.html"/>
+    <link rel="stylesheet" type="text/css" href="/webapps/asserts/editor.css" media="screen">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <style>
-        .CodeMirror {
-            height: 300px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 </head>
 <body>
-<div id="app" class="wrapper">
+<#include "common/admin-header.html"/>
+<div class="single-column-layout single-column-layout-admin admin-container">
+    <div id="app" class="wrapper">
+        <form @submit.stop.prevent="handleSubmit">
+            <b-row>
+                <b-col>
+                    <b-form-group horizontal
+                                  :label-cols="1"
+                                  label="文章标题："
+                                  label-for="input">
+                        <b-form-input type="text"
+                                      placeholder="请输入文章标题"
+                                      v-model="article.title">
+                        </b-form-input>
+                    </b-form-group>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col>
+                    <b-form-group horizontal
+                                  :label-cols="2"
+                                  label="所属分类："
+                                  label-for="input">
+                        <b-form-select v-model="article.categoryId" :options="categories"/>
+                    </b-form-group>
+                </b-col>
+                <b-col>
+                    <b-form-group horizontal
+                                  :label-cols="2"
+                                  label="所属专题："
+                                  label-for="input">
+                        <b-form-select v-model="article.topicId" :options="topics"/>
+                    </b-form-group>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col>
+                    <b-form-group horizontal
+                                  :label-cols="1"
+                                  label="文章摘要："
+                                  label-for="input">
+                        <b-form-textarea v-model="article.summary"
+                                         placeholder="请输入文章摘要，若不输入，则将自动截取正文内容，其有可能包含各种标签"
+                                         :rows="3"
+                                         :max-rows="6">
+                        </b-form-textarea>
+                    </b-form-group>
+                </b-col>
+            </b-row>
+        </form>
+    </div>
+    <section class="main-content">
+        <textarea id="editor"></textarea>
+    </section>
 
 </div>
-<div>
-    <textarea id="editor" cols="30" rows="10"></textarea>
-</div>
+
 <#include "common/admin-js.html"/>
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script>
-    var simplemde = new SimpleMDE({
+
+    var mde = new SimpleMDE({
         element: document.getElementById("editor"),
-        autoDownloadFontAwesome: false
+        autoDownloadFontAwesome: false,
+        spellChecker: false,
+        autosave: {
+            enabled: true,
+            unique_id: "editor",
+        },
+        initialValue: '在此编辑你的文章'
     });
 
     var app = new Vue({
         el: '#app',
         data: {
-            title: null
+            article: {},
+            categories:[
+                { value: 1, text: '技术' },
+                { value: 2, text: '读书' },
+                { value: 3, text: '随感' }
+            ],
+            topics:[
+                { value: 1, text: 'MySQL' },
+                { value: 2, text: 'RocketMQ' },
+                { value: 3, text: 'Java' }
+            ]
         },
         created: function () {
+
         },
-        methods: {
-            search: function () {
-            }
-        }
+        methods: {}
     });
 </script>
 </body>
