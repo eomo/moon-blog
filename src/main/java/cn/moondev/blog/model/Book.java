@@ -108,6 +108,13 @@ public class Book {
      */
     public String duokanUrl;
 
+    /**
+     * 哪一年看的
+     */
+    public String year;
+
+    public String remark;
+
     public Book() {
 
     }
@@ -120,12 +127,12 @@ public class Book {
         this.tag = parseTag(json.getJSONArray("tags"));
         this.translator = JsonUtils.parseJsonStringArray(json.getJSONArray("translator"));
         this.pages = json.getString("pages");
-        this.doubanId = json.getString("url");
+        this.doubanId = json.getString("id");
         this.publisher = json.getString("publisher");
         this.pubdate = json.getString("pubdate");
         this.isbn10 = json.getString("isbn10");
         this.isbn13 = json.getString("isbn13");
-        this.doubanApi = json.getString("id");
+        this.doubanApi = json.getString("url");
         this.authorIntro = json.getString("author_intro");
         this.summary = json.getString("summary");
         JSONObject images = json.getJSONObject("images");
@@ -151,6 +158,9 @@ public class Book {
             String tagName = json.getString("name");
             if (title.contains(tagName) || author.contains(tagName)) {
                 continue;
+            }
+            if (tagName.contains("+") || tagName.contains("*") || tagName.contains("=")) {
+                break;
             }
             list.add(tagName);
             index++;

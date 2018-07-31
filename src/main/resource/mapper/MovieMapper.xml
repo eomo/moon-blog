@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.moondev.blog.mapper.MovieMapper">
+    <resultMap id="movieMap" type="cn.moondev.blog.model.Movie">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="original_title" property="originalTitle"/>
+        <result column="aka" property="aka"/>
+        <result column="douban_id" property="doubanId"/>
+        <result column="douban_url" property="doubanUrl"/>
+        <result column="rating" property="rating"/>
+        <result column="douban_image1" property="doubanImage1"/>
+        <result column="douban_image2" property="doubanImage2"/>
+        <result column="douban_image3" property="doubanImage3"/>
+        <result column="backup_image1" property="backupImage1"/>
+        <result column="backup_image2" property="backupImage2"/>
+        <result column="backup_image3" property="backupImage3"/>
+        <result column="subtype" property="subtype"/>
+        <result column="directors" property="directors"/>
+        <result column="casts" property="casts"/>
+        <result column="writers" property="writers"/>
+        <result column="website" property="website"/>
+        <result column="pubdates" property="pubdates"/>
+        <result column="mainland_pubdate" property="mainlandPubdate"/>
+        <result column="languages" property="languages"/>
+        <result column="durations" property="durations"/>
+        <result column="summary" property="summary"/>
+        <result column="genres" property="genres"/>
+        <result column="countries" property="countries"/>
+        <result column="year" property="year"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <select id="count" resultType="java.lang.Long">
+        SELECT count(*)
+        FROM t_movie
+        WHERE 1 = 1
+        <if test='title != null'>
+            AND `title` LIKE "%"#{title}"%"
+        </if>
+        <if test='person != null'>
+            AND (`directors` LIKE "%"#{person}"%" OR `casts` LIKE "%"#{person}"%" OR `writers` LIKE "%"#{person}"%")
+        </if>
+    </select>
+
+    <select id="find" resultMap="movieMap">
+        SELECT *
+        FROM t_movie
+        WHERE 1 = 1
+        <if test='title != null'>
+            AND `title` LIKE "%"#{title}"%"
+        </if>
+        <if test='person != null'>
+            AND (`directors` LIKE "%"#{person}"%" OR `casts` LIKE "%"#{person}"%" OR `writers` LIKE "%"#{person}"%")
+        </if>
+        limit #{offset}, #{size}
+    </select>
+
+    <select id="findById">
+        SELECT * FROM t_movie WHERE `douban_id` = #{doubanId}
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Long">
+          DELETE FROM t_movie WHERE `id` = #{id}
+      </delete>
+
+    <insert id="upsert" parameterType="cn.moondev.blog.model.Movie">
+      INSERT INTO t_movie (
+            `title`,
+            `original_title`,
+            `aka`,
+            `douban_id`,
+            `douban_url`,
+            `rating`,
+            `douban_image1`,
+            `douban_image2`,
+            `douban_image3`,
+            `backup_image1`,
+            `backup_image2`,
+            `backup_image3`,
+            `subtype`,
+            `directors`,
+            `casts`,
+            `writers`,
+            `website`,
+            `pubdates`,
+            `mainland_pubdate`,
+            `languages`,
+            `durations`,
+            `summary`,
+            `genres`,
+            `countries`,
+            `year`,
+            `remark`
+      ) VALUES (
+            #{item.title},
+            #{item.originalTitle},
+            #{item.aka},
+            #{item.doubanId},
+            #{item.doubanUrl},
+            #{item.rating},
+            #{item.doubanImage1},
+            #{item.doubanImage2},
+            #{item.doubanImage3},
+            #{item.backupImage1},
+            #{item.backupImage2},
+            #{item.backupImage3},
+            #{item.subtype},
+            #{item.directors},
+            #{item.casts},
+            #{item.writers},
+            #{item.website},
+            #{item.pubdates},
+            #{item.mainlandPubdate},
+            #{item.languages},
+            #{item.durations},
+            #{item.summary},
+            #{item.genres},
+            #{item.countries},
+            #{item.year},
+            #{item.remark}
+      )ON DUPLICATE KEY UPDATE
+            `title` = VALUES(title),
+            `original_title` = VALUES(original_title),
+            `aka` = VALUES(aka),
+            `douban_url` = VALUES(douban_url),
+            `rating` = VALUES(rating),
+            `douban_image1` = VALUES(douban_image1),
+            `douban_image2` = VALUES(douban_image2),
+            `douban_image3` = VALUES(douban_image3),
+            `backup_image1` = VALUES(backup_image1),
+            `backup_image2` = VALUES(backup_image2),
+            `backup_image3` = VALUES(backup_image3),
+            `subtype` = VALUES(subtype),
+            `directors` = VALUES(directors),
+            `casts` = VALUES(casts),
+            `writers` = VALUES(writers),
+            `website` = VALUES(website),
+            `pubdates` = VALUES(pubdates),
+            `mainland_pubdate` = VALUES(mainland_pubdate),
+            `languages` = VALUES(languages),
+            `durations` = VALUES(durations),
+            `summary` = VALUES(summary),
+            `genres` = VALUES(genres),
+            `countries` = VALUES(countries),
+            `year` = VALUES(`year`),
+            `remark` = VALUES(remark)
+      </insert>
+</mapper>

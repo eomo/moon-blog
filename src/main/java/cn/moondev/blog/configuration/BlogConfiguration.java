@@ -1,10 +1,12 @@
 package cn.moondev.blog.configuration;
 
 import cn.moondev.framework.provider.mysql.MybatisConfigurationSupport;
+import cn.moondev.framework.provider.okhttp3.OkHttpOperations;
 import cn.moondev.framework.provider.web.ExceptionInterceptor;
 import cn.moondev.framework.provider.web.WebConfigurationSupport;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
@@ -19,6 +21,11 @@ public class BlogConfiguration {
             super.addInterceptors(registry);
             registry.addInterceptor(new ExceptionInterceptor());
         }
+    }
+
+    @Bean
+    public OkHttpOperations okHttpOperations() {
+        return new OkHttpOperations(120, 0);
     }
 
     /**

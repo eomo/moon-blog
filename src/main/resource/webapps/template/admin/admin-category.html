@@ -8,7 +8,7 @@
 <div id="app" class="wrapper">
     <#include "common/admin-header.html"/>
     <header class="admin-header">
-        <div class="single-column-layout single-column-layout-wide u-clearfix">
+        <div class="single-column-layout single-column-layout-admin u-clearfix">
             <div class="u-float-left">
                 <h1 class="admin-header-name">文章分类</h1>
                 <div class="admin-header-desc"><p>足迹、图书、电影等为固定分类，不支持修改</p></div>
@@ -18,7 +18,7 @@
             </div>
         </div>
     </header>
-    <div class="single-column-layout single-column-layout-wide admin-container">
+    <div class="single-column-layout single-column-layout-admin admin-container">
         <div class="card-item" v-for="item in categories">
             <b-card :title="item.name"
                     :img-src="item.image"
@@ -165,14 +165,14 @@
         }
         if (!!vm.category.id) {
             HttpUtils.post('/v1/category', vm.category).done(function (data) {
-                UiTools.alert('新的文章分类已添加 !', 'success');
+                UiTools.alert('新的文章分类已添加!', 'success');
                 getCategoryList(vm);
                 vm.category = {};
                 vm.$refs.categoryModal.hide();
             })
         } else {
             HttpUtils.put('/v1/category', vm.category).done(function (data) {
-                UiTools.alert('文章分类修改成功 !', 'success');
+                UiTools.alert('文章分类修改成功!', 'success');
                 getCategoryList(vm);
                 vm.category = {};
                 vm.$refs.categoryModal.hide();
@@ -182,7 +182,7 @@
 
     var deleteCatetory = function (vm, id) {
         HttpUtils.delete('/v1/category/' + id, null).done(function (data) {
-            UiTools.alert('文章分类已删除 !', 'success');
+            UiTools.alert('文章分类已删除!', 'success');
             getCategoryList(vm);
         });
     };

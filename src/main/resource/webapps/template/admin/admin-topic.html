@@ -8,7 +8,7 @@
 <div id="app" class="wrapper">
     <#include "common/admin-header.html"/>
     <header class="admin-header">
-        <div class="single-column-layout single-column-layout-wide u-clearfix">
+        <div class="single-column-layout single-column-layout-admin u-clearfix">
             <div class="u-float-left">
                 <h1 class="admin-header-name">专题</h1>
                 <div class="admin-header-desc"><p>所有专题将显示在首页左栏，因此专题数量不宜太多且专题描述图片尽量小些，以免影响首页加载速度</p></div>
@@ -18,7 +18,7 @@
             </div>
         </div>
     </header>
-    <div class="single-column-layout single-column-layout-wide admin-container">
+    <div class="single-column-layout single-column-layout-admin admin-container">
         <b-container fluid>
             <b-row class="u-margin-button15" v-for="item in topics">
                 <b-col cols="1"><img :src="item.image" width="40" height="40"></b-col>
@@ -137,14 +137,14 @@
         }
         if (!!vm.topic.id) {
             HttpUtils.post('/v1/topic', vm.topic).done(function (data) {
-                UiTools.alert('专题修改成功 !', 'success');
+                UiTools.alert('专题修改成功!', 'success');
                 getTopicList(vm);
                 vm.topic = {};
                 vm.$refs.topicModal.hide();
             })
         } else {
             HttpUtils.put('/v1/topic', vm.topic).done(function (data) {
-                UiTools.alert('新的专题已添加 !', 'success');
+                UiTools.alert('新的专题已添加!', 'success');
                 getTopicList(vm);
                 vm.topic = {};
                 vm.$refs.topicModal.hide();
@@ -154,7 +154,7 @@
 
     var deleteTopic = function (vm, id) {
         HttpUtils.delete('/v1/topic/' + id, null).done(function (data) {
-            UiTools.alert('专题已删除 !', 'success');
+            UiTools.alert('专题已删除!', 'success');
             getTopicList(vm);
         });
     };
