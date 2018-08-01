@@ -9,7 +9,8 @@ public enum MessageCode {
     DESC_ERROR("000003", "描述格式错误：为空或者超长"),
     IMAGE_URL_ERROR("000004", "图片链接格式错误：长度超长或为空"),
     API_ERROR("000005", "未从豆瓣获取到数据，请检查后重试"),
-    ARTICLE_NOT_EXISTS("000006", "文章不存在，操作失败");
+    ARTICLE_NOT_EXISTS("000006", "文章不存在，操作失败"),
+    LOGIN_PARAMS_ERROR("000007", "用户名或密码错误");
 
 
     private String code;

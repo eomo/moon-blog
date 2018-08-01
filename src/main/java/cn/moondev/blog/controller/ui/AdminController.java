@@ -1,12 +1,14 @@
 package cn.moondev.blog.controller.ui;
 
 import cn.moondev.blog.service.ArticleService;
+import com.google.common.base.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 进入管理后台页面
@@ -14,15 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-
-    /**
-     * 登录页面
-     */
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model) {
-        return "/admin/admin-login";
-    }
-
 
     /**
      * 分类管理

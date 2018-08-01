@@ -27,6 +27,14 @@ public class BlogController {
     private CategoryService categoryService;
 
     /**
+     * 登录页面
+     */
+    @RequestMapping(value = "/ddl", method = RequestMethod.GET)
+    public String login(Model model) {
+        return "/admin/admin-login";
+    }
+
+    /**
      * 首页
      */
     @RequestMapping(value = {""}, method = RequestMethod.GET)

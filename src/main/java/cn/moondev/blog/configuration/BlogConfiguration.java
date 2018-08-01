@@ -4,11 +4,15 @@ import cn.moondev.framework.provider.mysql.MybatisConfigurationSupport;
 import cn.moondev.framework.provider.okhttp3.OkHttpOperations;
 import cn.moondev.framework.provider.web.ExceptionInterceptor;
 import cn.moondev.framework.provider.web.WebConfigurationSupport;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class BlogConfiguration {
@@ -26,6 +30,11 @@ public class BlogConfiguration {
     @Bean
     public OkHttpOperations okHttpOperations() {
         return new OkHttpOperations(120, 0);
+    }
+
+    @Bean
+    public Cache<String,String> tokenCache() {
+        return CacheBuilder.newBuilder().maximumSize(1).expireAfterAccess(30,TimeUnit.MINUTES).build();
     }
 
     /**
