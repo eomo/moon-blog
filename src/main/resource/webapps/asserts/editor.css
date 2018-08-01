@@ -155,6 +155,22 @@ body {
     border: 0
 }
 
+.main-content .CodeMirror {
+    height: 800px;
+    z-index: 0;
+}
+
+.publish-btn {
+    position: relative;
+    float: right;
+    margin-top: -85px;
+    z-index: 2;
+}
+
+.u-margin-left10 {
+    margin-left: 10px;
+}
+
 @media screen and (min-width: 64em) {
     .main-content {
         width: 108%;

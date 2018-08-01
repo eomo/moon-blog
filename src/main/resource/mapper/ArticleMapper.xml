@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.moondev.blog.mapper.ArticleMapper">
+    <resultMap id="articleMap" type="cn.moondev.blog.model.Article">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="summary" property="summary"/>
+        <result column="author" property="author"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="updated_time" property="updatedTime"/>
+        <result column="publish_time" property="publishTime"/>
+        <result column="status" property="status"/>
+        <result column="image" property="image"/>
+        <result column="topic_id" property="topicId"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="view_count" property="viewCount"/>
+        <result column="comment_count" property="commentCount"/>
+        <result column="stick" property="stick"/>
+        <result column="categoryName" property="categoryName"/>
+        <result column="topicName" property="topicName"/>
+    </resultMap>
+
+    <select id="findById" resultMap="articleMap" parameterType="java.lang.String">
+        SELECT * FROM t_article WHERE `id` = #{id}
+    </select>
+
+    <select id="findDetailById" resultMap="articleMap" parameterType="java.lang.String">
+        SELECT a.*, c.name as categoryName, t.name as topicName FROM t_article a
+        LEFT JOIN t_category c on a.category_id = c.id
+        LEFT JOIN t_topic t on t.id = a.topic_id
+        WHERE a.`id` = #{id}
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        SELECT count(*)
+        FROM t_article
+        WHERE 1 = 1
+        <if test='year != null'>
+            AND `year` = #{year}
+        </if>
+        <if test='categoryId != null'>
+            AND `category_id` = #{categoryId}
+        </if>
+    </select>
+
+    <select id="find" resultMap="articleMap">
+        SELECT a.*, c.name as categoryName, t.name as topicName FROM t_article a
+        LEFT JOIN t_category c on a.category_id = c.id
+        LEFT JOIN t_topic t on t.id = a.topic_id
+        WHERE 1 = 1
+        <if test='year != null'>
+            AND `a.year` = #{year}
+        </if>
+        <if test='categoryId != null'>
+            AND `a.category_id` = #{categoryId}
+        </if>
+        limit #{offset}, #{size}
+    </select>
+
+    <insert id="upsert" parameterType="cn.moondev.blog.model.Article">
+      INSERT INTO t_article (
+            `id`,
+            `title`,
+            `content`,
+            `summary`,
+            `created_time`,
+            `updated_time`,
+            `publish_time`,
+            `status`,
+            `image`,
+            `topic_id`,
+            `category_id`,
+            `view_count`,
+            `comment_count`,
+            `stick`,
+            `year`
+      ) VALUES (
+            #{item.id},
+            #{item.title},
+            #{item.content},
+            #{item.summary},
+            #{item.createdTime},
+            #{item.updatedTime},
+            #{item.publishTime},
+            #{item.status},
+            #{item.image},
+            #{item.topicId},
+            #{item.categoryId},
+            #{item.viewCount},
+            #{item.commentCount},
+            #{item.stick},
+            YEAR(NOW())
+      ) ON DUPLICATE KEY UPDATE
+            `title` = VALUES(title),
+            `content` = VALUES(content),
+            `summary` = VALUES(summary),
+            `created_time` = VALUES(created_time),
+            `updated_time` = VALUES(updated_time),
+            `publish_time` = VALUES(publish_time),
+            `status` = VALUES(status),
+            `image` = VALUES(image),
+            `topic_id` = VALUES(topic_id),
+            `category_id` = VALUES(category_id),
+            `view_count` = VALUES(view_count),
+            `comment_count` = VALUES(comment_count),
+            `stick` = VALUES(stick)
+      </insert>
+</mapper>

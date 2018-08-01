@@ -16,6 +16,9 @@ public interface CategoryMapper {
     @Select("SELECT * FROM t_category ORDER BY order_no asc")
     List<Category> getAllCategory();
 
+    @Select("SELECT * FROM t_category WHERE `menu` = 1 ORDER BY order_no asc")
+    List<Category> getMenuCategory();
+
     @Select("SELECT * FROM t_category WHERE `name` = #{name} LIMIT 1")
     Category getCategoryByName(@Param("name") String name);
 

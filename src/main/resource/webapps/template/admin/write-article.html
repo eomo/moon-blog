@@ -13,7 +13,11 @@
 <#include "common/admin-header.html"/>
 <div class="single-column-layout single-column-layout-admin admin-container">
     <div id="app" class="wrapper">
-        <form @submit.stop.prevent="handleSubmit">
+        <div class="publish-btn">
+            <b-button @click="saveDraft" variant="primary">保存草稿</b-button>
+            <b-button @click="publish" variant="success u-margin-left10">发布文章</b-button>
+        </div>
+        <form>
             <b-row>
                 <b-col>
                     <b-form-group horizontal
@@ -49,6 +53,19 @@
                 <b-col>
                     <b-form-group horizontal
                                   :label-cols="1"
+                                  label="图片描述："
+                                  label-for="input">
+                        <b-form-input type="text"
+                                      placeholder="请输入描述图片地址，图片用于首页或者其它搜索页面的展示，图片不宜过大"
+                                      v-model="article.image">
+                        </b-form-input>
+                    </b-form-group>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col>
+                    <b-form-group horizontal
+                                  :label-cols="1"
                                   label="文章摘要："
                                   label-for="input">
                         <b-form-textarea v-model="article.summary"
@@ -60,17 +77,25 @@
                 </b-col>
             </b-row>
         </form>
+        <b-modal ref="confirmModal" centered
+                 title="风险提示"
+                 ok-title="跳转到管理页面"
+                 cancel-title="继续编辑"
+                 cancel-variant="primary"
+                 ok-variant="success"
+                 @ok="jump"
+                 @cancel="close">
+            <p>操作成功，你可以继续留在此页面编辑文章或跳转到管理页面进行调整</p>
+        </b-modal>
     </div>
     <section class="main-content">
         <textarea id="editor"></textarea>
     </section>
-
 </div>
 
 <#include "common/admin-js.html"/>
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script>
-
     var mde = new SimpleMDE({
         element: document.getElementById("editor"),
         autoDownloadFontAwesome: false,
@@ -79,28 +104,92 @@
             enabled: true,
             unique_id: "editor",
         },
-        initialValue: '在此编辑你的文章'
+        placeholder: '在此编辑你的文章'
     });
+
+    var getCategoryList = function (vm) {
+        HttpUtils.get("/v1/category", null).done(function (data) {
+            vm.categories = [];
+            data.forEach(function (item) {
+                vm.categories.push({value: item.id, text: item.name});
+            })
+        });
+    };
+
+    var getTopicList = function (vm) {
+        HttpUtils.get("/v1/topic", null).done(function (data) {
+            vm.topics = [];
+            data.forEach(function (item) {
+                vm.topics.push({value: item.id, text: item.name});
+            })
+        });
+    };
+
+    var getArticle = function (vm) {
+        HttpUtils.get("/v1/article/${article_id}",null).done(function (data) {
+            vm.article = data;
+            if (!!data.id) {
+                mde.value(data.content);
+            }
+        });
+    }
+
+    var checkArticle = function (vm) {
+        if (!vm.article.title) {
+            UiTools.alert('请输入文章标题!', 'error');
+            return false;
+        }
+        if (!vm.article.image) {
+            UiTools.alert('请输入描述图片地址!', 'error');
+            return false;
+        }
+        if (!mde.value() || mde.value().length == 0) {
+            UiTools.alert('请输入文章内容!', 'error');
+            return false;
+        }
+        return true;
+    }
 
     var app = new Vue({
         el: '#app',
         data: {
             article: {},
-            categories:[
-                { value: 1, text: '技术' },
-                { value: 2, text: '读书' },
-                { value: 3, text: '随感' }
-            ],
-            topics:[
-                { value: 1, text: 'MySQL' },
-                { value: 2, text: 'RocketMQ' },
-                { value: 3, text: 'Java' }
-            ]
+            categories: [],
+            topics: []
         },
         created: function () {
-
+            getArticle(this);
+            getCategoryList(this);
+            getTopicList(this);
         },
-        methods: {}
+        methods: {
+            saveDraft: function () {
+                if (checkArticle(this)) {
+                    this.article.content = mde.value();
+                    HttpUtils.post('/v1/article/draft', this.article).done(function (data) {
+                        UiTools.alert('保存草稿成功！', 'success');
+                        app.article.id = data;
+                        app.$refs.confirmModal.show();
+                    });
+                }
+            },
+            publish: function () {
+                if (checkArticle(this)) {
+                    this.article.content = mde.value();
+                    HttpUtils.post('/v1/article/publish', this.article).done(function (data) {
+                        UiTools.alert('文章发布成功！', 'success');
+                        app.article.id = data;
+                        app.$refs.confirmModal.show();
+                    });
+                }
+            },
+            close: function () {
+                this.$refs.confirmModal.hide();
+            },
+            jump: function () {
+                window.location.href = '/admin/article';
+            },
+        }
     });
 </script>
 </body>

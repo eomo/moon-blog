@@ -80,3 +80,24 @@ CREATE TABLE IF NOT EXISTS `t_movie`(
     PRIMARY KEY (`id`),
     UNIQUE KEY unique_index_douban(`douban_id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `t_article`(
+    `id` varchar(10) NOT NULL DEFAULT '' COMMENT '主键',
+    `title` varchar(512) NOT NULL DEFAULT '' COMMENT '标题',
+    `image` VARCHAR(512) NOT NULL DEFAULT '' COMMENT '文章描述图片',
+    `content` longtext COMMENT '内容',
+    `summary` VARCHAR(512) NOT NULL DEFAULT '' COMMENT '摘要',
+    `author` varchar(32) NOT NULL DEFAULT '' COMMENT '作者',
+    `created_time` varchar(32) NOT NULL DEFAULT '' COMMENT '创建时间',
+    `updated_time` varchar(32) NOT NULL DEFAULT '' COMMENT '更新时间',
+    `publish_time` varchar(32) NOT NULL DEFAULT '' COMMENT '发布时间',
+    `status` tinyint NOT NULL DEFAULT 0 COMMENT '状态：草稿0，发布1',
+    `year` varchar(4) NOT NULL DEFAULT '' COMMENT '年份',
+    `topic_id` varchar(8) NOT NULL DEFAULT '' COMMENT '专题ID',
+    `category_id` varchar(8) NOT NULL DEFAULT '' COMMENT '分类ID',
+    `view_count` INT NOT NULL DEFAULT 0 COMMENT '浏览量',
+    `comment_count` INT NOT NULL DEFAULT 0 COMMENT '评论数量',
+    `stick` INT NOT NULL DEFAULT 0 COMMENT '置顶标识',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY unique_index_guid(`guid`)
+)ENGINE=INNODB DEFAULT CHARSET=utf8mb4;

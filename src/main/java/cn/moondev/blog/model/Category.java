@@ -1,5 +1,8 @@
 package cn.moondev.blog.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Category {
 
     public int id;
@@ -33,5 +36,24 @@ public class Category {
      * 排序，主要是在首页菜单中的显示顺序
      */
     public int orderNo;
+
+    public Category(){
+
+    }
+
+    public Category(int id, String name, String image, String url) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.url = url;
+    }
+
+    public static List<Category> def() {
+        List<Category> categories = new ArrayList<>();
+        categories.add(new Category(-1,"足迹","http://apps.moondev.cn/image/road.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim",""));
+        categories.add(new Category(-2,"图书","http://apps.moondev.cn/image/book3.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim",""));
+        categories.add(new Category(-3,"电影","http://apps.moondev.cn/image/movie.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim",""));
+        return categories;
+    }
 
 }

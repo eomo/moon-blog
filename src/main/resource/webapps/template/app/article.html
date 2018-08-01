@@ -1,0 +1,136 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>${article.title} - MoonBlog</title>
+    <#include "common/app-css.html"/>
+</head>
+<body>
+<#include "common/app-header.html"/>
+    <div class="single-column-layout article-container">
+        <div class="block-group u-padding-top50">
+            <header class="entry-header">
+                <h2 class="entry-title" itemprop="headline">${article.title}</h2>
+                <div class="entry-meta">
+                    <time datetime="${article.publishTime}">${article.publishTime}</time>
+                    <span class="mid-dot-divider"></span>
+                    <span>阅读 ${article.viewCount}</span>
+                    <span class="mid-dot-divider"></span>
+                    <span>评论 ${article.commentCount}</span>
+                </div>
+            </header>
+            <article id="article" class="markdown-section"></article>
+        </div>
+    </div>
+    <div class="single-column-layout">
+        <div id="comments">
+            <meta content="UserComments:${article.commentCount}" itemprop="interactionCount">
+            <h3 class="responses-title">${article.commentCount}条评论</h3>
+            <ol class="commentlist">
+                <li class="comment" itemtype="http://schema.org/Comment" data-id="7428" itemscope="" itemprop="comment">
+                    <div id="comment-7428" class="comment-block">
+                        <div class="comment-info u-clearfix">
+                            <div class="comment-avatar">
+                                <img height="40" width="40" class="avatar" src="https://secure.gravatar.com/avatar/453cfb46b6b6212d221feecc98c5e7a1?s=40&amp;d=mm&amp;r=x">
+                            </div>
+                            <div class="comment-meta">
+                                <div class="comment-author" itemprop="author">郝大发
+                                    <span class="comment-reply-link u-cursorPointer" onclick="return addComment.moveForm('comment-7428', '7428', 'respond', '100277')">回复</span>
+                                </div>
+                                <div class="comment-time" itemprop="datePublished" datetime="2018-07-18T13:28:15+08:00">发布于 1 天前</div>
+                            </div>
+                        </div>
+                        <div class="comment-content" itemprop="description">
+                            <p>哈哈发现另一个大发</p>
+                        </div>
+                    </div>
+                </li>
+                <!-- #comment-## -->
+                <li class="comment" itemtype="http://schema.org/Comment" data-id="7432" itemscope="" itemprop="comment">
+                    <div id="comment-7432" class="comment-block">
+                        <div class="comment-info u-clearfix">
+                            <div class="comment-avatar">
+                                <img height="40" width="40" class="avatar" src="https://secure.gravatar.com/avatar/9bbc32d084f4062c82e1528931472ee3?s=40&amp;d=mm&amp;r=x">
+                            </div>
+                            <div class="comment-meta">
+                                <div class="comment-author" itemprop="author">小帅比
+                                    <span class="comment-reply-link u-cursorPointer" onclick="return addComment.moveForm('comment-7432', '7432', 'respond', '100277')">回复</span>
+                                </div>
+                                <div class="comment-time" itemprop="datePublished" datetime="2018-07-19T12:09:42+08:00">发布于 2 小时前</div>
+                            </div>
+                        </div>
+                        <div class="comment-content" itemprop="description">
+                            <p>麻痹的，你是腾讯的a</p>
+                        </div>
+                    </div>
+                    <ol class="children">
+                        <li class="comment" itemtype="http://schema.org/Comment" data-id="7433" itemscope="" itemprop="comment">
+                            <div id="comment-7433" class="comment-block">
+                                <div class="comment-info u-clearfix">
+                                    <div class="comment-avatar">
+                                        <img height="40" width="40" class="avatar" src="https://secure.gravatar.com/avatar/cb00906b00aa792587f9abc41b2363b1?s=40&amp;d=mm&amp;r=x">
+                                    </div>
+                                    <div class="comment-meta">
+                                        <div class="comment-author" itemprop="author">大帅比
+                                            <span class="comment-reply-link u-cursorPointer" onclick="return addComment.moveForm('comment-7433', '7433', 'respond', '100277')">回复</span>
+                                        </div>
+                                        <div class="comment-time" itemprop="datePublished" datetime="2018-07-19T14:22:43+08:00">发布于 37 分钟前</div>
+                                    </div>
+                                </div>
+                                <div class="comment-content" itemprop="description">
+                                    <p>
+                                        <a href="#comment-7432" rel="nofollow" data-id="7432" class="purple atreply">@小帅比</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- #comment-## -->
+                    </ol>
+                    <!-- .children -->
+                </li>
+                <!-- #comment-## -->
+            </ol>
+            <div id="respond" class="respond" role="form">
+                <h3 id="reply-title" class="comments-title">发表留言</h3>
+                <form action="https://fatesinger.com/wp-comments-post.php" method="post" id="commentform" class="responsesForm">
+                    <p class="comment-note">
+                        人生在世，错别字在所难免，无需纠正。
+                    </p>
+                    <div class="info">
+                        <p class="comment-form-author comment-form-input">
+                            <label for="author">昵称</label>
+                            <input id="author" type="text" class="inputGroup" aria-required="true" size="30" value="" name="author">
+                        </p>
+                        <p class="comment-form-email comment-form-input">
+                            <label for="email">邮箱</label>
+                            <input id="email" class="inputGroup" type="text" aria-required="true" size="30" value="" name="email">
+                        </p>
+                        <p class="comment-form-url comment-form-input">
+                            <label for="url">网址</label>
+                            <input id="url" class="inputGroup" type="text" size="30" value="" name="url">
+                        </p>
+                    </div>
+
+                    <p class="comment-form-comment comment-form-input">
+                        <label for="comment">评论</label>
+                        <textarea id="comment" class="inputGroup inputTextarea" aria-required="true" rows="8" cols="45" name="comment"></textarea>
+                    </p>
+                    <div class="submit" data-action="submitComment">提交评论</div>
+                    <input type="hidden" name="comment_post_ID" value="100277" id="comment_post_ID">
+                    <input type="hidden" name="comment_parent" id="comment_parent" value="0">
+                </form>
+            </div>
+        </div>
+    </div>
+    <#include "common/app-footer.html"/>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://apps.moondev.cn/js/hyperdown.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+    var parser = new HyperDown,
+        html = parser.makeHtml(decodeURIComponent(escape(atob('${article.content}'))));
+    document.getElementById("article").innerHTML = html;
+</script>
+
+</html>

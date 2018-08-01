@@ -24,6 +24,10 @@ public class CategoryService {
         return categoryMapper.getAllCategory();
     }
 
+    public List<Category> getMenuCategory() {
+        return categoryMapper.getMenuCategory();
+    }
+
     public void create(Category category) {
         validator(category);
         Category tmp = categoryMapper.getCategoryByName(category.name);

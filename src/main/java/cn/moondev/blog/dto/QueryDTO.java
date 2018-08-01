@@ -11,4 +11,8 @@ public class QueryDTO {
     public String author;
 
     public String person;
+
+    public String year;
+
+    public String categoryId;
 }
