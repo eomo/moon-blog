@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <ol class="children">
-                        <li class="comment" itemtype="http://schema.org/Comment" data-id="7433" itemscope="" itemprop="comment">
+                        <li class="comment" data-id="7433">
                             <div id="comment-7433" class="comment-block">
                                 <div class="comment-info u-clearfix">
                                     <div class="comment-avatar">
@@ -82,48 +82,66 @@
                                     </p>
                                 </div>
                             </div>
+                            <ol class="children">
+                                <li class="comment" data-id="7433">
+                                    <div id="comment-7436" class="comment-block">
+                                        <div class="comment-info u-clearfix">
+                                            <div class="comment-avatar">
+                                                <img height="40" width="40" class="avatar" src="https://secure.gravatar.com/avatar/cb00906b00aa792587f9abc41b2363b1?s=40&amp;d=mm&amp;r=x">
+                                            </div>
+                                            <div class="comment-meta">
+                                                <div class="comment-author" itemprop="author">大帅比
+                                                    <span class="comment-reply-link u-cursorPointer" onclick="return addComment.moveForm('comment-7433', '7433', 'respond', '100277')">回复</span>
+                                                </div>
+                                                <div class="comment-time" itemprop="datePublished" datetime="2018-07-19T14:22:43+08:00">发布于 37 分钟前</div>
+                                            </div>
+                                        </div>
+                                        <div class="comment-content" itemprop="description">
+                                            <p>
+                                                <a href="#comment-7432" rel="nofollow" data-id="7432" class="purple atreply">@小帅比</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
                         </li>
-                        <!-- #comment-## -->
                     </ol>
-                    <!-- .children -->
                 </li>
-                <!-- #comment-## -->
             </ol>
-            <div id="respond" class="respond" role="form">
+            <div id="respond" class="respond">
                 <h3 id="reply-title" class="comments-title">发表留言</h3>
-                <form action="https://fatesinger.com/wp-comments-post.php" method="post" id="commentform" class="responsesForm">
+                <div class="responsesForm">
                     <p class="comment-note">
                         人生在世，错别字在所难免，无需纠正。
                     </p>
                     <div class="info">
                         <p class="comment-form-author comment-form-input">
                             <label for="author">昵称</label>
-                            <input id="author" type="text" class="inputGroup" aria-required="true" size="30" value="" name="author">
+                            <input id="author" type="text" class="inputGroup" aria-required="true" v-model="comment.author">
                         </p>
                         <p class="comment-form-email comment-form-input">
                             <label for="email">邮箱</label>
-                            <input id="email" class="inputGroup" type="text" aria-required="true" size="30" value="" name="email">
+                            <input id="email" class="inputGroup" type="text" aria-required="true" v-model="comment.authorEmail">
                         </p>
                         <p class="comment-form-url comment-form-input">
                             <label for="url">网址</label>
-                            <input id="url" class="inputGroup" type="text" size="30" value="" name="url">
+                            <input id="url" class="inputGroup" type="text"  v-model="comment.authorUrl">
                         </p>
                     </div>
 
                     <p class="comment-form-comment comment-form-input">
                         <label for="comment">评论</label>
-                        <textarea id="comment" class="inputGroup inputTextarea" aria-required="true" rows="8" cols="45" name="comment"></textarea>
+                        <textarea id="comment" v-model="comment.content" class="inputGroup inputTextarea" rows="8" cols="45"></textarea>
                     </p>
-                    <div class="submit" data-action="submitComment">提交评论</div>
-                    <input type="hidden" name="comment_post_ID" value="100277" id="comment_post_ID">
-                    <input type="hidden" name="comment_parent" id="comment_parent" value="0">
-                </form>
+                    <div class="submit" v-on:click="addComment">提交评论</div>
+                    <input type="hidden" id="article_id" v-model="comment.articleId">
+                    <input type="hidden" id="comment_parent" v-model="comment.parentId">
+                </div>
             </div>
         </div>
     </div>
     <#include "common/app-footer.html"/>
 </body>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="http://apps.moondev.cn/js/hyperdown.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
@@ -131,6 +149,38 @@
     var parser = new HyperDown,
         html = parser.makeHtml(decodeURIComponent(escape(atob('${article.content}'))));
     document.getElementById("article").innerHTML = html;
+
+    var app = new Vue({
+        el: '#comments',
+        data: {
+            comment:{},
+            comments: [
+                {},
+                {}
+            ]
+        },
+        created: function () {
+            
+        },
+        methods: {
+            addComment: function () {
+                if (!this.comment.author) {
+                    UiTools.alert('请填写昵称!', 'error');
+                    return;
+                }
+                if (!this.comment.authorEmail) {
+                    UiTools.alert('请填写邮件地址!', 'error');
+                    return;
+                }
+                if (!this.comment.content) {
+                    UiTools.alert('你还没有写评论呢!', 'error');
+                    return;
+                }
+                alert(JSON.stringify(this.comment));
+            }
+        }
+    });
+
 </script>
 
 </html>

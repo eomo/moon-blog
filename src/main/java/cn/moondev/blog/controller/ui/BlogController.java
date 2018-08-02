@@ -4,6 +4,7 @@ import cn.moondev.blog.model.Article;
 import cn.moondev.blog.model.Category;
 import cn.moondev.blog.service.ArticleService;
 import cn.moondev.blog.service.CategoryService;
+import cn.moondev.framework.annotation.Permit;
 import cn.moondev.framework.model.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("")
@@ -34,20 +36,17 @@ public class BlogController {
         return "index";
     }
 
-    @RequestMapping(value = "/menu", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseDTO<List<Category>> menu() {
-        List<Category> categories = categoryService.getMenuCategory();
-        categories.addAll(Category.def());
-        return ResponseDTO.success(categories);
-    }
 
     /**
      * 文章详情
      */
+    @Permit
     @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
     public String getArticleById(Model model, @PathVariable String id) throws UnsupportedEncodingException {
         Article article = articleService.detail(id);
+        if (Objects.isNull(article)) {
+            article = new Article();
+        }
         article.content = Base64.getEncoder().encodeToString(article.content.getBytes("utf-8"));
         model.addAttribute("article", article);
         return "/app/article";

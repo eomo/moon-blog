@@ -78,6 +78,11 @@ public class Article {
      */
     public int stick;
 
+    public Article(){
+        this.title = "";
+        this.content = "";
+    }
+
     public static String id() {
         return "id_" + RandomStringUtils.randomAlphanumeric(7);
     }

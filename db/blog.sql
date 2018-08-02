@@ -98,6 +98,20 @@ CREATE TABLE IF NOT EXISTS `t_article`(
     `view_count` INT NOT NULL DEFAULT 0 COMMENT '浏览量',
     `comment_count` INT NOT NULL DEFAULT 0 COMMENT '评论数量',
     `stick` INT NOT NULL DEFAULT 0 COMMENT '置顶标识',
-    PRIMARY KEY (`id`),
-    UNIQUE KEY unique_index_guid(`guid`)
+    PRIMARY KEY (`id`)
+)ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `t_comment`;
+CREATE TABLE `t_comment`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `article_id` varchar(20) NOT NULL DEFAULT DEFAULT '' COMMENT '关联文章ID',
+  `author` varchar(50) NOT NULL DEFAULT '' COMMENT '作者',
+  `author_email` varchar(100) NOT NULL DEFAULT '' COMMENT '作者email',
+  `author_url` varchar(200) NOT NULL DEFAULT '' COMMENT '作者url',
+  `author_ip` varchar(100) NOT NULL DEFAULT '' COMMENT '作者ip',
+  `created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `content` text COMMENT '评论内容',
+  `parent_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '父评论ID',
+  PRIMARY KEY (`comment_ID`) USING BTREE,
+  INDEX `comment_post_ID`(`post_id`) USING BTREE
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4;

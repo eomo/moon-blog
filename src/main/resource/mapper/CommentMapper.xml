@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.moondev.blog.mapper.CommentMapper">
+    <resultMap id="commentMap" type="cn.moondev.blog.model.Comment">
+        <id column="id" property="id"/>
+        <result column="article_id" property="articleId"/>
+        <result column="author" property="remark"/>
+        <result column="author_email" property="authorEmail"/>
+        <result column="author_url" property="authorUrl"/>
+        <result column="author_ip" property="authorIp"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="content" property="remark"/>
+        <result column="parent_id" property="parentId"/>
+    </resultMap>
+
+    <select id="comments4Article" parameterType="java.lang.String" resultMap="commentMap">
+        SELECT * FROM t_comment WHERE `article_id` = #{articleId} ORDER BY `created_time` ASC
+    </select>
+
+    <insert id="addComment" parameterType="cn.moondev.blog.model.Comment">
+        INSERT INTO t_comment (
+              `article_id`,
+              `author`,
+              `author_email`,
+              `author_url`,
+              `author_ip`,
+              `created_time`,
+              `content`,
+              `parent_id`
+        ) VALUES (
+            #{item.articleId},
+            #{item.author},
+            #{item.authorEmail},
+            #{item.authorUrl},
+            #{item.authorIp},
+            NOW(),
+            #{item.content},
+            #{item.parentId}
+        )
+      </insert>
+</mapper>
