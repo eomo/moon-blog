@@ -24,8 +24,16 @@ var HttpUtils = (function ($) {
             data: param,
             contentType: contentType,
             beforeSend: function (request) {
-                // var user = store.get("USER") || {};
-                // request.setRequestHeader("X-Api-Token", user.token || "");
+                token = localStorage.getItem('x-api-token');
+                request.setRequestHeader("x-api-token", token || "");
+            }
+        }).always(function (xhr) {
+            if (xhr.status == 404) {
+                window.location.href = '/error/404';
+            } else if (xhr.status == 403) {
+                window.location.href = '/error/403';
+            } else if (xhr.status == 500) {
+                window.location.href = '/error/500';
             }
         }).done(function (res) {
             if (res.result) {
@@ -35,7 +43,7 @@ var HttpUtils = (function ($) {
                 deferred.reject(res);
             }
         }).fail(function () {
-            alert("网络异常,请稍后再试", "warning");
+            UiTools.alert('系统异常,请稍后再试','error');
         });
         return deferred;
     };

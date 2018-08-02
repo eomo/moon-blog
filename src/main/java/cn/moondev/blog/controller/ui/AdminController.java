@@ -1,14 +1,11 @@
 package cn.moondev.blog.controller.ui;
 
-import cn.moondev.blog.service.ArticleService;
-import com.google.common.base.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
+import cn.moondev.framework.annotation.Permit;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 进入管理后台页面
@@ -18,8 +15,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminController {
 
     /**
+     * 登录页面
+     */
+    @RequestMapping(value = "/ddl", method = RequestMethod.GET)
+    public String login(Model model) {
+        return "/admin/admin-login";
+    }
+
+    /**
      * 分类管理
      */
+    @Permit
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String category(Model model) {
         return "/admin/admin-category";
@@ -28,6 +34,7 @@ public class AdminController {
     /**
      * 专题管理
      */
+    @Permit
     @RequestMapping(value = "/topic", method = RequestMethod.GET)
     public String topic(Model model) {
         return "/admin/admin-topic";
@@ -36,6 +43,7 @@ public class AdminController {
     /**
      * 图书管理
      */
+    @Permit
     @RequestMapping(value = "/book", method = RequestMethod.GET)
     public String book(Model model) {
         return "/admin/admin-book";
@@ -44,6 +52,7 @@ public class AdminController {
     /**
      * 电影管理
      */
+    @Permit
     @RequestMapping(value = "/movie", method = RequestMethod.GET)
     public String movie(Model model) {
         return "/admin/admin-movie";
@@ -52,6 +61,7 @@ public class AdminController {
     /**
      * 文章管理
      */
+    @Permit
     @RequestMapping(value = "/article", method = RequestMethod.GET)
     public String article(Model model) {
         return "/admin/admin-article";
