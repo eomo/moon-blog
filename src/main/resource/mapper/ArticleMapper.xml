@@ -58,6 +58,14 @@
         limit #{offset}, #{size}
     </select>
 
+    <update id="viewCountxx" parameterType="java.lang.String">
+        UPDATE t_article SET view_count = view_count + 1 WHERE `id` = #{id};
+    </update>
+
+    <update id="commentCountxx" parameterType="java.lang.String">
+        UPDATE t_article SET comment_count = comment_count + 1 WHERE `id` = #{id};
+    </update>
+
     <insert id="upsert" parameterType="cn.moondev.blog.model.Article">
       INSERT INTO t_article (
             `id`,

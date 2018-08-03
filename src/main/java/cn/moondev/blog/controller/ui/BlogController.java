@@ -43,6 +43,7 @@ public class BlogController {
     @Permit
     @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
     public String getArticleById(Model model, @PathVariable String id) throws UnsupportedEncodingException {
+        articleService.viewCountxx(id);
         Article article = articleService.detail(id);
         if (Objects.isNull(article)) {
             article = new Article();

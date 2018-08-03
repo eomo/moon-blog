@@ -98,6 +98,20 @@ public class ArticleService {
     }
 
     /**
+     * 浏览量++
+     */
+    public void viewCountxx(String id) {
+        mapper.viewCountxx(id);
+    }
+
+    /**
+     * 评论数++
+     */
+    public void commentCountxx(String id) {
+        mapper.commentCountxx(id);
+    }
+
+    /**
      * 生成文章ID
      */
     private String genArticleId() {

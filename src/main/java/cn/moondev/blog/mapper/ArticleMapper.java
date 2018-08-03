@@ -19,4 +19,8 @@ public interface ArticleMapper {
 
     List<Article> find(@Param("year") String year, @Param("categoryId") String categoryId,
                        @Param("size") int size, @Param("offset") int offset);
+
+    void viewCountxx(@Param("id") String id);
+
+    void commentCountxx(@Param("id") String id);
 }

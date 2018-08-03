@@ -14,7 +14,6 @@ var UiTools = (function () {
     };
 })();
 
-
 var HttpUtils = (function ($) {
     var ajax = function (method, url, param, contentType) {
         var deferred = $.Deferred();
@@ -29,21 +28,21 @@ var HttpUtils = (function ($) {
             }
         }).always(function (xhr) {
             if (xhr.status == 404) {
-                window.location.href = '/error/404';
+                UiTools.alert('您访问的API不存在，请联系管理员', 'error');
             } else if (xhr.status == 403) {
-                window.location.href = '/error/403';
+                UiTools.alert('您没有权限进行此操作，请您离开', 'error');
             } else if (xhr.status == 500) {
-                window.location.href = '/error/500';
+                UiTools.alert('系统出现错误，请稍后再试', 'error');
             }
         }).done(function (res) {
             if (res.result) {
                 deferred.resolve(res.data);
             } else {
-                UiTools.alert(res.message,'error');
+                UiTools.alert(res.message, 'error');
                 deferred.reject(res);
             }
         }).fail(function () {
-            UiTools.alert('系统异常,请稍后再试','error');
+            UiTools.alert('系统异常,请稍后再试', 'error');
         });
         return deferred;
     };
