@@ -4,13 +4,15 @@
     <resultMap id="commentMap" type="cn.moondev.blog.model.Comment">
         <id column="id" property="id"/>
         <result column="article_id" property="articleId"/>
-        <result column="author" property="remark"/>
+        <result column="author" property="author"/>
         <result column="author_email" property="authorEmail"/>
+        <result column="email_hash" property="emailHash"/>
         <result column="author_url" property="authorUrl"/>
         <result column="author_ip" property="authorIp"/>
         <result column="created_time" property="createdTime"/>
-        <result column="content" property="remark"/>
+        <result column="content" property="content"/>
         <result column="parent_id" property="parentId"/>
+        <result column="root_id" property="rootId"/>
     </resultMap>
 
     <select id="comments4Article" parameterType="java.lang.String" resultMap="commentMap">
@@ -22,20 +24,24 @@
               `article_id`,
               `author`,
               `author_email`,
+              `email_hash`,
               `author_url`,
               `author_ip`,
               `created_time`,
               `content`,
-              `parent_id`
+              `parent_id`,
+              `root_id`
         ) VALUES (
             #{item.articleId},
             #{item.author},
             #{item.authorEmail},
+            #{item.emailHash},
             #{item.authorUrl},
             #{item.authorIp},
             NOW(),
             #{item.content},
-            #{item.parentId}
+            #{item.parentId},
+            #{item.rootId}
         )
       </insert>
 </mapper>

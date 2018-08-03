@@ -50,6 +50,6 @@ public class BlogController {
         }
         article.content = Base64.getEncoder().encodeToString(article.content.getBytes("utf-8"));
         model.addAttribute("article", article);
-        return "/app/article";
+        return "/app/app-article";
     }
 }

@@ -115,7 +115,7 @@ public class ArticleService {
      * 生成文章ID
      */
     private String genArticleId() {
-        String id = Article.id();
+        String id = Article.genId();
         return Objects.isNull(mapper.findById(id)) ? id : genArticleId();
     }
 

@@ -14,6 +14,37 @@ var UiTools = (function () {
     };
 })();
 
+var CookieUtils = (function () {
+    return {
+        set: function (key, value) {
+            if (!!key && !!value) {
+                var exdate = new Date();
+                exdate.setDate(exdate.getDate() + 30);
+                document.cookie = key + '=' + escape(value) + ';expires=' + exdate.toGMTString();
+            }
+        },
+        get: function (key) {
+            if (document.cookie.length > 0) {
+                start = document.cookie.indexOf(key + '=')
+                if (start != -1) {
+                    start = start + key.length + 1;
+                    end = document.cookie.indexOf(';', start)
+                    if (end == -1) end = document.cookie.length
+                    return unescape(document.cookie.substring(start, end))
+                }
+            }
+            return "";
+        },
+        remove: function (key) {
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval = get(key);
+            if (!!cval)
+                document.cookie = key + '=' + cval + ';expires=' + exp.toGMTString();
+        }
+    }
+})();
+
 var HttpUtils = (function ($) {
     var ajax = function (method, url, param, contentType) {
         var deferred = $.Deferred();

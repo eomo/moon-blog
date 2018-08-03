@@ -54,8 +54,6 @@ a {
 	color: #de0056;
 }
 
-
-
 .loading-button {
     height: 32px;
     line-height: 31px;
@@ -99,7 +97,6 @@ a {
 }
 
 .site-info {
-	background-image: url(new-logo.png);
 	background-repeat: no-repeat;
 	background-size: auto 18px;
 	background-position: 100%;

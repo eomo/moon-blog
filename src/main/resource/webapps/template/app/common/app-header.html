@@ -6,42 +6,40 @@
             </a>
         </h1>
     </div>
-    <div id="menu" class="header-center">
+    <div class="header-center">
         <nav class="navs">
             <div class="single-column-layout single-column-layout-wide menu">
-                <ul class="menu-ul">
-                    <li class="menu-li" v-for="item in menus">
-                        <a class="menu-item" :href="item.url" title="">{{item.name}}</a>
-                    </li>
+                <ul id="menu" class="menu-ul">
+
                 </ul>
             </div>
         </nav>
     </div>
 </header>
-<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/webapps/asserts/js/notify.js"></script>
 <script src="/webapps/asserts/js/utils.js"></script>
 <script>
-    var app = new Vue({
-        el: '#menu',
-        data: {
-            menus: null
-        },
-        created: function () {
-            let self = this;
-            self.$nextTick(function () {
-                category = localStorage.getItem('x-app-menu');
-                if (!!category && category.length > 0) {
-                    self.menus = JSON.parse(category);
-                } else {
-                    HttpUtils.get('/v1/user/menu', null).done(function (data) {
-                        self.menus = data;
-                        localStorage.setItem('x-app-menu', JSON.stringify(data));
-                    });
-                }
+    (function ($) {
+        var appendMenu = function (category) {
+            $("#menu").empty();
+            category.forEach(function (item) {
+                var li = "<li class=\"menu-li\">" +
+                    "          <a class=\"menu-item\" href=\" " + item.url + " \">" + item.name + "</a>" +
+                    "     </li>"
+                $("#menu").append(li);
             });
-        },
-        methods: {}
-    });
+        }
+        category = localStorage.getItem('x-app-menu');
+        if (!!category && category.length > 0) {
+            self.menus = JSON.parse(category);
+            appendMenu(JSON.parse(category));
+        } else {
+            HttpUtils.get('/v1/user/menu', null).done(function (data) {
+                self.menus = data;
+                localStorage.setItem('x-app-menu', JSON.stringify(data));
+                appendMenu(JSON.parse(data));
+            });
+        }
+    }(jQuery));
 </script>

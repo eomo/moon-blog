@@ -1,9 +1,8 @@
 
-
 * {
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-text-size-adjust: none;
     -webkit-touch-callout: none;
     box-sizing: border-box
@@ -13,7 +12,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: #34495e;
-    font-family: Source Sans Pro,Helvetica Neue,Arial,sans-serif;
+    font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif;
     font-size: 15px;
     letter-spacing: 0;
     margin: 0;
@@ -24,21 +23,21 @@ body {
     padding-top: 65px;
 }
 
-@media all and (max-width:900px) {
+@media all and (max-width: 900px) {
     .article-container {
         padding-top: 0;
     }
 }
 
 .entry-header {
-	margin-bottom: 20px
+    margin-bottom: 20px
 }
 
 .entry-header .entry-title {
-	font-size: 1.5em;
-	font-weight: 700;
-	line-height: 1.3;
-	margin-bottom: 5px
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 5px
 }
 
 .markdown-section {
@@ -52,17 +51,18 @@ body {
     cursor: not-allowed;
     opacity: .6
 }
+
 .markdown-section img {
     max-width: 100%
 }
 
-.markdown-section>* {
+.markdown-section > * {
     box-sizing: border-box;
     font-size: inherit
 }
 
-.markdown-section>:first-child {
-    margin-top: 0!important
+.markdown-section > :first-child {
+    margin-top: 0 !important
 }
 
 .markdown-section hr {
@@ -88,7 +88,7 @@ body {
     font-weight: 700
 }
 
-.markdown-section td,.markdown-section th {
+.markdown-section td, .markdown-section th {
     border: 1px solid #ddd;
     padding: 6px 13px
 }
@@ -97,7 +97,7 @@ body {
     border-top: 1px solid #ccc
 }
 
-.markdown-section p.tip,.markdown-section tr:nth-child(2n) {
+.markdown-section p.tip, .markdown-section tr:nth-child(2n) {
     background-color: #f8f8f8
 }
 
@@ -115,7 +115,7 @@ body {
     border-radius: 100%;
     color: #fff;
     content: "!";
-    font-family: Dosis,Source Sans Pro,Helvetica Neue,Arial,sans-serif;
+    font-family: Dosis, Source Sans Pro, Helvetica Neue, Arial, sans-serif;
     font-size: 14px;
     font-weight: 700;
     left: -12px;
@@ -136,33 +136,32 @@ body {
 }
 
 .markdown-section p.warn {
-    background: rgba(66,185,131,.1);
+    background: rgba(66, 185, 131, .1);
     border-radius: 2px;
     padding: 1rem
 }
 
-
 @keyframes a {
-    0%,to {
+    0%, to {
         transform: rotate(0)
     }
 
-    20%,60% {
+    20%, 60% {
         transform: rotate(-25deg)
     }
 
-    40%,80% {
+    40%, 80% {
         transform: rotate(10deg)
     }
 }
 
-.markdown-section h1,.markdown-section h2,.markdown-section h3,.markdown-section h4,.markdown-section strong {
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section strong {
     color: #2c3e50;
     font-weight: 600
 }
 
 .markdown-section a {
-    color: var(--theme-color,#42b983);
+    color: var(--theme-color, #42b983);
     font-weight: 600
 }
 
@@ -194,21 +193,21 @@ body {
     font-size: 1rem
 }
 
-.markdown-section figure,.markdown-section p {
+.markdown-section figure, .markdown-section p {
     margin: 1.2em 0
 }
 
-.markdown-section ol,.markdown-section p,.markdown-section ul {
+.markdown-section ol, .markdown-section p, .markdown-section ul {
     line-height: 1.6rem;
     word-spacing: .05rem
 }
 
-.markdown-section ol,.markdown-section ul {
+.markdown-section ol, .markdown-section ul {
     padding-left: 1.5rem
 }
 
 .markdown-section blockquote {
-    border-left: 4px solid var(--theme-color,#42b983);
+    border-left: 4px solid var(--theme-color, #42b983);
     color: #858585;
     margin: 2em 0;
     padding-left: 20px
@@ -229,16 +228,16 @@ body {
 
 .markdown-section code {
     border-radius: 2px;
-    color: #e96900;
+    color: #c7254e;
     font-size: .8rem;
     margin: 0 2px;
     padding: 3px 5px;
     white-space: pre-wrap
 }
 
-.markdown-section code,.markdown-section pre {
+.markdown-section code, .markdown-section pre {
     background-color: #f8f8f8;
-    font-family: Roboto Mono,Monaco,courier,monospace
+    font-family: Roboto Mono, Monaco, courier, monospace
 }
 
 .markdown-section pre {
@@ -252,14 +251,14 @@ body {
     word-wrap: normal
 }
 
-.markdown-section pre>code {
+.markdown-section pre > code {
     -moz-osx-font-smoothing: initial;
     -webkit-font-smoothing: initial;
     background-color: #f8f8f8;
     border-radius: 2px;
     color: #525252;
     display: block;
-    font-family: Roboto Mono,Monaco,courier,monospace;
+    font-family: Roboto Mono, Monaco, courier, monospace;
     font-size: .8rem;
     line-height: inherit;
     margin: 0 2px;
@@ -269,7 +268,7 @@ body {
     white-space: inherit
 }
 
-.markdown-section code:after,.markdown-section code:before {
+.markdown-section code:after, .markdown-section code:before {
     letter-spacing: .05rem
 }
 
@@ -294,7 +293,7 @@ pre:after {
 }
 
 .respond {
-	padding: 30px 0
+    padding: 30px 0
 }
 
 .commentlist li {
@@ -304,92 +303,92 @@ pre:after {
 .responses-title {
     font-weight: 700;
     font-size: 1.25em;
-	padding: 0 0 10px 0;
-	border-bottom: 1px solid rgba(0,0,0,.05)
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .05)
 }
 
-.atreply{
+.atreply {
     text-decoration: none;
 }
 
 .comment-block {
-	padding: 25px 0;
-	border-bottom: 1px solid rgba(0,0,0,.05)
+    padding: 25px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .05)
 }
 
 .comment-avatar {
-	float: left;
-	position: relative;
-	margin-right: 12px;
-	width: 40px;
-	height: 40px
+    float: left;
+    position: relative;
+    margin-right: 12px;
+    width: 40px;
+    height: 40px
 }
 
 .comment-info .avatar {
-	border-radius: 100%;
-	width: 40px;
-	height: 40px
+    border-radius: 100%;
+    width: 40px;
+    height: 40px
 }
 
 .comment-meta {
-	line-height: 1.4;
-	font-size: 14px
+    line-height: 1.4;
+    font-size: 14px
 }
 
 .comment-author {
-	color: #de0056
+    color: #de0056
 }
 
 .comment-author.is-g a:after {
-	content: "vpn";
-	margin-left: 3px;
-	font-size: 12px;
-	display: inline-block;
-	background-color: #de0056;
-	color: #fff;
-	border-radius: 3px;
-	line-height: 1;
-	padding: 2px
+    content: "vpn";
+    margin-left: 3px;
+    font-size: 12px;
+    display: inline-block;
+    background-color: #de0056;
+    color: #fff;
+    border-radius: 3px;
+    line-height: 1;
+    padding: 2px
 }
 
 .comment-author .user-cc {
-	font-size: 12px;
-	margin-left: 6px;
-	color: rgba(0,0,0,.44);
-	font-style: italic
+    font-size: 12px;
+    margin-left: 6px;
+    color: rgba(0, 0, 0, .44);
+    font-style: italic
 }
 
 .comment-time {
-	font-size: 12px;
-	color: rgba(0,0,0,.3)
+    font-size: 12px;
+    color: rgba(0, 0, 0, .3)
 }
 
 .comment-content {
-	margin-top: 10px;
-	font-size: 14px;
-	color: rgba(0,0,0,.66)
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, .66)
 }
 
 .comment-content .svgIcon {
-	height: 14px;
-	width: 14px;
-	margin-right: 4px
+    height: 14px;
+    width: 14px;
+    margin-right: 4px
 }
 
 .comment-content p {
-	margin-bottom: 15px
+    margin-bottom: 15px
 }
 
 .comment-reply-link {
-	float: right;
-	background-color: #de0056;
-	color: #fff;
-	padding: 7px 10px;
-	font-size: 12px;
-	line-height: 1;
-	border-radius: 3px;
-	display: none;
-	cursor: pointer
+    float: right;
+    background-color: #de0056;
+    color: #fff;
+    padding: 7px 10px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 3px;
+    display: none;
+    cursor: pointer
 }
 
 .children {
@@ -397,45 +396,44 @@ pre:after {
 }
 
 .comment-block:hover .comment-reply-link {
-	display: block
+    display: block
 }
 
-@media screen and (max-width:640px) {
-	.comment-block {
-		padding: 15px 0
-	}
+@media screen and (max-width: 640px) {
+    .comment-block {
+        padding: 15px 0
+    }
 
-	.comment-reply-link {
-		display: block
-	}
+    .comment-reply-link {
+        display: block
+    }
 }
 
 .comment-note {
-	font-size: 12px;
-	color: rgba(0,0,0,.3)
+    font-size: 12px;
+    color: rgba(0, 0, 0, .3)
 }
 
-
 .responsesForm p {
-	margin-bottom: 15px
+    margin-bottom: 15px
 }
 
 .responsesForm label {
-	display: block;
-	color: rgba(0,0,0,.6);
-	font-size: 14px;
+    display: block;
+    color: rgba(0, 0, 0, .6);
+    font-size: 14px;
     cursor: pointer;
     margin-bottom: 5px;
 }
 
 .responsesForm .inputGroup {
-	width: 240px;
+    width: 250px;
     height: 36px;
-    border: 1px solid rgba(0,0,0,.15);
+    border: 1px solid rgba(0, 0, 0, .15);
     padding: 3px 15px;
     border-radius: 3px;
     box-sizing: border-box;
-    
+    font-size: 14px;
 }
 
 .responsesForm .inputGroup.inputTextarea {
@@ -446,8 +444,8 @@ pre:after {
 }
 
 .responsesForm .required {
-	font-size: 12px;
-	color: rgba(0,0,0,.3)
+    font-size: 12px;
+    color: rgba(0, 0, 0, .3)
 }
 
 .responsesForm .submit {
@@ -455,9 +453,28 @@ pre:after {
     background-color: #42b983;
     border: 1px solid #42b983;
     border-radius: 4px;
-    padding: 10px 20px;
-    color: hsla(0,0%,100%,.97);
+    padding: 5px 10px;
+    color: hsla(0, 0%, 100%, .97);
     font-family: Tisa Pro;
-    font-weight: 200;
+    font-weight: bold;
     cursor: pointer;
+}
+
+.responsesForm .comment-form-input {
+    margin-left: 15px;
+}
+
+.responsesForm .info {
+    display: inline-flex;
+}
+
+@media all and (max-width: 900px) {
+
+    .responsesForm .info {
+        display: inline-block;
+    }
+
+    .responsesForm .comment-form-input {
+        margin: 0;
+    }
 }
