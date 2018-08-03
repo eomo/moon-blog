@@ -69,7 +69,8 @@ var HttpUtils = (function ($) {
             if (res.result) {
                 deferred.resolve(res.data);
             } else {
-                UiTools.alert(res.message, 'error');
+                errorMsg = !!res.message ? res.message : '系统异常,请稍后再试';
+                UiTools.alert(errorMsg, 'error');
                 deferred.reject(res);
             }
         }).fail(function () {

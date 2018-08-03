@@ -434,12 +434,13 @@ pre:after {
     border-radius: 3px;
     box-sizing: border-box;
     font-size: 14px;
+    outline: none;
 }
 
 .responsesForm .inputGroup.inputTextarea {
     resize: none;
     width: 100%;
-    height: 200px;
+    height: 150px;
     padding: 15px;
 }
 

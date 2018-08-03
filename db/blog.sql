@@ -116,4 +116,4 @@ CREATE TABLE `t_comment`  (
   `parent_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '回复Id',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `comment_post_ID`(`article_id`) USING BTREE
-)ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
+)ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;

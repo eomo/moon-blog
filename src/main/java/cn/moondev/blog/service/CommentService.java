@@ -11,6 +11,7 @@ import org.springframework.util.DigestUtils;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -25,6 +26,7 @@ public class CommentService {
 
     public void addComment(Comment comment) {
         comment.emailHash = DigestUtils.md5DigestAsHex(comment.authorEmail.getBytes());
+        comment.content = Base64.getEncoder().encodeToString(comment.content.getBytes());
         mapper.addComment(comment);
     }
 
@@ -40,6 +42,7 @@ public class CommentService {
         for (Comment comment : parents) {
             comment.children = getReplyList(comment, commentMap);
             comment.createdTimeDesc = replyTimeDesc(comment.createdTime);
+            comment.content = new String(Base64.getDecoder().decode(comment.content));
         }
         return parents;
     }
@@ -55,6 +58,7 @@ public class CommentService {
         children.stream().forEach(c -> {
             c.createdTimeDesc = replyTimeDesc(c.createdTime);
             c.atAuthor = commentMap.get(c.parentId).author;
+            c.content = new String(Base64.getDecoder().decode(c.content));
         });
         return children;
     }

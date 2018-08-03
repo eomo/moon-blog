@@ -4,6 +4,7 @@
     <title>${article.title} - MoonBlog</title>
     <meta name="description" content="${article.title} - 作者: chen.chuan,首发于Moondev">
     <#include "common/app-css.html"/>
+    <link href="http://apps.moondev.cn/css/emojionearea.min.css" rel="stylesheet">
 </head>
 <body>
 <#include "common/app-header.html"/>
@@ -47,7 +48,7 @@
                         </div>
                     </div>
                     <div class="comment-content" itemprop="description">
-                        <p>{{item.content}}</p>
+                        <p class="ppp">{{item.content}}</p>
                     </div>
                 </div>
                 <ol v-if="!!item.children && item.children.length > 0" class="children">
@@ -74,7 +75,7 @@
                                     <a v-bind:href="'#comment-' + child.parentId" rel="nofollow"
                                        class="u-color-red-purple"
                                        v-bind:data-id="child.parentId" class="purple atreply">@{{child.atAuthor}}</a>&nbsp;&nbsp;
-                                    {{child.content}}
+                                    <p class="ppp">{{child.content}}</p>
                                 </p>
                             </div>
                         </div>
@@ -82,39 +83,40 @@
                 </ol>
             </li>
         </ol>
+        <div id="splitter"></div>
         <div id="respond" class="respond">
-            <h3 id="reply-title" class="comments-title">发表留言</h3>
-            <div class="responsesForm">
-                <p class="comment-note">
-                    人生在世，错别字在所难免，无需纠正。
-                </p>
-                <div class="info">
-                    <p>
-                        <label for="author">昵称</label>
-                        <input id="author" type="text" class="inputGroup" aria-required="true" v-model="comment.author">
+                <h3 id="reply-title" class="comments-title">发表留言</h3>
+                <div class="responsesForm">
+                    <p class="comment-note">
+                        人生在世，错别字在所难免，无需纠正。
                     </p>
-                    <p class="comment-form-input">
-                        <label for="email">邮箱</label>
-                        <input id="email" class="inputGroup" type="text" aria-required="true"
-                               v-model="comment.authorEmail">
-                    </p>
-                    <p class="comment-form-input">
-                        <label for="url">网址</label>
-                        <input id="url" class="inputGroup" type="text" v-model="comment.authorUrl">
-                    </p>
-                </div>
+                    <div class="info">
+                        <p>
+                            <label for="author">昵称</label>
+                            <input id="author" type="text" class="inputGroup" aria-required="true" v-model="comment.author">
+                        </p>
+                        <p class="comment-form-input">
+                            <label for="email">邮箱</label>
+                            <input id="email" class="inputGroup" type="text" aria-required="true"
+                                   v-model="comment.authorEmail">
+                        </p>
+                        <p class="comment-form-input">
+                            <label for="url">网址</label>
+                            <input id="url" class="inputGroup" type="text" v-model="comment.authorUrl">
+                        </p>
+                    </div>
 
-                <p class="comment-form-comment">
-                    <label for="comment">评论</label>
-                    <textarea id="comment" v-model="comment.content" class="inputGroup inputTextarea" rows="8"
-                              cols="45"></textarea>
-                </p>
-                <div class="submit" v-on:click="addComment">提交评论</div>
-                <input type="hidden" id="article_id" v-model="comment.articleId">
-                <input type="hidden" id="comment_parent" v-model="comment.parentId">
-                <input type="hidden" id="comment_root" v-model="comment.rootId">
+                    <p class="comment-form-comment">
+                        <label for="comment">评论</label>
+                        <textarea id="comment" v-model="comment.content" class="inputGroup inputTextarea" rows="4"
+                                  cols="45"></textarea>
+                    </p>
+                    <div class="submit" v-on:click="addComment">提交评论</div>
+                    <input type="hidden" id="article_id" v-model="comment.articleId">
+                    <input type="hidden" id="comment_parent" v-model="comment.parentId">
+                    <input type="hidden" id="comment_root" v-model="comment.rootId">
+                </div>
             </div>
-        </div>
     </div>
 </div>
 <#include "common/app-footer.html"/>
@@ -122,6 +124,7 @@
 <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
 <script src="http://apps.moondev.cn/js/hyperdown.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="http://apps.moondev.cn/js/emojionearea.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
     var vm = new Vue({
@@ -139,12 +142,22 @@
             let self = this;
             self.$nextTick(function () {
                 HttpUtils.get('/v1/comment/${article.id}', null).done(function (data) {
-                    self.comments = data;
                     data.forEach(function (item) {
                         self.commentCount = self.commentCount + 1 + (!!item.children ? item.children.length : 0);
                     });
+                    self.comments = data;
                 });
             });
+        },
+        mounted: function () {
+            this.$nextTick(function () {
+                $("#comment").emojioneArea({
+                    search: false,
+                    useInternalCDN: true,
+                    pickerPosition: "right",
+                    tonesStyle: "bullet"
+                });
+            })
         },
         methods: {
             addComment: function () {
@@ -156,6 +169,7 @@
                     UiTools.alert('请填写邮件地址!', 'error');
                     return;
                 }
+                this.comment.content = $('#comment').val();
                 if (!this.comment.content) {
                     UiTools.alert('你还没有写评论呢!', 'error');
                     return;
@@ -171,7 +185,8 @@
                             vm.commentCount = vm.commentCount + 1 + (!!item.children ? item.children.length : 0);
                         });
                         vm.comment.content = null;
-                        $("ol[id='comment-list']").append($('#respond'));
+                        $('.emojionearea-editor').empty();
+                        $("div[id='splitter']").append($('#respond'));
                     });
                 });
             },
