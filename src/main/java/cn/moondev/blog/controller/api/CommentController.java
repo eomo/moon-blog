@@ -1,6 +1,7 @@
 package cn.moondev.blog.controller.api;
 
 import cn.moondev.blog.model.Comment;
+import cn.moondev.blog.service.ArticleService;
 import cn.moondev.blog.service.CommentService;
 import cn.moondev.framework.annotation.Permit;
 import cn.moondev.framework.model.ResponseDTO;
@@ -20,10 +21,13 @@ public class CommentController {
 
     @Autowired
     private CommentService service;
+    @Autowired
+    private ArticleService articleService;
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseDTO<Void> addComment(@RequestBody Comment comment) {
         service.addComment(comment);
+        articleService.commentCountxx(comment.articleId);
         return ResponseDTO.success();
     }
 
