@@ -1,7 +1,5 @@
 package cn.moondev.blog.model;
 
-import cn.moondev.framework.utils.JsonUtils;
-import cn.moondev.framework.utils.StringUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Joiner;
@@ -9,6 +7,7 @@ import com.google.common.collect.Lists;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Movie {
 
@@ -128,17 +127,17 @@ public class Movie {
         this.rating = json.getJSONObject("rating").getString("average");
         this.title = json.getString("title");
         this.originalTitle = json.getString("original_title");
-        this.aka = JsonUtils.parseJsonStringArray(json.getJSONArray("aka"));
-        this.subtype = StringUtils.null2Empty(json.getString("subtype"));
+        this.aka = parseJsonStringArray(json.getJSONArray("aka"));
+        this.subtype = json.getOrDefault("subtype","").toString();
         this.directors = parsePerson(json.getJSONArray("directors"));
         this.casts = parsePerson(json.getJSONArray("casts"));
         this.doubanId = json.getString("id");
         this.writers = parsePerson(json.getJSONArray("writers"));
-        this.website = StringUtils.null2Empty(json.getString("website"));
-        this.pubdates = StringUtils.null2Empty(json.getString("pubdates"));
-        this.mainlandPubdate = StringUtils.null2Empty(json.getString("mainland_pubdate"));
-        this.languages = StringUtils.null2Empty(json.getString("languages"));
-        this.durations = StringUtils.null2Empty(json.getString("durations"));
+        this.website = json.getOrDefault("website","").toString();
+        this.pubdates = json.getOrDefault("pubdates","").toString();
+        this.mainlandPubdate = json.getOrDefault("mainland_pubdate","").toString();
+        this.languages = json.getOrDefault("languages","").toString();
+        this.durations = json.getOrDefault("durations","").toString();
         this.summary = json.getString("summary");
         JSONObject images = json.getJSONObject("images");
         this.doubanImage1 = images.getString("small");
@@ -148,9 +147,9 @@ public class Movie {
         this.backupImage2 = "";
         this.backupImage3 = "";
         this.doubanUrl = json.getString("alt");
-        this.year = StringUtils.null2Empty(json.getString("year"));
-        this.genres = JsonUtils.parseJsonStringArray(json.getJSONArray("genres"));
-        this.countries = JsonUtils.parseJsonStringArray(json.getJSONArray("countries"));
+        this.year = json.getOrDefault("year","").toString();
+        this.genres = parseJsonStringArray(json.getJSONArray("genres"));
+        this.countries = parseJsonStringArray(json.getJSONArray("countries"));
     }
 
     private String parsePerson(JSONArray array) {
@@ -163,5 +162,13 @@ public class Movie {
             list.add(json.getString("name"));
         }
         return Joiner.on(",").join(list);
+    }
+
+    private String parseJsonStringArray(JSONArray stringArray) {
+        if (CollectionUtils.isEmpty(stringArray)) {
+            return "";
+        }
+        List<String> list = stringArray.stream().map(item -> item.toString()).collect(Collectors.toList());
+        return Joiner.on(',').join(list);
     }
 }

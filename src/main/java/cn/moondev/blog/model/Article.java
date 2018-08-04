@@ -1,6 +1,6 @@
 package cn.moondev.blog.model;
 
-import cn.moondev.framework.utils.RandomStringUtils;
+import cn.moondev.framework.provider.random.RandomStringUtils;
 
 public class Article {
 

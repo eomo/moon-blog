@@ -8,7 +8,6 @@ import cn.moondev.blog.model.Book;
 import cn.moondev.framework.model.PaginationDTO;
 import cn.moondev.framework.provider.okhttp3.OkHttpOperations;
 import cn.moondev.framework.provider.okhttp3.OkHttpRequest;
-import cn.moondev.framework.utils.StringUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Strings;
 import org.slf4j.Logger;
@@ -71,10 +70,10 @@ public class BookService {
         }
         JSONObject jsonObject = JSONObject.parseObject(content);
         Book book = new Book(jsonObject);
-        book.jingdongUrl = StringUtils.null2Empty(dto.jingdongUrl);
-        book.duokanUrl = StringUtils.null2Empty(dto.duokanUrl);
-        book.year = StringUtils.null2Empty(dto.year);
-        book.remark = StringUtils.null2Empty(dto.remark);
+        book.jingdongUrl = Strings.isNullOrEmpty(dto.jingdongUrl) ? "" : dto.jingdongUrl;
+        book.duokanUrl = Strings.isNullOrEmpty(dto.duokanUrl) ? "" : dto.duokanUrl;
+        book.year = Strings.isNullOrEmpty(dto.year) ? "" : dto.year;
+        book.remark = Strings.isNullOrEmpty(dto.remark) ? "" : dto.remark;
         return book;
     }
 }

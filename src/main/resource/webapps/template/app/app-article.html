@@ -4,6 +4,7 @@
     <title>${article.title} - MoonBlog</title>
     <meta name="description" content="${article.title} - 作者: chen.chuan,首发于Moondev">
     <#include "common/app-css.html"/>
+    <link href="https://cdn.bootcss.com/emojione/2.2.7/assets/css/emojione.min.css" rel="stylesheet">
     <link href="http://apps.moondev.cn/css/emojionearea.min.css" rel="stylesheet">
 </head>
 <body>
@@ -48,7 +49,7 @@
                         </div>
                     </div>
                     <div class="comment-content" itemprop="description">
-                        <p class="ppp">{{item.content}}</p>
+                        <p v-html="item.content"></p>
                     </div>
                 </div>
                 <ol v-if="!!item.children && item.children.length > 0" class="children">
@@ -75,7 +76,7 @@
                                     <a v-bind:href="'#comment-' + child.parentId" rel="nofollow"
                                        class="u-color-red-purple"
                                        v-bind:data-id="child.parentId" class="purple atreply">@{{child.atAuthor}}</a>&nbsp;&nbsp;
-                                    <p class="ppp">{{child.content}}</p>
+                                    <p v-html="child.content"></p>
                                 </p>
                             </div>
                         </div>
@@ -124,6 +125,7 @@
 <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
 <script src="http://apps.moondev.cn/js/hyperdown.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/emojione/2.2.7/lib/js/emojione.min.js"></script>
 <script src="http://apps.moondev.cn/js/emojionearea.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
@@ -143,6 +145,7 @@
             self.$nextTick(function () {
                 HttpUtils.get('/v1/comment/${article.id}', null).done(function (data) {
                     data.forEach(function (item) {
+                        item.content = emojione.unicodeToImage(emojione.shortnameToUnicode(item.content));
                         self.commentCount = self.commentCount + 1 + (!!item.children ? item.children.length : 0);
                     });
                     self.comments = data;
@@ -169,7 +172,7 @@
                     UiTools.alert('请填写邮件地址!', 'error');
                     return;
                 }
-                this.comment.content = $('#comment').val();
+                this.comment.content = emojione.toShort($('#comment').val());
                 if (!this.comment.content) {
                     UiTools.alert('你还没有写评论呢!', 'error');
                     return;
@@ -180,10 +183,11 @@
                 this.comment.articleId = '${article.id}';
                 HttpUtils.post('/v1/comment', this.comment).done(function (data) {
                     HttpUtils.get('/v1/comment/${article.id}', null).done(function (data) {
-                        vm.comments = data;
                         data.forEach(function (item) {
+                            item.content = emojione.unicodeToImage(emojione.shortnameToUnicode(item.content));
                             vm.commentCount = vm.commentCount + 1 + (!!item.children ? item.children.length : 0);
                         });
+                        vm.comments = data;
                         vm.comment.content = null;
                         $('.emojionearea-editor').empty();
                         $("div[id='splitter']").append($('#respond'));

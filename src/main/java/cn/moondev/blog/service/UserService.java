@@ -2,7 +2,7 @@ package cn.moondev.blog.service;
 
 import cn.moondev.blog.configuration.MessageCode;
 import cn.moondev.blog.dto.UserDTO;
-import cn.moondev.framework.utils.RandomStringUtils;
+import cn.moondev.framework.provider.random.RandomStringUtils;
 import com.google.common.base.Strings;
 import com.google.common.cache.Cache;
 import org.slf4j.Logger;

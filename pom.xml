@@ -19,7 +19,7 @@
     </properties>
 
     <dependencies>
-
+˚
         <!-- 基础框架 -->
         <dependency>
             <groupId>cn.moondev</groupId>

@@ -1,12 +1,13 @@
 package cn.moondev.blog.model;
 
-import cn.moondev.framework.utils.JsonUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Joiner;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Book {
 
@@ -123,9 +124,9 @@ public class Book {
         this.rating = json.getJSONObject("rating").getString("average");
         this.title = json.getString("title");
         this.subtitle = json.getString("subtitle");
-        this.author = JsonUtils.parseJsonStringArray(json.getJSONArray("author"));
+        this.author = parseJsonStringArray(json.getJSONArray("author"));
         this.tag = parseTag(json.getJSONArray("tags"));
-        this.translator = JsonUtils.parseJsonStringArray(json.getJSONArray("translator"));
+        this.translator = parseJsonStringArray(json.getJSONArray("translator"));
         this.pages = json.getString("pages");
         this.doubanId = json.getString("id");
         this.publisher = json.getString("publisher");
@@ -150,7 +151,7 @@ public class Book {
     /**
      * 解析图片tag
      */
-    public String parseTag(JSONArray jsonArray) {
+    private String parseTag(JSONArray jsonArray) {
         List<String> list = new ArrayList<>();
         int index = 1;
         for (Object obj : jsonArray) {
@@ -169,6 +170,14 @@ public class Book {
             }
         }
         return Joiner.on('/').join(list);
+    }
+
+    private String parseJsonStringArray(JSONArray stringArray) {
+        if (CollectionUtils.isEmpty(stringArray)) {
+            return "";
+        }
+        List<String> list = stringArray.stream().map(item -> item.toString()).collect(Collectors.toList());
+        return Joiner.on(',').join(list);
     }
 
 }
