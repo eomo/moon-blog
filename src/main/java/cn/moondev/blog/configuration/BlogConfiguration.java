@@ -6,6 +6,7 @@ import cn.moondev.framework.provider.okhttp3.OkHttpOperations;
 import cn.moondev.framework.provider.spring.SpringBeanHelper;
 import cn.moondev.framework.provider.web.ExceptionInterceptor;
 import cn.moondev.framework.provider.web.WebConfigurationSupport;
+import cn.moondev.framework.provider.web.XssFilter;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import org.mybatis.spring.annotation.MapperScan;
@@ -39,6 +40,12 @@ public class BlogConfiguration {
     public Cache<String, String> tokenCache() {
         return CacheBuilder.newBuilder().maximumSize(1).expireAfterAccess(30, TimeUnit.MINUTES).build();
     }
+
+    @Bean
+    public XssFilter xssFilter() {
+        return new XssFilter();
+    }
+
 
     /**
      * mybatis配置
