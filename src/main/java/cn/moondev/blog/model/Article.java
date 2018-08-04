@@ -2,6 +2,8 @@ package cn.moondev.blog.model;
 
 import cn.moondev.framework.provider.random.RandomStringUtils;
 
+import java.time.LocalDateTime;
+
 public class Article {
 
     public String id;
@@ -34,17 +36,18 @@ public class Article {
     /**
      * 创建时间
      */
-    public String createdTime;
+    public LocalDateTime createdTime;
 
     /**
      * 更新时间
      */
-    public String updatedTime;
+    public LocalDateTime updatedTime;
 
     /**
      * 发布时间
      */
-    public String publishTime = "";
+    public LocalDateTime publishTime;
+    public String publishTimeDesc;
 
     /**
      * 文章类型：0草稿，1已发布
@@ -111,15 +114,15 @@ public class Article {
         return author;
     }
 
-    public String getCreatedTime() {
+    public LocalDateTime getCreatedTime() {
         return createdTime;
     }
 
-    public String getUpdatedTime() {
+    public LocalDateTime getUpdatedTime() {
         return updatedTime;
     }
 
-    public String getPublishTime() {
+    public LocalDateTime getPublishTime() {
         return publishTime;
     }
 
@@ -153,5 +156,9 @@ public class Article {
 
     public int getStick() {
         return stick;
+    }
+
+    public String getPublishTimeDesc() {
+        return publishTimeDesc;
     }
 }

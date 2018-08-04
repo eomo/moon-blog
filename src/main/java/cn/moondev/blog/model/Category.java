@@ -37,7 +37,10 @@ public class Category {
      */
     public int orderNo;
 
-    public Category(){
+    public long viewCount;
+    public long commentCount;
+
+    public Category() {
 
     }
 
@@ -50,10 +53,45 @@ public class Category {
 
     public static List<Category> def() {
         List<Category> categories = new ArrayList<>();
-        categories.add(new Category(-1,"足迹","http://apps.moondev.cn/image/road.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim",""));
-        categories.add(new Category(-2,"图书","http://apps.moondev.cn/image/book3.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim",""));
-        categories.add(new Category(-3,"电影","http://apps.moondev.cn/image/movie.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim",""));
+        categories.add(new Category(-1, "足迹", "http://apps.moondev.cn/image/road.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim", "/travel"));
+        categories.add(new Category(-2, "图书", "http://apps.moondev.cn/image/book3.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim", "/book"));
+        categories.add(new Category(-3, "电影", "http://apps.moondev.cn/image/movie.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim", "/movie"));
         return categories;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public int getMenu() {
+        return menu;
+    }
+
+    public int getOrderNo() {
+        return orderNo;
+    }
+
+    public long getViewCount() {
+        return viewCount;
+    }
+
+    public long getCommentCount() {
+        return commentCount;
+    }
 }

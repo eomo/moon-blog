@@ -25,7 +25,13 @@ public class CategoryService {
     }
 
     public List<Category> getMenuCategory() {
-        return categoryMapper.getMenuCategory();
+        List<Category> categories = categoryMapper.getMenuCategory();
+        categories.parallelStream().forEach(c -> {
+            if (Strings.isNullOrEmpty(c.url)) {
+                c.url = "/category/" + c.id;
+            }
+        });
+        return categories;
     }
 
     public void create(Category category) {
@@ -66,6 +72,10 @@ public class CategoryService {
                 index++;
             }
         }
+    }
+
+    public Category getCategoryById(long id) {
+        return categoryMapper.getCategoryById(id);
     }
 
     private void validator(Category category) {

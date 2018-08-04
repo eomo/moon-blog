@@ -3,7 +3,6 @@ package cn.moondev.blog.service;
 import cn.moondev.blog.configuration.MessageCode;
 import cn.moondev.blog.mapper.TopicMapper;
 import cn.moondev.blog.model.Topic;
-import cn.moondev.framework.model.AppException;
 import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +44,10 @@ public class TopicService {
 
     public void delete(Integer id) {
         mapper.delete(id);
+    }
+
+    public Topic getTopicById(long id) {
+        return mapper.getTopicById(id);
     }
 
     private void validator(Topic topic) {

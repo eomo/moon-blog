@@ -1,25 +1,26 @@
 package cn.moondev.blog.controller.ui;
 
+import cn.moondev.blog.dto.QueryDTO;
 import cn.moondev.blog.model.Article;
 import cn.moondev.blog.model.Category;
+import cn.moondev.blog.model.Topic;
 import cn.moondev.blog.service.ArticleService;
 import cn.moondev.blog.service.CategoryService;
+import cn.moondev.blog.service.TopicService;
 import cn.moondev.framework.annotation.Permit;
-import cn.moondev.framework.model.ResponseDTO;
-import com.google.common.base.Splitter;
+import cn.moondev.framework.model.PaginationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
-import java.util.List;
 import java.util.Objects;
 
+@Permit
 @Controller
 @RequestMapping("")
 public class BlogController {
@@ -28,20 +29,85 @@ public class BlogController {
     private ArticleService articleService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private TopicService topicService;
 
     /**
      * 首页
      */
-    @RequestMapping(value = {""}, method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
-        return "index";
+        PaginationDTO<Article> page = articleService.page(new QueryDTO());
+        model.addAttribute("articles", page.getList());
+        model.addAttribute("pages", page.getPages());
+        model.addAttribute("topics", topicService.getAllTopic());
+        model.addAttribute("hots", articleService.hotArticles());
+        return "/app/app-index";
+    }
+
+    /**
+     * 分类页面
+     */
+    @RequestMapping(value = "/category/{id}", method = RequestMethod.GET)
+    public String categoryIndex(Model model, @PathVariable String id) {
+        Category category = categoryService.getCategoryById(Long.parseLong(id));
+        Article article = articleService.statByCategory(id);
+        category.viewCount = article.viewCount;
+        category.commentCount = article.commentCount;
+        model.addAttribute("category", category);
+        // 分类文章
+        PaginationDTO<Article> page = articleService.page(new QueryDTO(null, id));
+        model.addAttribute("articles", page.getList());
+        model.addAttribute("pages", page.getPages());
+        model.addAttribute("articleCount", page.getTotal());
+        return "/app/app-category";
+    }
+
+    /**
+     * 专题页
+     */
+    @RequestMapping(value = "/topic/{id}", method = RequestMethod.GET)
+    public String topicIndex(Model model, @PathVariable String id) {
+        Topic topic = topicService.getTopicById(Long.parseLong(id));
+        Article article = articleService.statByTopic(id);
+        topic.viewCount = article.viewCount;
+        topic.commentCount = article.commentCount;
+        model.addAttribute("topic", topic);
+        // 分类文章
+        PaginationDTO<Article> page = articleService.page(new QueryDTO(id, null));
+        model.addAttribute("articles", page.getList());
+        model.addAttribute("pages", page.getPages());
+        return "/app/app-topic";
+    }
+
+    /**
+     * 足迹页面
+     */
+    @RequestMapping(value = "/travel", method = RequestMethod.GET)
+    public String travelIndex(Model model) {
+        return "/app/app-travel";
+    }
+
+    /**
+     * 图书
+     */
+    @RequestMapping(value = "/book", method = RequestMethod.GET)
+    public String bookIndex(Model model) {
+        return "/app/app-book";
+    }
+
+    /**
+     * 观影记录
+     */
+    @RequestMapping(value = "/movie", method = RequestMethod.GET)
+    public String movieIndex(Model model) {
+        return "/app/app-movie";
     }
 
 
     /**
      * 文章详情
      */
-    @Permit
     @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
     public String getArticleById(Model model, @PathVariable String id) throws UnsupportedEncodingException {
         articleService.viewCountxx(id);

@@ -19,4 +19,30 @@ public class Topic {
      */
     public String image;
 
+    public long viewCount;
+    public long commentCount;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public long getViewCount() {
+        return viewCount;
+    }
+
+    public long getCommentCount() {
+        return commentCount;
+    }
 }

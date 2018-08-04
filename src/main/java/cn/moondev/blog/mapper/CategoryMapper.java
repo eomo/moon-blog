@@ -36,4 +36,7 @@ public interface CategoryMapper {
 
     @Select("SELECT COUNT(*) FROM t_category")
     Long count();
+
+    @Select("SELECT * FROM t_category WHERE `id` = #{id} LIMIT 1")
+    Category getCategoryById(@Param("id") long id);
 }

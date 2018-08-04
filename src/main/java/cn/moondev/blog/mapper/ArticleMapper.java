@@ -1,5 +1,6 @@
 package cn.moondev.blog.mapper;
 
+import cn.moondev.blog.dto.QueryDTO;
 import cn.moondev.blog.model.Article;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -15,12 +16,17 @@ public interface ArticleMapper {
 
     Article findDetailById(@Param("id") String id);
 
-    Long count(@Param("year") String year, @Param("categoryId") String categoryId);
+    Long count(@Param("item") QueryDTO dto);
 
-    List<Article> find(@Param("year") String year, @Param("categoryId") String categoryId,
-                       @Param("size") int size, @Param("offset") int offset);
+    List<Article> find(@Param("item") QueryDTO dto);
 
     void viewCountxx(@Param("id") String id);
 
     void commentCountxx(@Param("id") String id);
+
+    List<Article> hot();
+
+    Article statByCategory(@Param("categoryId") String categoryId);
+
+    Article statByTopic(@Param("topicId") String topicId);
 }

@@ -32,30 +32,54 @@
         WHERE a.`id` = #{id}
     </select>
 
-    <select id="count" resultType="java.lang.Long">
+    <select id="count" resultType="java.lang.Long" parameterType="cn.moondev.blog.dto.QueryDTO">
         SELECT count(*)
         FROM t_article
         WHERE 1 = 1
-        <if test='year != null'>
-            AND `year` = #{year}
+        <if test='item.year != null'>
+            AND `year` = #{item.year}
         </if>
-        <if test='categoryId != null'>
-            AND `category_id` = #{categoryId}
+        <if test='item.categoryId != null'>
+            AND `category_id` = #{item.categoryId}
+        </if>
+        <if test='item.topicId != null'>
+            AND `topic_id` = #{item.topicId}
         </if>
     </select>
 
-    <select id="find" resultMap="articleMap">
+    <select id="find" resultMap="articleMap" parameterType="cn.moondev.blog.dto.QueryDTO">
         SELECT a.*, c.name as categoryName, t.name as topicName FROM t_article a
         LEFT JOIN t_category c on a.category_id = c.id
         LEFT JOIN t_topic t on t.id = a.topic_id
         WHERE 1 = 1
-        <if test='year != null'>
-            AND `a.year` = #{year}
+        <if test='item.year != null'>
+            AND a.`year` = #{item.year}
         </if>
-        <if test='categoryId != null'>
-            AND `a.category_id` = #{categoryId}
+        <if test='item.categoryId != null'>
+            AND a.`category_id` = #{item.categoryId}
         </if>
-        limit #{offset}, #{size}
+        <if test='item.topicId != null'>
+            AND a.`topic_id` = #{item.topicId}
+        </if>
+        limit #{item.offset}, #{item.size}
+    </select>
+
+    <select id="hot" resultMap="articleMap">
+        SELECT a.*, c.name as categoryName, t.name as topicName FROM t_article a
+        LEFT JOIN t_category c on a.category_id = c.id
+        LEFT JOIN t_topic t on t.id = a.topic_id
+        ORDER BY view_count,comment_count DESC
+        limit 5
+    </select>
+
+    <select id="statByCategory" resultMap="articleMap" parameterType="java.lang.String">
+        SELECT SUM(view_count) as view_count, SUM(comment_count) as comment_count
+        FROM t_article WHERE category_id = #{categoryId}
+    </select>
+
+    <select id="statByTopic" resultMap="articleMap" parameterType="java.lang.String">
+        SELECT SUM(view_count) as view_count, SUM(comment_count) as comment_count
+        FROM t_article WHERE topic_id = #{topicId}
     </select>
 
     <update id="viewCountxx" parameterType="java.lang.String">

@@ -28,4 +28,7 @@ public interface TopicMapper {
     @Delete("DELETE FROM t_topic where `id` = #{id}")
     void delete(@Param("id") Integer id);
 
+    @Select("SELECT * FROM t_topic WHERE `id` = #{id} LIMIT 1")
+    Topic getTopicById(@Param("id") long id);
+
 }

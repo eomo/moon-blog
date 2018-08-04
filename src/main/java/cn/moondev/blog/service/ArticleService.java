@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ import java.util.Objects;
  * 公司简介
  */
 @Service
-public class ArticleService {
+public class ArticleService extends BaseService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ArticleService.class);
 
@@ -29,23 +28,35 @@ public class ArticleService {
 
     public PaginationDTO<Article> page(QueryDTO dto) {
         PaginationDTO<Article> pagination = PaginationDTO.create(dto.pager, dto.size);
-        pagination.setTotal(mapper.count(dto.year, dto.categoryId));
+        pagination.setTotal(mapper.count(dto));
         if (pagination.getTotal() > 0) {
-            List<Article> articles = mapper.find(dto.year, dto.categoryId, pagination.getSize(), pagination.getOffset());
+            dto.offset = pagination.getOffset();
+            List<Article> articles = mapper.find(dto);
+            articles.parallelStream().forEach(article -> {
+                article.publishTimeDesc = replyTimeDesc(article.publishTime);
+                article.summary = article.summary.length() > 80 ?
+                        article.summary.substring(0, 80) + "..." : article.summary;
+            });
             pagination.setList(articles);
         }
         return pagination;
     }
 
     /**
+     * 热门文章
+     */
+    public List<Article> hotArticles() {
+        return mapper.hot();
+    }
+
+    /**
      * 保存草稿
      */
     public String draft(Article article) {
-        String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         if (Strings.isNullOrEmpty(article.id)) {
             article.id = genArticleId();
-            article.updatedTime = now;
-            article.createdTime = now;
+            article.updatedTime = LocalDateTime.now();
+            article.createdTime = LocalDateTime.now();
             article.status = 0;
             mapper.upsert(article);
             return article.id;
@@ -58,7 +69,7 @@ public class ArticleService {
         tmp.content = article.content;
         tmp.topicId = article.topicId;
         tmp.categoryId = article.categoryId;
-        tmp.updatedTime = now;
+        tmp.updatedTime = LocalDateTime.now();
         tmp.status = 0;
         mapper.upsert(tmp);
         return article.id;
@@ -68,12 +79,11 @@ public class ArticleService {
      * 发布文章
      */
     public String publish(Article article) {
-        String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         if (Strings.isNullOrEmpty(article.id)) {
             article.id = genArticleId();
-            article.updatedTime = now;
-            article.createdTime = now;
-            article.publishTime = now;
+            article.updatedTime = LocalDateTime.now();
+            article.createdTime = LocalDateTime.now();
+            article.publishTime = LocalDateTime.now();
             article.status = 1;
             mapper.upsert(article);
             return article.id;
@@ -86,8 +96,8 @@ public class ArticleService {
         tmp.content = article.content;
         tmp.topicId = article.topicId;
         tmp.categoryId = article.categoryId;
-        tmp.updatedTime = now;
-        tmp.publishTime = now;
+        tmp.updatedTime = LocalDateTime.now();
+        tmp.publishTime = LocalDateTime.now();
         tmp.status = 1;
         mapper.upsert(tmp);
         return article.id;
@@ -117,6 +127,14 @@ public class ArticleService {
     private String genArticleId() {
         String id = Article.genId();
         return Objects.isNull(mapper.findById(id)) ? id : genArticleId();
+    }
+
+    public Article statByCategory(String categoryId) {
+        return mapper.statByCategory(categoryId);
+    }
+
+    public Article statByTopic(String topicId) {
+        return mapper.statByTopic(topicId);
     }
 
 }

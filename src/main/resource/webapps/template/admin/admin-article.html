@@ -14,7 +14,7 @@
                 <div class="admin-header-desc"><p>Web端的文本编辑器体验不是很好，建议在客户端写好后，直接复制过来</p></div>
             </div>
             <div class="u-float-right">
-                <b-button @click="jump('id_NuLlaRtIclE')" variant="success">写文章</b-button>
+                <a class="btn btn-success" :href="jump('id_NuLlaRtIclE')" target="_blank">写文章</a>
             </div>
         </div>
     </header>
@@ -133,7 +133,7 @@
                 getBookList(this);
             },
             jump: function (id) {
-                return '/admin/write/article/' + id;
+                return '/admin/write/article/' + id + '?token=' + localStorage.getItem('x-api-token');
             },
             jumpPost: function (id) {
                 return '/post/' + id;
