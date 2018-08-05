@@ -3,6 +3,7 @@ package cn.moondev.blog.controller.api;
 import cn.moondev.blog.dto.QueryDTO;
 import cn.moondev.blog.model.Movie;
 import cn.moondev.blog.service.MovieService;
+import cn.moondev.framework.annotation.Permit;
 import cn.moondev.framework.model.PaginationDTO;
 import cn.moondev.framework.model.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class MovieController {
     @Autowired
     private MovieService service;
 
+    @Permit
     @RequestMapping(value = "/page", method = RequestMethod.POST)
     public ResponseDTO<PaginationDTO<Movie>> page(@RequestBody QueryDTO query) {
         return ResponseDTO.success(service.page(query));

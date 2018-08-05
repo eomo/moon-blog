@@ -2,11 +2,11 @@
 <head>
     <meta charset="UTF-8">
     <title>管理后台 - 专题管理</title>
-    <#include "common/admin-css.html"/>
+    <#include "common/admin-css.ftl"/>
 </head>
 <body>
 <div id="app" class="wrapper">
-    <#include "common/admin-header.html"/>
+    <#include "common/admin-header.ftl"/>
     <header class="admin-header">
         <div class="single-column-layout single-column-layout-admin u-clearfix">
             <div class="u-float-left">
@@ -113,7 +113,7 @@
         </form>
     </b-modal>
 </div>
-<#include "common/admin-js.html"/>
+<#include "common/admin-js.ftl"/>
 <script>
     var getTopicList = function (vm) {
         HttpUtils.get('/v1/topic', null).done(function (data) {

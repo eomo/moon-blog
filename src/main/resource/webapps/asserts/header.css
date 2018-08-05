@@ -71,6 +71,7 @@ a {
     text-rendering: auto;
     box-sizing: border-box;
     border-radius: 4px;
+	outline: none;
 }
 
 .loading-button:hover {

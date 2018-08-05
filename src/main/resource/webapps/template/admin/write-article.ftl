@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>管理后台 - 编辑文章</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <#include "common/admin-css.html"/>
+    <#include "common/admin-css.ftl"/>
     <link rel="stylesheet" type="text/css" href="/webapps/asserts/editor.css" media="screen">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 </head>
 <body>
-<#include "common/admin-header.html"/>
+<#include "common/admin-header.ftl"/>
 <div class="single-column-layout single-column-layout-admin admin-container">
     <div id="app" class="wrapper">
         <div class="publish-btn">
@@ -93,7 +93,7 @@
     </section>
 </div>
 
-<#include "common/admin-js.html"/>
+<#include "common/admin-js.ftl"/>
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script>
     var mde = new SimpleMDE({

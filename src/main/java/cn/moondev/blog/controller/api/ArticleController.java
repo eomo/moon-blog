@@ -3,6 +3,7 @@ package cn.moondev.blog.controller.api;
 import cn.moondev.blog.dto.QueryDTO;
 import cn.moondev.blog.model.Article;
 import cn.moondev.blog.service.ArticleService;
+import cn.moondev.framework.annotation.Permit;
 import cn.moondev.framework.model.PaginationDTO;
 import cn.moondev.framework.model.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class ArticleController {
         return ResponseDTO.success(article);
     }
 
+    @Permit
     @RequestMapping(value = "/page", method = RequestMethod.POST)
     public ResponseDTO<PaginationDTO<Article>> page(@RequestBody QueryDTO query) {
         return ResponseDTO.success(service.page(query));

@@ -1,6 +1,5 @@
 package cn.moondev.blog.controller.ui;
 
-import cn.moondev.blog.dto.QueryDTO;
 import cn.moondev.blog.model.Article;
 import cn.moondev.blog.model.Category;
 import cn.moondev.blog.model.Topic;
@@ -8,7 +7,6 @@ import cn.moondev.blog.service.ArticleService;
 import cn.moondev.blog.service.CategoryService;
 import cn.moondev.blog.service.TopicService;
 import cn.moondev.framework.annotation.Permit;
-import cn.moondev.framework.model.PaginationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,9 +35,6 @@ public class BlogController {
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
-        PaginationDTO<Article> page = articleService.page(new QueryDTO());
-        model.addAttribute("articles", page.getList());
-        model.addAttribute("pages", page.getPages());
         model.addAttribute("topics", topicService.getAllTopic());
         model.addAttribute("hots", articleService.hotArticles());
         return "/app/app-index";
@@ -55,11 +50,6 @@ public class BlogController {
         category.viewCount = article.viewCount;
         category.commentCount = article.commentCount;
         model.addAttribute("category", category);
-        // 分类文章
-        PaginationDTO<Article> page = articleService.page(new QueryDTO(null, id));
-        model.addAttribute("articles", page.getList());
-        model.addAttribute("pages", page.getPages());
-        model.addAttribute("articleCount", page.getTotal());
         return "/app/app-category";
     }
 
@@ -73,10 +63,6 @@ public class BlogController {
         topic.viewCount = article.viewCount;
         topic.commentCount = article.commentCount;
         model.addAttribute("topic", topic);
-        // 分类文章
-        PaginationDTO<Article> page = articleService.page(new QueryDTO(id, null));
-        model.addAttribute("articles", page.getList());
-        model.addAttribute("pages", page.getPages());
         return "/app/app-topic";
     }
 

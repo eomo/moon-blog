@@ -44,7 +44,7 @@
     </select>
 
     <select id="find" resultMap="bookMap">
-        SELECT *
+        SELECT id,title,author,rating,tag,publisher,pubdate,douban_image3,remark,douban_url,jingdong_url,duokan_url,`year`,douban_id
         FROM t_book
         WHERE 1 = 1
         <if test='title != null'>

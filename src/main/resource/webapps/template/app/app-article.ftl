@@ -3,12 +3,12 @@
     <meta charset="UTF-8">
     <title>${article.title} - MoonBlog</title>
     <meta name="description" content="${article.title} - 作者: chen.chuan,首发于Moondev">
-    <#include "common/app-css.html"/>
+    <#include "common/app-css.ftl"/>
     <link href="https://cdn.bootcss.com/emojione/2.2.7/assets/css/emojione.min.css" rel="stylesheet">
     <link href="http://apps.moondev.cn/css/emojionearea.min.css" rel="stylesheet">
 </head>
 <body>
-<#include "common/app-header.html"/>
+<#include "common/app-header.ftl"/>
 <div class="single-column-layout article-container">
     <div class="block-group u-padding-top50">
         <header class="entry-header">
@@ -120,7 +120,7 @@
             </div>
     </div>
 </div>
-<#include "common/app-footer.html"/>
+<#include "common/app-footer.ftl"/>
 </body>
 <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
 <script src="http://apps.moondev.cn/js/hyperdown.js"></script>

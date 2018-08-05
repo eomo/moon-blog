@@ -1,7 +1,7 @@
 <header class="header header-border">
     <div class="u-float-left">
         <h1 class="site-title u-float-left">
-            <a href="http://www.moondev.cn" class="logo" title="no pursuit coder">
+            <a href="/" class="logo" title="no pursuit coder">
                 <img src="https://fatesinger.com/wp-content/themes/Nib/images/logo.png" width=38 alt="moon blog"/>
             </a>
         </h1>
@@ -17,6 +17,7 @@
     </div>
 </header>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
 <script src="/webapps/asserts/js/notify.js"></script>
 <script src="/webapps/asserts/js/utils.js"></script>
 <script>

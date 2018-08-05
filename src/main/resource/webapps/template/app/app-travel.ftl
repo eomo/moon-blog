@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<#include "common/app-header.html"/>
+<#include "common/app-header.ftl"/>
 <header class="category-header">
     <div class="single-column-layout single-column-layout-wide u-clearfix">
         <div class="category-header-logo">

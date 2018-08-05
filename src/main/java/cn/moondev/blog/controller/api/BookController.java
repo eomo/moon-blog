@@ -4,6 +4,7 @@ import cn.moondev.blog.dto.BookDTO;
 import cn.moondev.blog.dto.QueryDTO;
 import cn.moondev.blog.model.Book;
 import cn.moondev.blog.service.BookService;
+import cn.moondev.framework.annotation.Permit;
 import cn.moondev.framework.model.PaginationDTO;
 import cn.moondev.framework.model.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ public class BookController {
     @Autowired
     private BookService service;
 
+    @Permit
     @RequestMapping(value = "/page", method = RequestMethod.POST)
     public ResponseDTO<PaginationDTO<Book>> page(@RequestBody QueryDTO query) {
         return ResponseDTO.success(service.page(query));

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>管理后台 - 登录</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <#include "common/admin-css.html"/>
+    <#include "common/admin-css.ftl"/>
     <style>
         body {
             background-image: url("http://apps.moondev.cn/image/login_bg3.jpg");
@@ -58,7 +58,7 @@
     </div>
 </div>
 
-<#include "common/admin-js.html"/>
+<#include "common/admin-js.ftl"/>
 <script>
     var app = new Vue({
         el: '#app',
