@@ -95,11 +95,11 @@
             <div class="widget">
                 <div class="heading-title">留给朋友</div>
                 <div class="widget-list">
-                    <a href="#" class="widget-list-item">所有文章</a>
+                    <a href="/archive" class="widget-list-item">所有文章</a>
                     <span class="mid-dot-divider"></span>
-                    <a href="#" class="widget-list-item">所有分类</a>
+                    <a href="/categories" class="widget-list-item">所有分类</a>
                     <span class="mid-dot-divider"></span>
-                    <a href="#" class="widget-list-item">观影记录</a>
+                    <a href="/movie" class="widget-list-item">观影记录</a>
                 </div>
             </div>
         </div>

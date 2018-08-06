@@ -40,6 +40,10 @@ public class CategoryService {
         if (Objects.nonNull(tmp)) {
             throw MessageCode.ex(MessageCode.NAME_REPEAT);
         }
+        tmp = categoryMapper.getCategoryById(category.id);
+        if (Objects.nonNull(tmp)) {
+            throw MessageCode.ex(MessageCode.ID_REPEAT);
+        }
         Long count = categoryMapper.count();
         category.orderNo = (int) (count + 1);
         categoryMapper.create(category);
@@ -48,20 +52,20 @@ public class CategoryService {
     public void update(Category category) {
         validator(category);
         Category tmp = categoryMapper.getCategoryByName(category.name);
-        if (Objects.nonNull(tmp) && tmp.id != category.id) {
+        if (Objects.nonNull(tmp) && !tmp.id.equalsIgnoreCase(category.id)) {
             throw MessageCode.ex(MessageCode.NAME_REPEAT);
         }
         categoryMapper.update(category);
     }
 
-    public void delete(Integer id) {
+    public void delete(String id) {
         categoryMapper.delete(id);
     }
 
     /**
      * 置顶
      */
-    public void stick(Integer id) {
+    public void stick(String id) {
         List<Category> categories = categoryMapper.getAllCategory();
         int index = 2;
         for (Category category : categories) {
@@ -74,12 +78,21 @@ public class CategoryService {
         }
     }
 
-    public Category getCategoryById(long id) {
+    public Category getCategoryById(String id) {
+        if ("readming".equalsIgnoreCase(id)) {
+            return Category.book();
+        }
+        if ("travel".equalsIgnoreCase(id)) {
+            return Category.travel();
+        }
         return categoryMapper.getCategoryById(id);
     }
 
     private void validator(Category category) {
-        if (Strings.isNullOrEmpty(category.name) || category.name.length() > 20) {
+        if (Strings.isNullOrEmpty(category.id) || category.id.length() > 32) {
+            throw MessageCode.ex(MessageCode.ID_ERROR);
+        }
+        if (Strings.isNullOrEmpty(category.name) || category.name.length() > 32) {
             throw MessageCode.ex(MessageCode.NAME_ERROR);
         }
         if (Strings.isNullOrEmpty(category.desc) || category.desc.length() > 512) {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,minimal-ui">
-    <title>${category.name}</title>
+    <title>分类</title>
     <link rel="stylesheet" href="/webapps/asserts/header.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/webapps/asserts/vendor.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/webapps/asserts/category.css" type="text/css" media="screen">
@@ -14,7 +14,7 @@
     <header class="category-header">
         <div class="single-column-layout single-column-layout-wide u-clearfix">
             <div class="category-header-logo">
-                <img class="category-header-image" src="${category.image}">
+                <img class="category-header-image" src="${category.image}${category.format1}">
             </div>
             <div class="u-float-left">
                 <h1 class="category-header-name">${category.name}</h1>
@@ -70,7 +70,7 @@
         created: function () {
             let self = this;
             self.$nextTick(function () {
-                HttpUtils.post('/v1/article/page', {pager: self.pager, categoryId:${category.id}}).done(function (data) {
+                HttpUtils.post('/v1/article/page', {pager: self.pager, categoryId:'${category.id}'}).done(function (data) {
                     self.showloadMore = data.pages > data.pager;
                     self.articles = data.list;
                     self.articleCount = data.total;
@@ -81,7 +81,7 @@
             loadArticleList: function () {
                 HttpUtils.post('/v1/article/page', {
                     pager: this.pager + 1,
-                    categoryId:${category.id}}).done(function (data) {
+                    categoryId:'${category.id}'}).done(function (data) {
                     vm.showloadMore = data.pages > data.pager;
                     vm.articles = vm.articles.concat(data.list);
                 });

@@ -2,7 +2,7 @@ package cn.moondev.blog.model;
 
 public class Topic {
 
-    public int id;
+    public String id;
 
     /**
      * 名称
@@ -18,11 +18,12 @@ public class Topic {
      * 描述图片地址
      */
     public String image;
+    public String format;
 
     public long viewCount;
     public long commentCount;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -40,6 +41,10 @@ public class Topic {
 
     public long getViewCount() {
         return viewCount;
+    }
+
+    public String getFormat() {
+        return format;
     }
 
     public long getCommentCount() {

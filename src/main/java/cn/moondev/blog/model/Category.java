@@ -1,11 +1,8 @@
 package cn.moondev.blog.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Category {
 
-    public int id;
+    public String id;
 
     /**
      * 名称
@@ -21,6 +18,8 @@ public class Category {
      * 描述图片地址
      */
     public String image;
+    public String format1;
+    public String format2;
 
     /**
      * 分类跳转链接
@@ -44,22 +43,25 @@ public class Category {
 
     }
 
-    public Category(int id, String name, String image, String url) {
-        this.id = id;
-        this.name = name;
-        this.image = image;
-        this.url = url;
+    public static Category travel() {
+        Category category = new Category();
+        category.id = "travel";
+        category.name = "足迹";
+        category.image = "http://apps.moondev.cn/image/road.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim";
+        category.desc = "世界那么大，我想去走走。";
+        return category;
     }
 
-    public static List<Category> def() {
-        List<Category> categories = new ArrayList<>();
-        categories.add(new Category(-1, "足迹", "http://apps.moondev.cn/image/road.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim", "/travel"));
-        categories.add(new Category(-2, "图书", "http://apps.moondev.cn/image/book3.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim", "/book"));
-        categories.add(new Category(-3, "电影", "http://apps.moondev.cn/image/movie.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim", "/movie"));
-        return categories;
+    public static Category book() {
+        Category category = new Category();
+        category.id = "book";
+        category.name = "图书";
+        category.image = "http://apps.moondev.cn/image/book3.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim";
+        category.desc = "夫读书将以何为哉？辨其大义，以修己治人之体也，察其微言，以善精义入神之用也。";
+        return category;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -93,5 +95,13 @@ public class Category {
 
     public long getCommentCount() {
         return commentCount;
+    }
+
+    public String getFormat1() {
+        return format1;
+    }
+
+    public String getFormat2() {
+        return format2;
     }
 }

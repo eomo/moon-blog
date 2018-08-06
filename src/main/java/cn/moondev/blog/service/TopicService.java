@@ -30,28 +30,35 @@ public class TopicService {
         if (Objects.nonNull(tmp)) {
             throw MessageCode.ex(MessageCode.NAME_REPEAT);
         }
+        tmp = mapper.getTopicById(topic.id);
+        if (Objects.nonNull(tmp)) {
+            throw MessageCode.ex(MessageCode.ID_REPEAT);
+        }
         mapper.create(topic);
     }
 
     public void update(Topic topic) {
         validator(topic);
         Topic tmp = mapper.getTopicByName(topic.name);
-        if (Objects.nonNull(tmp) && tmp.id != topic.id) {
+        if (Objects.nonNull(tmp) && !tmp.id.equalsIgnoreCase(topic.id)) {
             throw MessageCode.ex(MessageCode.NAME_REPEAT);
         }
         mapper.update(topic);
     }
 
-    public void delete(Integer id) {
+    public void delete(String id) {
         mapper.delete(id);
     }
 
-    public Topic getTopicById(long id) {
+    public Topic getTopicById(String id) {
         return mapper.getTopicById(id);
     }
 
     private void validator(Topic topic) {
-        if (Strings.isNullOrEmpty(topic.name) || topic.name.length() > 20) {
+        if (Strings.isNullOrEmpty(topic.id) || topic.id.length() > 32) {
+            throw MessageCode.ex(MessageCode.ID_ERROR);
+        }
+        if (Strings.isNullOrEmpty(topic.name) || topic.name.length() > 32) {
             throw MessageCode.ex(MessageCode.NAME_ERROR);
         }
         if (Strings.isNullOrEmpty(topic.desc) || topic.desc.length() > 512) {

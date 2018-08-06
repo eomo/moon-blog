@@ -19,22 +19,24 @@
         </div>
     </header>
     <div class="single-column-layout single-column-layout-admin admin-container">
-        <div class="card-item" v-for="item in categories">
-            <b-card :title="item.name"
-                    :img-src="item.image"
-                    img-alt="Image"
-                    img-top
-                    tag="article"
-                    style="max-width: 20rem;"
-                    class="mb-2 u-margin-right15">
-                <p class="card-text">
-                    {{item.desc}}
-                </p>
-                <b-button @click="showUpdateCategoryModal(item)" variant="outline-primary btn-sm">修改</b-button>
-                <b-button @click="showDeleteAlert(item)" variant="outline-danger btn-sm">删除</b-button>
+        <b-table striped Fixed :items="categories" :fields="fields">
+            <template slot="action" slot-scope="row">
+                <b-button @click="showUpdateCategoryModal(row.item)" variant="outline-primary btn-sm">修改</b-button>
+                <b-button @click="showDeleteAlert(row.item)" variant="outline-danger btn-sm">删除</b-button>
                 <b-button @click="stickCategory(item.id)" variant="outline-success btn-sm">置顶</b-button>
-            </b-card>
-        </div>
+            </template>
+            <template slot="menu" slot-scope="row">
+                {{row.item.menu == 1 ? '是' : '否'}}
+            </template>
+            <template slot="image" slot-scope="row">
+                <a v-bind:href="row.item.image" target="_blank">
+                    <img v-bind:src="row.item.image + row.item.format2">
+                </a>
+            </template>
+            <template slot="url" slot-scope="row">
+                {{!!row.item.url? '指定页面' : '默认分类页'}}
+            </template>
+        </b-table>
     </div>
     <b-modal ref="confirmModal" centered
              title="风险提示"
@@ -57,6 +59,25 @@
              @cancel="close">
         <form @submit.stop.prevent="handleSubmit">
             <b-container fluid>
+                <b-row>
+                    <b-col>
+                        <b-form-group horizontal
+                                      :label-cols="2"
+                                      label="分类编号："
+                                      label-for="input">
+                            <b-form-input type="text"
+                                          placeholder="建议使用一个意义的英文单词，比如旅行分类，可以使用travel"
+                                          v-model="category.id"
+                                          :state="state.id"
+                                          @change="changeId"
+                                          aria-describedby="categoryIdFeedback">
+                            </b-form-input>
+                            <b-form-invalid-feedback id="categoryIdFeedback">
+                                请输入正确的分类编号，只能是数字和字母
+                            </b-form-invalid-feedback>
+                        </b-form-group>
+                    </b-col>
+                </b-row>
                 <b-row>
                     <b-col>
                         <b-form-group horizontal
@@ -118,6 +139,32 @@
                     <b-col>
                         <b-form-group horizontal
                                       :label-cols="2"
+                                      label="图片处理："
+                                      label-for="input">
+                            <b-form-input type="text"
+                                          placeholder="分类页图片显示,建议尺寸:194x194，示例:?both/80x80"
+                                          v-model="category.format1">
+                            </b-form-input>
+                        </b-form-group>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <b-form-group horizontal
+                                      :label-cols="2"
+                                      label="图片处理："
+                                      label-for="input">
+                            <b-form-input type="text"
+                                          placeholder="所有分类页图片显示,建议尺寸:80x80，示例:?both/80x80"
+                                          v-model="category.format2">
+                            </b-form-input>
+                        </b-form-group>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <b-form-group horizontal
+                                      :label-cols="2"
                                       label="跳转链接："
                                       label-for="input">
                             <b-form-input type="text"
@@ -151,6 +198,10 @@
 
     var upsertCategory = function (e, vm) {
         e.preventDefault();
+        if (!vm.category.id || !/^[0-9a-zA-Z]*$/.test(vm.category.id)) {
+            vm.state.id = false;
+            return;
+        }
         if (!vm.category.name || vm.category.name.length > 10) {
             vm.state.name = false;
             return;
@@ -200,10 +251,19 @@
             categories: null,
             category: {},
             state: {
+                id: null,
                 name: null,
                 desc: null,
                 image: null
             },
+            fields: [
+                {key: 'id', label: '分类编号'},
+                {key: 'name', label: '分类名称'},
+                {key: 'menu', label: '菜单显示'},
+                {key: 'url', label: '跳转'},
+                {key: 'image', label: '分类图片'},
+                {key: 'action', label: '操作'}
+            ],
             options: [
                 {text: '显示', value: '1'},
                 {text: '不显示', value: '0'}
@@ -259,6 +319,11 @@
             changeImage: function () {
                 if (!!this.category.image && (this.category.image.startsWith('http://', 0) || this.category.image.startsWith('https://', 0))) {
                     this.state.image = true;
+                }
+            },
+            changeId: function () {
+                if (!!this.category.id && /^[0-9a-zA-Z]*$/.test(this.category.id)) {
+                    this.state.id = true;
                 }
             }
         }

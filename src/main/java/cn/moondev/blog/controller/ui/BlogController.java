@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
+import java.util.List;
 import java.util.Objects;
 
 @Permit
@@ -45,12 +46,27 @@ public class BlogController {
      */
     @RequestMapping(value = "/category/{id}", method = RequestMethod.GET)
     public String categoryIndex(Model model, @PathVariable String id) {
-        Category category = categoryService.getCategoryById(Long.parseLong(id));
+        Category category = categoryService.getCategoryById(id);
+        if (Objects.isNull(category)) {
+            return "/common/404";
+        }
         Article article = articleService.statByCategory(id);
-        category.viewCount = article.viewCount;
-        category.commentCount = article.commentCount;
+        category.viewCount = Objects.isNull(article) ? 0 : article.viewCount;
+        category.commentCount = Objects.isNull(article) ? 0 : article.commentCount;
         model.addAttribute("category", category);
         return "/app/app-category";
+    }
+
+    /**
+     * 所有分类
+     */
+    @RequestMapping(value = "/categories", method = RequestMethod.GET)
+    public String categoriesIndex(Model model) {
+        List<Category> categories = categoryService.getAllCategory();
+        categories.add(Category.travel());
+        categories.add(Category.book());
+        model.addAttribute("categories", categories);
+        return "/app/app-categories";
     }
 
     /**
@@ -58,16 +74,19 @@ public class BlogController {
      */
     @RequestMapping(value = "/topic/{id}", method = RequestMethod.GET)
     public String topicIndex(Model model, @PathVariable String id) {
-        Topic topic = topicService.getTopicById(Long.parseLong(id));
+        Topic topic = topicService.getTopicById(id);
+        if (Objects.isNull(topic)) {
+            return "/common/404";
+        }
         Article article = articleService.statByTopic(id);
-        topic.viewCount = article.viewCount;
-        topic.commentCount = article.commentCount;
+        topic.viewCount = Objects.isNull(article) ? 0 : article.viewCount;
+        topic.commentCount = Objects.isNull(article) ? 0 : article.commentCount;
         model.addAttribute("topic", topic);
         return "/app/app-topic";
     }
 
     /**
-     * 足迹页面
+     * 足迹
      */
     @RequestMapping(value = "/travel", method = RequestMethod.GET)
     public String travelIndex(Model model) {

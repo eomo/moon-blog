@@ -57,13 +57,13 @@ public class Article {
     /**
      * 所属专题
      */
-    public int topicId;
+    public String topicId;
     public String topicName;
 
     /**
      * 所属分类
      */
-    public int categoryId;
+    public String categoryId;
     public String categoryName;
 
     /**
@@ -130,7 +130,7 @@ public class Article {
         return status;
     }
 
-    public int getTopicId() {
+    public String getTopicId() {
         return topicId;
     }
 
@@ -138,7 +138,7 @@ public class Article {
         return topicName;
     }
 
-    public int getCategoryId() {
+    public String getCategoryId() {
         return categoryId;
     }
 

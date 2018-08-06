@@ -19,17 +19,31 @@
         </div>
     </header>
     <div class="single-column-layout single-column-layout-admin admin-container">
-        <b-container fluid>
-            <b-row class="u-margin-button15" v-for="item in topics">
-                <b-col cols="1"><img :src="item.image" width="40" height="40"></b-col>
-                <b-col cols="2">{{item.name}}</b-col>
-                <b-col>{{item.desc}}</b-col>
-                <b-col cols="2" align-self="end">
-                    <b-button variant="outline-primary btn-sm" @click="showModal(item)">修改</b-button>
-                    <b-button variant="outline-danger btn-sm" @click="showConfirmModal(item)">删除</b-button>
-                </b-col>
-            </b-row>
-        </b-container>
+        <b-table striped Fixed :items="topics" :fields="fields">
+            <template slot="action" slot-scope="row">
+                <b-button @click="showModal(row.item)" variant="outline-primary btn-sm">修改</b-button>
+                <b-button @click="showConfirmModal(row.item)" variant="outline-danger btn-sm">删除</b-button>
+            </template>
+            <template slot="image" slot-scope="row">
+                <a v-bind:href="row.item.image" target="_blank">
+                    <img v-bind:src="row.item.image + row.item.format">
+                </a>
+            </template>
+        </b-table>
+
+
+
+        <#--<b-container fluid>-->
+            <#--<b-row class="u-margin-button15" v-for="item in topics">-->
+                <#--<b-col cols="1"><img :src="item.image" width="40" height="40"></b-col>-->
+                <#--<b-col cols="2">{{item.name}}</b-col>-->
+                <#--<b-col>{{item.desc}}</b-col>-->
+                <#--<b-col cols="2" align-self="end">-->
+                    <#--<b-button variant="outline-primary btn-sm" @click="showModal(item)">修改</b-button>-->
+                    <#--<b-button variant="outline-danger btn-sm" @click="showConfirmModal(item)">删除</b-button>-->
+                <#--</b-col>-->
+            <#--</b-row>-->
+        <#--</b-container>-->
     </div>
     <b-modal ref="confirmModal" centered
              title="风险提示"
@@ -52,6 +66,25 @@
              @cancel="close">
         <form @submit.stop.prevent="handleSubmit">
             <b-container fluid>
+                <b-row>
+                    <b-col>
+                        <b-form-group horizontal
+                                      :label-cols="2"
+                                      label="专题编号："
+                                      label-for="input">
+                            <b-form-input type="text"
+                                          placeholder="建议使用一个意义的英文单词，比如MySQL专题，可以使用mysql"
+                                          v-model="topic.id"
+                                          :state="state.id"
+                                          @change="changeId"
+                                          aria-describedby="topicIdFeedback">
+                            </b-form-input>
+                            <b-form-invalid-feedback id="topicIdFeedback">
+                                请输入正确的专题编号，只能是数字和字母
+                            </b-form-invalid-feedback>
+                        </b-form-group>
+                    </b-col>
+                </b-row>
                 <b-row>
                     <b-col>
                         <b-form-group horizontal
@@ -109,6 +142,19 @@
                         </b-form-group>
                     </b-col>
                 </b-row>
+                <b-row>
+                    <b-col>
+                        <b-form-group horizontal
+                                      :label-cols="2"
+                                      label="图片处理："
+                                      label-for="input">
+                            <b-form-input type="text"
+                                          placeholder="首页专题图片显示,建议尺寸:60x60，示例:?both/80x80"
+                                          v-model="topic.format">
+                            </b-form-input>
+                        </b-form-group>
+                    </b-col>
+                </b-row>
             </b-container>
         </form>
     </b-modal>
@@ -123,7 +169,11 @@
 
     var upsert = function (e, vm) {
         e.preventDefault();
-        if (!vm.topic.name || vm.topic.name.length > 10) {
+        if (!vm.topic.id || !/^[0-9a-zA-Z]*$/.test(vm.topic.id)) {
+            vm.state.id = false;
+            return;
+        }
+        if (!vm.topic.name || vm.topic.name.length > 32) {
             vm.state.name = false;
             return;
         }
@@ -166,10 +216,18 @@
             topics: null,
             topic: {},
             state: {
+                id: null,
                 name: null,
                 desc: null,
                 image: null
-            }
+            },
+            fields: [
+                {key: 'id', label: '专题编号'},
+                {key: 'name', label: '专题名称'},
+                {key: 'desc', label: '专题描述'},
+                {key: 'image', label: '专题图片'},
+                {key: 'action', label: '操作'}
+            ]
         },
         created: function () {
             let self = this;
@@ -217,6 +275,11 @@
             changeImage: function () {
                 if (!!this.topic.image && (this.topic.image.startsWith('http://', 0) || this.topic.image.startsWith('https://', 0))) {
                     this.state.image = true;
+                }
+            },
+            changeId: function () {
+                if (!!this.topic.id && /^[0-9a-zA-Z]*$/.test(this.topic.id)) {
+                    this.state.id = true;
                 }
             }
         }

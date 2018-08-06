@@ -31,14 +31,14 @@
                 $("#menu").append(li);
             });
         }
-        category = localStorage.getItem('x-app-menu');
+        category = sessionStorage.getItem('x-app-menu');
         if (!!category && category.length > 0) {
             self.menus = JSON.parse(category);
             appendMenu(JSON.parse(category));
         } else {
             HttpUtils.get('/v1/user/menu', null).done(function (data) {
                 self.menus = data;
-                localStorage.setItem('x-app-menu', JSON.stringify(data));
+                sessionStorage.setItem('x-app-menu', JSON.stringify(data));
                 appendMenu(JSON.parse(data));
             });
         }

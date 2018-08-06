@@ -32,7 +32,8 @@ public class UserController {
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public ResponseDTO<List<Category>> menu() {
         List<Category> categories = categoryService.getMenuCategory();
-        categories.addAll(Category.def());
+        categories.add(Category.travel());
+        categories.add(Category.book());
         return ResponseDTO.success(categories);
     }
 }

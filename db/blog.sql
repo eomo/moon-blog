@@ -1,8 +1,10 @@
 CREATE TABLE IF NOT EXISTS `t_category`(
-    `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+    `id` varchar(32) NOT NULL,
     `name` varchar(32) NOT NULL DEFAULT '' COMMENT '名称',
     `desc` varchar(256) NOT NULL DEFAULT '' COMMENT '描述',
     `image` varchar(512) NOT NULL DEFAULT '' COMMENT '描述图片',
+    `format1` varchar(512) DEFAULT '' COMMENT '图片格式化',
+    `format2` varchar(512) DEFAULT '' COMMENT '图片格式化',
     `url` varchar(128) NOT NULL DEFAULT '' COMMENT '跳转链接',
     `menu` TINYINT  NOT NULL DEFAULT 0 COMMENT '是否在菜单显示此分类，1显示0不显示',
     `order_no` INT  NOT NULL DEFAULT 0 COMMENT '排序',
@@ -10,10 +12,11 @@ CREATE TABLE IF NOT EXISTS `t_category`(
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `t_topic`(
-    `id` int unsigned NOT NULL AUTO_INCREMENT,
+    `id` varchar(32) NOT NULL,
     `name` varchar(32) NOT NULL DEFAULT '' COMMENT '名称',
     `desc` varchar(256) NOT NULL DEFAULT '' COMMENT '描述',
     `image` varchar(512) NOT NULL DEFAULT '' COMMENT '描述图片',
+    `format` varchar(512) DEFAULT '' COMMENT '图片格式化',
     PRIMARY KEY (`id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
@@ -93,8 +96,8 @@ CREATE TABLE IF NOT EXISTS `t_article`(
     `publish_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT '发布时间',
     `status` tinyint NOT NULL DEFAULT 0 COMMENT '状态：草稿0，发布1',
     `year` varchar(4) NOT NULL DEFAULT '' COMMENT '年份',
-    `topic_id` varchar(8) NOT NULL DEFAULT '' COMMENT '专题ID',
-    `category_id` varchar(8) NOT NULL DEFAULT '' COMMENT '分类ID',
+    `topic_id` varchar(32) NOT NULL DEFAULT '' COMMENT '专题ID',
+    `category_id` varchar(32) NOT NULL DEFAULT '' COMMENT '分类ID',
     `view_count` INT NOT NULL DEFAULT 0 COMMENT '浏览量',
     `comment_count` INT NOT NULL DEFAULT 0 COMMENT '评论数量',
     `stick` INT NOT NULL DEFAULT 0 COMMENT '置顶标识',
