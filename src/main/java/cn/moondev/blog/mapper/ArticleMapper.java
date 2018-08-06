@@ -26,7 +26,7 @@ public interface ArticleMapper {
 
     List<Article> hot();
 
-    Article statByCategory(@Param("categoryId") String categoryId);
+    Article statByCategory(@Param("categoryId") long categoryId);
 
-    Article statByTopic(@Param("topicId") String topicId);
+    Article statByTopic(@Param("topicId") long topicId);
 }

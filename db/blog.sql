@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS `t_category`(
-    `id` varchar(32) NOT NULL,
+    `id` int unsigned NOT NULL AUTO_INCREMENT,
+    `code` varchar(32) NOT NULL,
     `name` varchar(32) NOT NULL DEFAULT '' COMMENT '名称',
     `desc` varchar(256) NOT NULL DEFAULT '' COMMENT '描述',
     `image` varchar(512) NOT NULL DEFAULT '' COMMENT '描述图片',
@@ -8,16 +9,19 @@ CREATE TABLE IF NOT EXISTS `t_category`(
     `url` varchar(128) NOT NULL DEFAULT '' COMMENT '跳转链接',
     `menu` TINYINT  NOT NULL DEFAULT 0 COMMENT '是否在菜单显示此分类，1显示0不显示',
     `order_no` INT  NOT NULL DEFAULT 0 COMMENT '排序',
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE KEY unique_index_code(`code`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `t_topic`(
-    `id` varchar(32) NOT NULL,
+    `id` int unsigned NOT NULL AUTO_INCREMENT,
+    `code` varchar(32) NOT NULL,
     `name` varchar(32) NOT NULL DEFAULT '' COMMENT '名称',
     `desc` varchar(256) NOT NULL DEFAULT '' COMMENT '描述',
     `image` varchar(512) NOT NULL DEFAULT '' COMMENT '描述图片',
     `format` varchar(512) DEFAULT '' COMMENT '图片格式化',
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE KEY unique_index_code(`code`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `t_book`(

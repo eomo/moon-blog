@@ -22,21 +22,24 @@ public interface CategoryMapper {
     @Select("SELECT * FROM t_category WHERE `name` = #{name} LIMIT 1")
     Category getCategoryByName(@Param("name") String name);
 
-    @Insert("INSERT INTO t_category(`name`,`desc`,`image`,`url`,`menu`,`order_no`,`format1`,`format2`) VALUES (#{item.name},#{item.desc},#{item.image},#{item.url},#{item.menu},#{item.orderNo},#{item.format1},#{item.format2})")
+    @Insert("INSERT INTO t_category(`code`, `name`,`desc`,`image`,`url`,`menu`,`order_no`,`format1`,`format2`) VALUES (#{item.code}, #{item.name},#{item.desc},#{item.image},#{item.url},#{item.menu},#{item.orderNo},#{item.format1},#{item.format2})")
     void create(@Param("item") Category category);
 
-    @Update("UPDATE t_category SET `name` = #{item.name}, `desc` = #{item.desc}, `image` = #{item.image}, `url` = #{item.url}, `menu` = #{item.menu}, `format1` = #{item.format1}, `format2` = #{item.format2} WHERE `id` = #{item.id}")
+    @Update("UPDATE t_category SET `name` = #{item.name}, `desc` = #{item.desc}, `image` = #{item.image}, `url` = #{item.url}, `menu` = #{item.menu}, `format1` = #{item.format1}, `format2` = #{item.format2}, `code` = #{item.code} WHERE `id` = #{item.id}")
     void update(@Param("item") Category category);
 
     @Delete("DELETE FROM t_category where `id` = #{id}")
-    void delete(@Param("id") String id);
+    void delete(@Param("id") long id);
 
     @Update("UPDATE t_category SET `order_no` = #{orderNo} WHERE `id` = #{id}")
-    void updateOrderNo(@Param("orderNo") Integer orderNo, @Param("id") String id);
+    void updateOrderNo(@Param("orderNo") Integer orderNo, @Param("id") long id);
 
     @Select("SELECT COUNT(*) FROM t_category")
     Long count();
 
     @Select("SELECT * FROM t_category WHERE `id` = #{id} LIMIT 1")
-    Category getCategoryById(@Param("id") String id);
+    Category getCategoryById(@Param("id") long id);
+
+    @Select("SELECT * FROM t_category WHERE `code` = #{code} LIMIT 1")
+    Category getCategoryByCode(@Param("code") String code);
 }

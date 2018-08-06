@@ -40,9 +40,9 @@ public class CategoryService {
         if (Objects.nonNull(tmp)) {
             throw MessageCode.ex(MessageCode.NAME_REPEAT);
         }
-        tmp = categoryMapper.getCategoryById(category.id);
+        tmp = categoryMapper.getCategoryByCode(category.code);
         if (Objects.nonNull(tmp)) {
-            throw MessageCode.ex(MessageCode.ID_REPEAT);
+            throw MessageCode.ex(MessageCode.CODE_REPEAT);
         }
         Long count = categoryMapper.count();
         category.orderNo = (int) (count + 1);
@@ -52,20 +52,24 @@ public class CategoryService {
     public void update(Category category) {
         validator(category);
         Category tmp = categoryMapper.getCategoryByName(category.name);
-        if (Objects.nonNull(tmp) && !tmp.id.equalsIgnoreCase(category.id)) {
+        if (Objects.nonNull(tmp) && tmp.id != category.id) {
             throw MessageCode.ex(MessageCode.NAME_REPEAT);
+        }
+        tmp = categoryMapper.getCategoryByCode(category.code);
+        if (Objects.nonNull(tmp) && tmp.id != category.id) {
+            throw MessageCode.ex(MessageCode.CODE_REPEAT);
         }
         categoryMapper.update(category);
     }
 
-    public void delete(String id) {
+    public void delete(long id) {
         categoryMapper.delete(id);
     }
 
     /**
      * 置顶
      */
-    public void stick(String id) {
+    public void stick(long id) {
         List<Category> categories = categoryMapper.getAllCategory();
         int index = 2;
         for (Category category : categories) {
@@ -78,19 +82,19 @@ public class CategoryService {
         }
     }
 
-    public Category getCategoryById(String id) {
-        if ("readming".equalsIgnoreCase(id)) {
+    public Category getCategoryByCode(String code) {
+        if ("readming".equalsIgnoreCase(code)) {
             return Category.book();
         }
-        if ("travel".equalsIgnoreCase(id)) {
+        if ("travel".equalsIgnoreCase(code)) {
             return Category.travel();
         }
-        return categoryMapper.getCategoryById(id);
+        return categoryMapper.getCategoryByCode(code);
     }
 
     private void validator(Category category) {
-        if (Strings.isNullOrEmpty(category.id) || category.id.length() > 32) {
-            throw MessageCode.ex(MessageCode.ID_ERROR);
+        if (Strings.isNullOrEmpty(category.code) || category.code.length() > 32) {
+            throw MessageCode.ex(MessageCode.CODE_ERROR);
         }
         if (Strings.isNullOrEmpty(category.name) || category.name.length() > 32) {
             throw MessageCode.ex(MessageCode.NAME_ERROR);

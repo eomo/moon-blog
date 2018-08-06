@@ -44,13 +44,13 @@ public class BlogController {
     /**
      * 分类页面
      */
-    @RequestMapping(value = "/category/{id}", method = RequestMethod.GET)
-    public String categoryIndex(Model model, @PathVariable String id) {
-        Category category = categoryService.getCategoryById(id);
+    @RequestMapping(value = "/category/{code}", method = RequestMethod.GET)
+    public String categoryIndex(Model model, @PathVariable String code) {
+        Category category = categoryService.getCategoryByCode(code);
         if (Objects.isNull(category)) {
             return "/common/404";
         }
-        Article article = articleService.statByCategory(id);
+        Article article = articleService.statByCategory(category.id);
         category.viewCount = Objects.isNull(article) ? 0 : article.viewCount;
         category.commentCount = Objects.isNull(article) ? 0 : article.commentCount;
         model.addAttribute("category", category);
@@ -72,13 +72,13 @@ public class BlogController {
     /**
      * 专题页
      */
-    @RequestMapping(value = "/topic/{id}", method = RequestMethod.GET)
-    public String topicIndex(Model model, @PathVariable String id) {
-        Topic topic = topicService.getTopicById(id);
+    @RequestMapping(value = "/topic/{code}", method = RequestMethod.GET)
+    public String topicIndex(Model model, @PathVariable String code) {
+        Topic topic = topicService.getTopicByCode(code);
         if (Objects.isNull(topic)) {
             return "/common/404";
         }
-        Article article = articleService.statByTopic(id);
+        Article article = articleService.statByTopic(topic.id);
         topic.viewCount = Objects.isNull(article) ? 0 : article.viewCount;
         topic.commentCount = Objects.isNull(article) ? 0 : article.commentCount;
         model.addAttribute("topic", topic);

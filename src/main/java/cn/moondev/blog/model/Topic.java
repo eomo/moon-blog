@@ -2,7 +2,9 @@ package cn.moondev.blog.model;
 
 public class Topic {
 
-    public String id;
+    public Long id;
+
+    public String code;
 
     /**
      * 名称
@@ -23,8 +25,12 @@ public class Topic {
     public long viewCount;
     public long commentCount;
 
-    public String getId() {
+    public Long getId() {
         return id;
+    }
+
+    public String getCode() {
+        return code;
     }
 
     public String getName() {

@@ -30,9 +30,9 @@ public class TopicService {
         if (Objects.nonNull(tmp)) {
             throw MessageCode.ex(MessageCode.NAME_REPEAT);
         }
-        tmp = mapper.getTopicById(topic.id);
+        tmp = mapper.getTopicByCode(topic.code);
         if (Objects.nonNull(tmp)) {
-            throw MessageCode.ex(MessageCode.ID_REPEAT);
+            throw MessageCode.ex(MessageCode.CODE_REPEAT);
         }
         mapper.create(topic);
     }
@@ -40,23 +40,27 @@ public class TopicService {
     public void update(Topic topic) {
         validator(topic);
         Topic tmp = mapper.getTopicByName(topic.name);
-        if (Objects.nonNull(tmp) && !tmp.id.equalsIgnoreCase(topic.id)) {
+        if (Objects.nonNull(tmp) && tmp.id != topic.id) {
             throw MessageCode.ex(MessageCode.NAME_REPEAT);
+        }
+        tmp = mapper.getTopicByCode(topic.code);
+        if (Objects.nonNull(tmp) && tmp.id != topic.id) {
+            throw MessageCode.ex(MessageCode.CODE_REPEAT);
         }
         mapper.update(topic);
     }
 
-    public void delete(String id) {
+    public void delete(long id) {
         mapper.delete(id);
     }
 
-    public Topic getTopicById(String id) {
-        return mapper.getTopicById(id);
+    public Topic getTopicByCode(String code) {
+        return mapper.getTopicByCode(code);
     }
 
     private void validator(Topic topic) {
-        if (Strings.isNullOrEmpty(topic.id) || topic.id.length() > 32) {
-            throw MessageCode.ex(MessageCode.ID_ERROR);
+        if (Strings.isNullOrEmpty(topic.code) || topic.code.length() > 32) {
+            throw MessageCode.ex(MessageCode.CODE_ERROR);
         }
         if (Strings.isNullOrEmpty(topic.name) || topic.name.length() > 32) {
             throw MessageCode.ex(MessageCode.NAME_ERROR);

@@ -129,11 +129,11 @@ public class ArticleService extends BaseService {
         return Objects.isNull(mapper.findById(id)) ? id : genArticleId();
     }
 
-    public Article statByCategory(String categoryId) {
+    public Article statByCategory(long categoryId) {
         return mapper.statByCategory(categoryId);
     }
 
-    public Article statByTopic(String topicId) {
+    public Article statByTopic(long topicId) {
         return mapper.statByTopic(topicId);
     }
 

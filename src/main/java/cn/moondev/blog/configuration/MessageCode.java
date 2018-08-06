@@ -11,8 +11,8 @@ public enum MessageCode {
     API_ERROR("000005", "未从豆瓣获取到数据，请检查后重试"),
     ARTICLE_NOT_EXISTS("000006", "文章不存在，操作失败"),
     LOGIN_PARAMS_ERROR("000007", "用户名或密码错误"),
-    ID_REPEAT("000008", "编号已存在，请使用其他编号"),
-    ID_ERROR("000009", "编号格式错误，为空或者长度超过32个字符");
+    CODE_REPEAT("000008", "编号已存在，请使用其他编号"),
+    CODE_ERROR("000009", "编号格式错误，为空或者长度超过32个字符");
 
 
     private String code;
