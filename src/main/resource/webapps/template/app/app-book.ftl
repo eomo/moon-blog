@@ -30,7 +30,7 @@
     <div class="block-list">
         <div v-for="item in books" class="book-item">
             <div class="book-image block-image"
-                 v-bind:style="'background-image:url(' + item.doubanImage2 + ')'">
+                 v-bind:style="'background-image:url(' + item.doubanImage3 + ')'">
                 <span class="rating">{{item.rating}}</span>
             </div>
             <div class="book-info">

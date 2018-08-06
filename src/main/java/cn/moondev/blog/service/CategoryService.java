@@ -28,7 +28,7 @@ public class CategoryService {
         List<Category> categories = categoryMapper.getMenuCategory();
         categories.parallelStream().forEach(c -> {
             if (Strings.isNullOrEmpty(c.url)) {
-                c.url = "/category/" + c.id;
+                c.url = "/category/" + c.code;
             }
         });
         return categories;

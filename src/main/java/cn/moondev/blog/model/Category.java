@@ -51,6 +51,7 @@ public class Category {
         category.name = "足迹";
         category.image = "http://apps.moondev.cn/image/road.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim";
         category.desc = "世界那么大，我想去走走。";
+        category.url = "/travel";
         return category;
     }
 
@@ -60,6 +61,7 @@ public class Category {
         category.name = "图书";
         category.image = "http://apps.moondev.cn/image/book3.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim";
         category.desc = "夫读书将以何为哉？辨其大义，以修己治人之体也，察其微言，以善精义入神之用也。";
+        category.url = "/book";
         return category;
     }
 

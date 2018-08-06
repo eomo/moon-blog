@@ -9,7 +9,7 @@
 
 <#include "common/app-header.ftl"/>
 <div class="multi-column-layout-container">
-    <div id="articleEL" class="multi-column-layout multi-column-layout-primary">
+    <div v-cloak id="articleEL" class="multi-column-layout multi-column-layout-primary">
         <div class="block-group u-padding-top50">
             <div class="heading-title">最新文章</div>
             <article v-for="item in articles" class="block-list">
@@ -61,7 +61,7 @@
                 <div class="heading-title">专题</div>
                 <div class="widget-topic-list">
                     <#list topics as topic>
-                        <a href="/topic/${topic.id!}" class="widget-topic-item widthImage"
+                        <a href="/topic/${topic.code!}" class="widget-topic-item widthImage"
                            title="和${topic.name!}有关的文章">
                             <img src="${topic.image!}" alt="${topic.name!}" aria-label="${topic.name!}"
                                  class="widget-topic-image">${topic.name!}

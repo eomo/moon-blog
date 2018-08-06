@@ -2,7 +2,9 @@ package cn.moondev.blog.model;
 
 import cn.moondev.framework.provider.random.RandomStringUtils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Article {
 
@@ -87,7 +89,7 @@ public class Article {
     }
 
     public static String genId() {
-        return "id_" + RandomStringUtils.randomAlphanumeric(7);
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) +  RandomStringUtils.randomNumeric(2);
     }
 
     public String getId() {

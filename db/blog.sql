@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `t_category`(
     `image` varchar(512) NOT NULL DEFAULT '' COMMENT '描述图片',
     `format1` varchar(512) DEFAULT '' COMMENT '图片格式化',
     `format2` varchar(512) DEFAULT '' COMMENT '图片格式化',
-    `url` varchar(128) NOT NULL DEFAULT '' COMMENT '跳转链接',
+    `url` varchar(128) DEFAULT '' COMMENT '跳转链接',
     `menu` TINYINT  NOT NULL DEFAULT 0 COMMENT '是否在菜单显示此分类，1显示0不显示',
     `order_no` INT  NOT NULL DEFAULT 0 COMMENT '排序',
     PRIMARY KEY (`id`),
@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS `t_book`(
     `isbn10` varchar(10) NOT NULL DEFAULT '' COMMENT 'isbn10',
     `isbn13` varchar(13) NOT NULL DEFAULT '' COMMENT 'isbn13',
     `douban_api` varchar(512) NOT NULL DEFAULT '' COMMENT '豆瓣API地址',
-    `author_intro` varchar(512) NOT NULL DEFAULT '' COMMENT '作者介绍',
-    `summary` varchar(1024) NOT NULL DEFAULT '' COMMENT '图书介绍',
+    `author_intro` text COMMENT '作者介绍',
+    `summary` text COMMENT '图书介绍',
     `douban_image1` varchar(512) NOT NULL DEFAULT '' COMMENT '图书图片',
     `douban_image2` varchar(512) NOT NULL DEFAULT '' COMMENT '图书图片',
     `douban_image3` varchar(512) NOT NULL DEFAULT '' COMMENT '图书图片',
@@ -108,7 +108,6 @@ CREATE TABLE IF NOT EXISTS `t_article`(
     PRIMARY KEY (`id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `t_comment`;
 CREATE TABLE `t_comment`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `article_id` varchar(20) NOT NULL DEFAULT '' COMMENT '关联文章ID',

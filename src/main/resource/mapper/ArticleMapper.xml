@@ -72,12 +72,12 @@
         limit 5
     </select>
 
-    <select id="statByCategory" resultMap="articleMap" parameterType="java.lang.String">
+    <select id="statByCategory" resultMap="articleMap" parameterType="java.lang.Long">
         SELECT SUM(view_count) as view_count, SUM(comment_count) as comment_count
         FROM t_article WHERE category_id = #{categoryId}
     </select>
 
-    <select id="statByTopic" resultMap="articleMap" parameterType="java.lang.String">
+    <select id="statByTopic" resultMap="articleMap" parameterType="java.lang.Long">
         SELECT SUM(view_count) as view_count, SUM(comment_count) as comment_count
         FROM t_article WHERE topic_id = #{topicId}
     </select>

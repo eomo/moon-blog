@@ -37,13 +37,13 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseDTO<Void> deleteCategory(@PathVariable String id) {
+    public ResponseDTO<Void> deleteCategory(@PathVariable long id) {
         service.delete(id);
         return ResponseDTO.success();
     }
 
     @RequestMapping(value = "/stick/{id}", method = RequestMethod.POST)
-    public ResponseDTO<Void> stick(@PathVariable String id) {
+    public ResponseDTO<Void> stick(@PathVariable long id) {
         service.stick(id);
         return ResponseDTO.success();
     }

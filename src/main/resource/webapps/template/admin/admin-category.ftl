@@ -5,7 +5,7 @@
     <#include "common/admin-css.ftl"/>
 </head>
 <body>
-<div id="app" class="wrapper">
+<div v-cloak id="app" class="wrapper">
     <#include "common/admin-header.ftl"/>
     <header class="admin-header">
         <div class="single-column-layout single-column-layout-admin u-clearfix">
@@ -19,18 +19,18 @@
         </div>
     </header>
     <div class="single-column-layout single-column-layout-admin admin-container">
-        <b-table striped Fixed :items="categories" :fields="fields">
+        <b-table striped Fixed :items="categories" :fields="fields" show-empty="true" empty-text="暂无数据">
             <template slot="action" slot-scope="row">
                 <b-button @click="showUpdateCategoryModal(row.item)" variant="outline-primary btn-sm">修改</b-button>
                 <b-button @click="showDeleteAlert(row.item)" variant="outline-danger btn-sm">删除</b-button>
-                <b-button @click="stickCategory(item.id)" variant="outline-success btn-sm">置顶</b-button>
+                <b-button @click="stickCategory(row.item.id)" variant="outline-success btn-sm">置顶</b-button>
             </template>
             <template slot="menu" slot-scope="row">
                 {{row.item.menu == 1 ? '是' : '否'}}
             </template>
             <template slot="image" slot-scope="row">
                 <a v-bind:href="row.item.image" target="_blank">
-                    <img v-bind:src="row.item.image + row.item.format2">
+                    <img  style="width: 60px;height: 60px;" v-bind:src="row.item.image + (!!row.item.format2?row.item.format2:'')">
                 </a>
             </template>
             <template slot="url" slot-scope="row">
@@ -67,7 +67,7 @@
                                       label-for="input">
                             <b-form-input type="text"
                                           placeholder="建议使用一个意义的英文单词，比如旅行分类，可以使用travel"
-                                          v-model="category.id"
+                                          v-model="category.code"
                                           :state="state.id"
                                           @change="changeId"
                                           aria-describedby="categoryIdFeedback">
@@ -198,7 +198,7 @@
 
     var upsertCategory = function (e, vm) {
         e.preventDefault();
-        if (!vm.category.id || !/^[0-9a-zA-Z]*$/.test(vm.category.id)) {
+        if (!vm.category.code || !/^[0-9a-zA-Z]*$/.test(vm.category.code)) {
             vm.state.id = false;
             return;
         }
@@ -239,7 +239,7 @@
     };
 
     var stickCategory = function (vm, id) {
-        HttpUtils.post('/v1/category/' + id, null).done(function (data) {
+        HttpUtils.post('/v1/category/stick/' + id, null).done(function (data) {
             getCategoryList(vm);
         });
     };
@@ -257,7 +257,7 @@
                 image: null
             },
             fields: [
-                {key: 'id', label: '分类编号'},
+                {key: 'code', label: '分类编号'},
                 {key: 'name', label: '分类名称'},
                 {key: 'menu', label: '菜单显示'},
                 {key: 'url', label: '跳转'},
@@ -322,7 +322,7 @@
                 }
             },
             changeId: function () {
-                if (!!this.category.id && /^[0-9a-zA-Z]*$/.test(this.category.id)) {
+                if (!!this.category.code && /^[0-9a-zA-Z]*$/.test(this.category.code)) {
                     this.state.id = true;
                 }
             }

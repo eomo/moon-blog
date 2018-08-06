@@ -37,7 +37,7 @@ public class TopicController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseDTO<Void> deleteTopic(@PathVariable String id) {
+    public ResponseDTO<Void> deleteTopic(@PathVariable long id) {
         service.delete(id);
         return ResponseDTO.success();
     }

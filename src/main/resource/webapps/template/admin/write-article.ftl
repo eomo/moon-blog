@@ -12,7 +12,7 @@
 <body>
 <#include "common/admin-header.ftl"/>
 <div class="single-column-layout single-column-layout-admin admin-container">
-    <div id="app" class="wrapper">
+    <div v-cloak id="app" class="wrapper">
         <div class="publish-btn">
             <b-button @click="saveDraft" variant="primary">保存草稿</b-button>
             <b-button @click="publish" variant="success u-margin-left10">发布文章</b-button>

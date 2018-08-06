@@ -10,7 +10,7 @@
 
 <body>
     <#include "common/app-header.ftl"/>
-<div id="articleEL">
+<div v-cloak id="articleEL">
     <header class="single-column-layout single-column-layout-wide topic-header">
         <h1 class="topic-header-title">${topic.name}</h1>
         <div class="entry-meta">

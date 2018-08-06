@@ -10,7 +10,7 @@
 </head>
 <body>
 <#include "common/app-header.ftl"/>
-<div id="articleEL">
+<div v-cloak id="articleEL">
     <header class="category-header">
         <div class="single-column-layout single-column-layout-wide u-clearfix">
             <div class="category-header-logo">

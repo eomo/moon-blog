@@ -5,7 +5,7 @@
     <#include "common/admin-css.ftl"/>
 </head>
 <body>
-<div id="app" class="wrapper">
+<div v-cloak id="app" class="wrapper">
     <#include "common/admin-header.ftl"/>
     <header class="admin-header">
         <div class="single-column-layout single-column-layout-admin u-clearfix">
@@ -48,7 +48,7 @@
                 </b-col>
             </b-row>
         </form>
-        <b-table striped Fixed :items="articles.list" :fields="fields">
+        <b-table striped Fixed :items="articles.list" :fields="fields" show-empty="true" empty-text="暂无数据">
             <template slot="title" slot-scope="row">
                 <a :href="jumpPost(row.item.id)" target="_blank">{{row.item.title}}</a>
             </template>

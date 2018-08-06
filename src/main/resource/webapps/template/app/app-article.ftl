@@ -9,7 +9,7 @@
 </head>
 <body>
 <#include "common/app-header.ftl"/>
-<div class="single-column-layout article-container">
+<div class="single-column-layout single-column-layout-wide article-container">
     <div class="block-group u-padding-top50">
         <header class="entry-header">
             <h2 class="entry-title" itemprop="headline">${article.title}</h2>
@@ -25,7 +25,7 @@
         <article id="article" class="markdown-section"></article>
     </div>
 </div>
-<div class="single-column-layout">
+<div class="single-column-layout single-column-layout-wide">
     <div id="commentEL" v-cloak>
         <meta v-bind:content="'UserComments:'+commentCount" itemprop="interactionCount">
         <h3 class="responses-title">{{commentCount}}条评论</h3>
