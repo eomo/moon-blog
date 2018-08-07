@@ -31,16 +31,22 @@
                 $("#menu").append(li);
             });
         }
-        category = sessionStorage.getItem('x-app-menu');
-        if (!!category && category.length > 0) {
-            self.menus = JSON.parse(category);
-            appendMenu(JSON.parse(category));
-        } else {
-            HttpUtils.get('/v1/user/menu', null).done(function (data) {
-                self.menus = data;
-                sessionStorage.setItem('x-app-menu', JSON.stringify(data));
-                appendMenu(JSON.parse(data));
-            });
+
+        var data = function () {
+            category = JSON.parse(sessionStorage.getItem('x-app-menu'));
+            if (!category || category.length == 0) {
+                $.ajax({
+                    async: false,
+                    type: 'GET',
+                    url: '/v1/user/menu',
+                    success: function (res) {
+                        category = res.data;
+                        sessionStorage.setItem('x-app-menu',JSON.stringify(category));
+                    }
+                });
+            }
+            return category;
         }
+        appendMenu(data());
     }(jQuery));
 </script>
