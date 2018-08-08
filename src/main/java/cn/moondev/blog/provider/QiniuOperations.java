@@ -27,9 +27,10 @@ public class QiniuOperations {
      * @param sourceRemoteUrl 资源地址
      * @param bucket          存储空间名称
      * @param prefix          文件名称前缀，最终的资源名称：前缀 + fileName
+     * @param domain          存储空间绑定的域名，需要以'/'结尾
      * @return
      */
-    public String fetch(String sourceRemoteUrl, String bucket, String prefix) {
+    public String fetch(String sourceRemoteUrl, String bucket, String prefix, String domain) {
         Configuration cfg = new Configuration(Zone.autoZone());
         // bucket资源管理工具类
         Auth auth = Auth.create(accessKey, secretKey);
@@ -38,12 +39,11 @@ public class QiniuOperations {
         String fileName = sourceRemoteUrl.substring(sourceRemoteUrl.lastIndexOf('/'));
         try {
             FetchRet fetchRet = bucketManager.fetch(sourceRemoteUrl, "sources", prefix + fileName);
-            return fetchRet.key;
+            return domain + fetchRet.key;
         } catch (QiniuException e) {
             LOG.error("上传至七牛云失败", e);
             return null;
         }
-
     }
 
 }

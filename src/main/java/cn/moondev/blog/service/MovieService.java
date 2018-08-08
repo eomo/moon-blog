@@ -4,6 +4,7 @@ import cn.moondev.blog.configuration.MessageCode;
 import cn.moondev.blog.dto.QueryDTO;
 import cn.moondev.blog.mapper.MovieMapper;
 import cn.moondev.blog.model.Movie;
+import cn.moondev.blog.provider.QiniuOperations;
 import cn.moondev.framework.model.PaginationDTO;
 import cn.moondev.framework.provider.okhttp3.OkHttpOperations;
 import cn.moondev.framework.provider.okhttp3.OkHttpRequest;
@@ -24,6 +25,8 @@ public class MovieService {
     private MovieMapper mapper;
     @Autowired
     private OkHttpOperations okHttpOperations;
+    @Autowired
+    private QiniuOperations qiniuOperations;
 
     public void add(String doubanId, String remark) {
         Movie movie = getMovieInfoFromDouban(doubanId, remark);
@@ -61,7 +64,15 @@ public class MovieService {
         }
         JSONObject jsonObject = JSONObject.parseObject(content);
         Movie movie = new Movie(jsonObject);
+        movie.smallImage = fetchImage(movie.smallImage);
+        movie.largeImage = fetchImage(movie.largeImage);
+        movie.mediumImage = fetchImage(movie.mediumImage);
         movie.remark = remark;
         return movie;
+    }
+
+    private String fetchImage(String doubanImage) {
+        String qiniuImage = qiniuOperations.fetch(doubanImage, "sources", "movie/image", "http://apps.moondev.cn/");
+        return Strings.isNullOrEmpty(qiniuImage) ? doubanImage : qiniuImage;
     }
 }

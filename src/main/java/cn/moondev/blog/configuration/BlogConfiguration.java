@@ -1,5 +1,6 @@
 package cn.moondev.blog.configuration;
 
+import cn.moondev.blog.provider.QiniuOperations;
 import cn.moondev.blog.service.UserService;
 import cn.moondev.framework.provider.mysql.MybatisConfigurationSupport;
 import cn.moondev.framework.provider.okhttp3.OkHttpOperations;
@@ -20,6 +21,11 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 public class BlogConfiguration {
 
+    @Value("${qiniu.access.key}")
+    private String qiniuAccessKey;
+    @Value("${qiniu.secret.key}")
+    private String qiniuSecretKey;
+
     @Configuration
     public static class WebConfiguration extends WebConfigurationSupport {
 
@@ -34,6 +40,11 @@ public class BlogConfiguration {
     @Bean
     public OkHttpOperations okHttpOperations() {
         return new OkHttpOperations(120, 0);
+    }
+
+    @Bean
+    public QiniuOperations qiniuOperations() {
+        return new QiniuOperations(qiniuAccessKey, qiniuSecretKey);
     }
 
     @Bean

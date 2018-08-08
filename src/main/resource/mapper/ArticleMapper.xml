@@ -12,6 +12,8 @@
         <result column="publish_time" property="publishTime"/>
         <result column="status" property="status"/>
         <result column="image" property="image"/>
+        <result column="mformat" property="mformat"/>
+        <result column="aformat" property="aformat"/>
         <result column="topic_id" property="topicId"/>
         <result column="category_id" property="categoryId"/>
         <result column="view_count" property="viewCount"/>
@@ -65,11 +67,17 @@
     </select>
 
     <select id="hot" resultMap="articleMap">
-        SELECT a.*, c.name as categoryName, t.name as topicName FROM t_article a
-        LEFT JOIN t_category c on a.category_id = c.id
-        LEFT JOIN t_topic t on t.id = a.topic_id
+        SELECT id,title,image,aformat,mformat,view_count,comment_count
+        FROM t_article
         ORDER BY view_count,comment_count DESC
         limit 5
+    </select>
+
+    <select id="all" resultMap="articleMap">
+        SELECT id,title,image,aformat,mformat,comment_count,view_count,publish_time
+        FROM t_article
+        WHERE `status` = 1
+        ORDER BY publish_time DESC
     </select>
 
     <select id="statByCategory" resultMap="articleMap" parameterType="java.lang.Long">
@@ -101,6 +109,8 @@
             `publish_time`,
             `status`,
             `image`,
+            `mformat`,
+            `aformat`,
             `topic_id`,
             `category_id`,
             `view_count`,
@@ -117,6 +127,8 @@
             #{item.publishTime},
             #{item.status},
             #{item.image},
+            #{item.mformat},
+            #{item.aformat},
             #{item.topicId},
             #{item.categoryId},
             #{item.viewCount},
@@ -132,6 +144,8 @@
             `publish_time` = VALUES(publish_time),
             `status` = VALUES(status),
             `image` = VALUES(image),
+            `mformat` = VALUES(mformat),
+            `aformat` = VALUES(aformat),
             `topic_id` = VALUES(topic_id),
             `category_id` = VALUES(category_id),
             `view_count` = VALUES(view_count),

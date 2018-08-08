@@ -19,6 +19,10 @@ public class Article {
      * 文章图片
      */
     public String image;
+    // 首页图片格式
+    public String mformat;
+    // 归档页图片格式
+    public String aformat;
 
     /**
      * 文章内容
@@ -83,13 +87,17 @@ public class Article {
      */
     public int stick;
 
+    public String year() {
+        return String.valueOf(publishTime.getYear());
+    }
+
     public Article() {
         this.title = "";
         this.content = "";
     }
 
     public static String genId() {
-        return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) +  RandomStringUtils.randomNumeric(2);
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + RandomStringUtils.randomNumeric(2);
     }
 
     public String getId() {

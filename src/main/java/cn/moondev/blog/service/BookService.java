@@ -5,6 +5,7 @@ import cn.moondev.blog.dto.BookDTO;
 import cn.moondev.blog.dto.QueryDTO;
 import cn.moondev.blog.mapper.BookMapper;
 import cn.moondev.blog.model.Book;
+import cn.moondev.blog.provider.QiniuOperations;
 import cn.moondev.framework.model.PaginationDTO;
 import cn.moondev.framework.provider.okhttp3.OkHttpOperations;
 import cn.moondev.framework.provider.okhttp3.OkHttpRequest;
@@ -25,6 +26,8 @@ public class BookService {
     private BookMapper mapper;
     @Autowired
     private OkHttpOperations okHttpOperations;
+    @Autowired
+    private QiniuOperations qiniuOperations;
 
     public void add(BookDTO dto) {
         Book book = getBookInfoFromDouban(dto);
@@ -70,10 +73,18 @@ public class BookService {
         }
         JSONObject jsonObject = JSONObject.parseObject(content);
         Book book = new Book(jsonObject);
+        book.smallImage = fetchImage(book.smallImage);
+        book.largeImage = fetchImage(book.largeImage);
+        book.mediumImage = fetchImage(book.mediumImage);
         book.jingdongUrl = Strings.isNullOrEmpty(dto.jingdongUrl) ? "" : dto.jingdongUrl;
         book.duokanUrl = Strings.isNullOrEmpty(dto.duokanUrl) ? "" : dto.duokanUrl;
         book.year = Strings.isNullOrEmpty(dto.year) ? "" : dto.year;
         book.remark = Strings.isNullOrEmpty(dto.remark) ? "" : dto.remark;
         return book;
+    }
+
+    private String fetchImage(String doubanImage) {
+        String qiniuImage = qiniuOperations.fetch(doubanImage, "sources", "book/image", "http://apps.moondev.cn/");
+        return Strings.isNullOrEmpty(qiniuImage) ? doubanImage : qiniuImage;
     }
 }

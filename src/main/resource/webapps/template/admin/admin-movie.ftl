@@ -184,8 +184,8 @@
                 {key: 'countries', label: '地区'},
                 {key: 'directors', label: '导演'},
                 {key: 'casts', label: '主演'},
-                {key: 'year', label: '年份'},
-                {key: 'action', label: '操作'}
+                {key: 'year', label: '年份',thStyle: {width:'5%'}},
+                {key: 'action', label: '操作',thStyle: {width:'10%'}}
             ],
             isUpdated: false,
             movies: null,

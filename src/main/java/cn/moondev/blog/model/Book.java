@@ -87,12 +87,9 @@ public class Book {
     /**
      * 图书图片
      */
-    public String doubanImage1;
-    public String doubanImage2;
-    public String doubanImage3;
-    public String backupImage1;
-    public String backupImage2;
-    public String backupImage3;
+    public String smallImage;
+    public String largeImage;
+    public String mediumImage;
 
     /**
      * 豆瓣页面
@@ -137,12 +134,9 @@ public class Book {
         this.authorIntro = json.getString("author_intro");
         this.summary = json.getString("summary");
         JSONObject images = json.getJSONObject("images");
-        this.doubanImage1 = images.getString("small");
-        this.doubanImage2 = images.getString("large");
-        this.doubanImage3 = images.getString("medium");
-        this.backupImage1 = "";
-        this.backupImage2 = "";
-        this.backupImage3 = "";
+        this.smallImage = images.getString("small");
+        this.largeImage = images.getString("large");
+        this.mediumImage = images.getString("medium");
         this.jingdongUrl = "";
         this.duokanUrl = "";
         this.doubanUrl = json.getString("alt");

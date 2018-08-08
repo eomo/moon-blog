@@ -109,6 +109,15 @@ public class BlogController {
         return "/app/app-movie";
     }
 
+    /**
+     * 归档
+     */
+    @RequestMapping(value = "/archive", method = RequestMethod.GET)
+    public String archiveIndex(Model model) {
+        model.addAttribute("amap", articleService.archive());
+        return "/app/archive";
+    }
+
 
     /**
      * 文章详情

@@ -234,8 +234,8 @@
                 {key: 'author', label: '作者'},
                 {key: 'tag', label: '标签'},
                 {key: 'publisher', label: '出版社'},
-                {key: 'pubdate', label: '出版日期'},
-                {key: 'action', label: '操作'}
+                {key: 'pubdate', label: '出版日期',thStyle: {width:'10%'}},
+                {key: 'action', label: '操作',thStyle: {width:'10%'}}
             ],
             books: null,
             book: {},

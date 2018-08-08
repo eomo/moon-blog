@@ -62,6 +62,33 @@
                     </b-form-group>
                 </b-col>
             </b-row>
+
+            <b-row>
+                <b-col>
+                    <b-form-group horizontal
+                                  :label-cols="2"
+                                  label="文章列表："
+                                  label-for="input">
+                        <b-form-input type="text"
+                                      placeholder="文章列表配图显示,建议尺寸:140x120，示例:?both/80x80"
+                                      v-model="article.mformat">
+                        </b-form-input>
+                    </b-form-group>
+                </b-col>
+                <b-col>
+                    <b-form-group horizontal
+                                  :label-cols="2"
+                                  label="归档页："
+                                  label-for="input">
+                        <b-form-input type="text"
+                                      placeholder="归档页图片显示,建议尺寸:48x48，示例:?both/80x80"
+                                      v-model="article.aformat">
+                        </b-form-input>
+                    </b-form-group>
+                </b-col>
+            </b-row>
+
+
             <b-row>
                 <b-col>
                     <b-form-group horizontal
@@ -101,7 +128,7 @@
         autoDownloadFontAwesome: false,
         spellChecker: false,
         autosave: {
-            enabled: true,
+            enabled: false,
             unique_id: "editor",
         },
         placeholder: '在此编辑你的文章'
@@ -126,7 +153,9 @@
     };
 
     var getArticle = function (vm) {
-        HttpUtils.get("/v1/article/${article_id}",null).done(function (data) {
+        HttpUtils.get("/v1/article/${article_id}", null).done(function (data) {
+            data.mformat = !!data.mformat ? data.mformat : '?imageView2/2/w/140/h/120/format/webp';
+            data.aformat = !!data.aformat ? data.aformat : '?imageView2/2/w/48/h/48/format/webp';
             vm.article = data;
             if (!!data.id) {
                 mde.value(data.content);
@@ -153,7 +182,10 @@
     var app = new Vue({
         el: '#app',
         data: {
-            article: {},
+            article: {
+                mformat: '?imageView2/2/w/140/h/120/format/webp',
+                aformat: '?imageView2/2/w/48/h/48/format/webp'
+            },
             categories: [],
             topics: []
         },

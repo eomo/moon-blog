@@ -100,12 +100,12 @@
         data: {
             condition: {},
             fields: [
-                {key: 'title', label: '文章标题'},
-                {key: 'categoryName', label: '分类目录'},
-                {key: 'topicName', label: '专题'},
-                {key: 'status', label: '类别'},
-                {key: 'updatedTime', label: '最后修改日期'},
-                {key: 'action', label: '操作'}
+                {key: 'title', label: '文章标题', thStyle: {width:'40%'}},
+                {key: 'categoryName', label: '分类目录', thStyle: {width:'10%'}},
+                {key: 'topicName', label: '专题', thStyle: {width:'10%'}},
+                {key: 'status', label: '类别', thStyle: {width:'10%'}},
+                {key: 'updatedTime', label: '最后修改日期', thStyle: {width:'20%'}},
+                {key: 'action', label: '操作', thStyle: {width:'10%'}}
             ],
             articles: null
         },

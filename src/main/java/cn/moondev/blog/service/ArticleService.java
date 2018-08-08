@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * 公司简介
@@ -137,4 +139,8 @@ public class ArticleService extends BaseService {
         return mapper.statByTopic(topicId);
     }
 
+    public Map<String, List<Article>> archive() {
+        List<Article> articles = mapper.all();
+        return articles.stream().collect(Collectors.groupingBy(Article::year));
+    }
 }

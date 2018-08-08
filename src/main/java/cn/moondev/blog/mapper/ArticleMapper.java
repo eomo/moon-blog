@@ -29,4 +29,6 @@ public interface ArticleMapper {
     Article statByCategory(@Param("categoryId") long categoryId);
 
     Article statByTopic(@Param("topicId") long topicId);
+
+    List<Article> all();
 }

@@ -18,12 +18,9 @@
         <result column="douban_api" property="doubanApi"/>
         <result column="author_intro" property="authorIntro"/>
         <result column="summary" property="summary"/>
-        <result column="douban_image1" property="doubanImage1"/>
-        <result column="douban_image2" property="doubanImage2"/>
-        <result column="douban_image3" property="doubanImage3"/>
-        <result column="backup_image1" property="backupImage1"/>
-        <result column="backup_image2" property="backupImage2"/>
-        <result column="backup_image3" property="backupImage3"/>
+        <result column="small_image" property="smallImage"/>
+        <result column="large_image" property="largeImage"/>
+        <result column="medium_image" property="mediumImage"/>
         <result column="douban_url" property="doubanUrl"/>
         <result column="jingdong_url" property="jingdongUrl"/>
         <result column="duokan_url" property="duokanUrl"/>
@@ -44,7 +41,7 @@
     </select>
 
     <select id="find" resultMap="bookMap">
-        SELECT id,title,author,rating,tag,publisher,pubdate,douban_image3,remark,douban_url,jingdong_url,duokan_url,`year`,douban_id
+        SELECT id,title,author,rating,tag,publisher,pubdate,medium_image,remark,douban_url,jingdong_url,duokan_url,`year`,douban_id
         FROM t_book
         WHERE 1 = 1
         <if test='title != null'>
@@ -87,12 +84,9 @@
             `douban_api`,
             `author_intro`,
             `summary`,
-            `douban_image1`,
-            `douban_image2`,
-            `douban_image3`,
-            `backup_image1`,
-            `backup_image2`,
-            `backup_image3`,
+            `small_image`,
+            `large_image`,
+            `medium_image`,
             `douban_url`,
             `jingdong_url`,
             `duokan_url`,
@@ -114,12 +108,9 @@
             #{item.doubanApi},
             #{item.authorIntro},
             #{item.summary},
-            #{item.doubanImage1},
-            #{item.doubanImage2},
-            #{item.doubanImage3},
-            #{item.backupImage1},
-            #{item.backupImage2},
-            #{item.backupImage3},
+            #{item.smallImage},
+            #{item.largeImage},
+            #{item.mediumImage},
             #{item.doubanUrl},
             #{item.jingdongUrl},
             #{item.duokanUrl},
@@ -141,12 +132,9 @@
             `douban_api` = VALUES(douban_api),
             `author_intro` = VALUES(author_intro),
             `summary` = VALUES(summary),
-            `douban_image1` = VALUES(douban_image1),
-            `douban_image2` = VALUES(douban_image2),
-            `douban_image3` = VALUES(douban_image3),
-            `backup_image1` = VALUES(backup_image1),
-            `backup_image2` = VALUES(backup_image2),
-            `backup_image3` = VALUES(backup_image3),
+            `small_image` = VALUES(small_image),
+            `large_image` = VALUES(large_image),
+            `medium_image` = VALUES(medium_image),
             `douban_url` = VALUES(douban_url),
             `jingdong_url` = VALUES(jingdong_url),
             `duokan_url` = VALUES(duokan_url),

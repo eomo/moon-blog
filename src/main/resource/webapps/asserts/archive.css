@@ -38,6 +38,11 @@
     vertical-align: top;
 }
 
+.archive-item img {
+    width: 48px;
+    height: 48px;
+}
+
 .archive-list-image {
     border-radius: 3px;
     margin-left: 10px;

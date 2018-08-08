@@ -42,12 +42,9 @@ public class Movie {
     /**
      * 电影海报图
      */
-    public String doubanImage1;
-    public String doubanImage2;
-    public String doubanImage3;
-    public String backupImage1;
-    public String backupImage2;
-    public String backupImage3;
+    public String smallImage;
+    public String largeImage;
+    public String mediumImage;
 
     /**
      * 条目分类
@@ -128,26 +125,23 @@ public class Movie {
         this.title = json.getString("title");
         this.originalTitle = json.getString("original_title");
         this.aka = parseJsonStringArray(json.getJSONArray("aka"));
-        this.subtype = json.getOrDefault("subtype","").toString();
+        this.subtype = json.getOrDefault("subtype", "").toString();
         this.directors = parsePerson(json.getJSONArray("directors"));
         this.casts = parsePerson(json.getJSONArray("casts"));
         this.doubanId = json.getString("id");
         this.writers = parsePerson(json.getJSONArray("writers"));
-        this.website = json.getOrDefault("website","").toString();
-        this.pubdates = json.getOrDefault("pubdates","").toString();
-        this.mainlandPubdate = json.getOrDefault("mainland_pubdate","").toString();
-        this.languages = json.getOrDefault("languages","").toString();
-        this.durations = json.getOrDefault("durations","").toString();
+        this.website = json.getOrDefault("website", "").toString();
+        this.pubdates = json.getOrDefault("pubdates", "").toString();
+        this.mainlandPubdate = json.getOrDefault("mainland_pubdate", "").toString();
+        this.languages = json.getOrDefault("languages", "").toString();
+        this.durations = json.getOrDefault("durations", "").toString();
         this.summary = json.getString("summary");
         JSONObject images = json.getJSONObject("images");
-        this.doubanImage1 = images.getString("small");
-        this.doubanImage2 = images.getString("large");
-        this.doubanImage3 = images.getString("medium");
-        this.backupImage1 = "";
-        this.backupImage2 = "";
-        this.backupImage3 = "";
+        this.smallImage = images.getString("small");
+        this.largeImage = images.getString("large");
+        this.mediumImage = images.getString("medium");
         this.doubanUrl = json.getString("alt");
-        this.year = json.getOrDefault("year","").toString();
+        this.year = json.getOrDefault("year", "").toString();
         this.genres = parseJsonStringArray(json.getJSONArray("genres"));
         this.countries = parseJsonStringArray(json.getJSONArray("countries"));
     }
