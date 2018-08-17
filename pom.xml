@@ -9,7 +9,7 @@
     <version>1.0</version>
 
     <properties>
-        <start-class>cn.moondev.blog.BlogApplication</start-class>
+        <start-class>cn.moondev.blog.start.BlogApplication</start-class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.0.3.RELEASE</spring-boot.version>

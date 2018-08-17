@@ -1,4 +1,4 @@
-package cn.moondev.spider;
+package cn.moondev.blog.start;
 
 import cn.moondev.framework.provider.spring.SpringBeanHelper;
 import org.slf4j.Logger;
