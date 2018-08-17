@@ -1,3 +1,4 @@
+create database blog character set utf8mb4 collate utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS `t_category`(
     `id` int unsigned NOT NULL AUTO_INCREMENT,
     `code` varchar(32) NOT NULL,

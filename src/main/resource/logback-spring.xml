@@ -2,7 +2,7 @@
 
     <logger name="org.springframework.web" level="debug"/>
     <logger name="cn.moondev.framework" level="debug"/>
-    <logger name="cn.moondev.spider" level="info"/>
+    <logger name="cn.moondev.blog" level="info"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
