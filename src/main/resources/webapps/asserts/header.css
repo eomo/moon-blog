@@ -102,6 +102,7 @@ a {
 }
 
 .site-info {
+	background-image: url("//apps.moondev.cn/image/home/logo_b.jpg");
 	background-repeat: no-repeat;
 	background-size: auto 18px;
 	background-position: 100%;
@@ -139,6 +140,10 @@ a {
 	z-index: 3;
 	display: inline-block;
 	margin: 10px 0 0 10px
+}
+
+.logo img {
+	margin-top: 3px;
 }
 
 .header-center {

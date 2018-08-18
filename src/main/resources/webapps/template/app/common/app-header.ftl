@@ -2,7 +2,7 @@
     <div class="u-float-left">
         <h1 class="site-title u-float-left">
             <a href="/" class="logo" title="no pursuit coder">
-                <img src="//apps.moondev.cn/image/home/logo2.png" width=100 alt="moon blog"/>
+                <img src="//apps.moondev.cn/image/home/logo2.png" width=80 alt="moon blog"/>
             </a>
         </h1>
     </div>
