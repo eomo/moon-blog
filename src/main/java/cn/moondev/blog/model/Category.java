@@ -47,6 +47,7 @@ public class Category {
 
     public static Category travel() {
         Category category = new Category();
+        category.id = -1L;
         category.code = "travel";
         category.name = "足迹";
         category.image = "http://apps.moondev.cn/image/road.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim";
@@ -57,6 +58,7 @@ public class Category {
 
     public static Category book() {
         Category category = new Category();
+        category.id = -2L;
         category.code = "book";
         category.name = "图书";
         category.image = "http://apps.moondev.cn/image/book3.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim";

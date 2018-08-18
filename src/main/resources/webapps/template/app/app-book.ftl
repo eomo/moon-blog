@@ -13,7 +13,7 @@
 <header class="category-header">
     <div class="single-column-layout single-column-layout-wide u-clearfix">
         <div class="category-header-logo">
-            <a href="https://fatesinger.com/zine">
+            <a href="/book">
                 <img class="category-header-image"
                      src="http://apps.moondev.cn/image/book3.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim">
             </a>

@@ -15,8 +15,8 @@
 <div class="single-column-layout single-column-layout-wide">
     <#list categories as item>
         <div class="list list--borderedBottom">
-            <a class="listItem u-clearfix u-block" href="/category/${item.id}">
-                <img class="list-avatar" src="${item.image}${item.format2}" width="40" height="40">
+            <a class="listItem u-clearfix u-block" href="${item.url!}">
+                <img class="list-avatar" src="${item.image}${item.format2!}" width="40" height="40">
                 <div class="list-meta">
                     <div class="list-title">${item.name}</div>
                     <div class="list-description">${item.desc!}</div>

@@ -21,7 +21,13 @@ public class CategoryService {
     private CategoryMapper categoryMapper;
 
     public List<Category> getAllCategory() {
-        return categoryMapper.getAllCategory();
+        List<Category> categories = categoryMapper.getAllCategory();
+        categories.parallelStream().forEach(c -> {
+            if (Strings.isNullOrEmpty(c.url)) {
+                c.url = "/category/" + c.code;
+            }
+        });
+        return categories;
     }
 
     public List<Category> getMenuCategory() {
