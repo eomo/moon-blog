@@ -28,6 +28,7 @@ public class Article {
      * 文章内容
      */
     public String content;
+    public String mark;
 
     /**
      * 文章摘要
@@ -170,5 +171,17 @@ public class Article {
 
     public String getPublishTimeDesc() {
         return publishTimeDesc;
+    }
+
+    public String getMformat() {
+        return mformat;
+    }
+
+    public String getAformat() {
+        return aformat;
+    }
+
+    public String getMark() {
+        return mark;
     }
 }

@@ -124,12 +124,16 @@
 <#include "common/app-footer.ftl"/>
 </body>
 <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
-<script src="http://apps.moondev.cn/js/hyperdown.js"></script>
+<script src="/webapps/asserts/js/hyperdown.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/emojione/2.2.7/lib/js/emojione.min.js"></script>
 <script src="http://apps.moondev.cn/js/emojionearea.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
+    var parser = new HyperDown;
+    var html = parser.makeHtml(decodeURIComponent(escape(atob('${article.content}'))));
+    document.getElementById("article").innerHTML = html;
+
     var vm = new Vue({
         el: '#commentEL',
         data: {
@@ -202,8 +206,5 @@
             }
         }
     });
-    var parser = new HyperDown,
-        html = parser.makeHtml(decodeURIComponent(escape(atob('${article.content}'))));
-    document.getElementById("article").innerHTML = html;
 </script>
 </html>

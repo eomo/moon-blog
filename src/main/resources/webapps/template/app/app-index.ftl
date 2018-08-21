@@ -46,7 +46,7 @@
                 <div class="heading-title">关于博主</div>
                 <div class="widget-card">
                     <div class="widget-card-imageWrapper">
-                        <img src="http://pic.moondev.cn//image/personal/avastar.jpeg" class="avatar" width="32"
+                        <img src="/webapps/asserts/image/avastar.jpg" class="avatar" width="32"
                              height="32">
                     </div>
                     <div class="widget-card-content">CHEN川</div>
