@@ -1,7 +1,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>管理后台 - 专题管理</title>
+    <title>管理后台 - 专题管理 - HICSC</title>
+    <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <#include "common/admin-css.ftl"/>
 </head>
 <body>

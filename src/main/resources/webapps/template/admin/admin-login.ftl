@@ -2,12 +2,12 @@
 <html lang="en-us">
 <head>
     <meta charset="UTF-8">
-    <title>管理后台 - 登录</title>
+    <title>管理后台 - 登录 - HICSC</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <#include "common/admin-css.ftl"/>
     <style>
         body {
-            background-image: url("http://apps.moondev.cn/image/login_bg3.jpg");
             background-repeat: no-repeat;
             background-position: center 0;
             background-size: cover;

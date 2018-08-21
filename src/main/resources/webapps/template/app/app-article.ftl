@@ -1,9 +1,10 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>${article.title} - MoonBlog</title>
+    <title>${article.title} - HICSC</title>
     <meta name="description" content="${article.title} - 作者: chen.chuan,首发于HICSC.COM">
     <#include "common/app-css.ftl"/>
+    <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link href="https://cdn.bootcss.com/emojione/2.2.7/assets/css/emojione.min.css" rel="stylesheet">
     <link href="http://apps.moondev.cn/css/emojionearea.min.css" rel="stylesheet">
 </head>

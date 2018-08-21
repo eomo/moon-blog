@@ -2,9 +2,10 @@
 <html lang="en-us">
 <head>
     <meta charset="UTF-8">
-    <title>管理后台 - 编辑文章</title>
+    <title>管理后台 - 编辑文章 - HICSC</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <#include "common/admin-css.ftl"/>
+    <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/webapps/asserts/editor.css" media="screen">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">

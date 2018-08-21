@@ -102,7 +102,7 @@ a {
 }
 
 .site-info {
-	background-image: url("//apps.moondev.cn/image/home/logo_b.jpg");
+	background-image: url("/webapps/asserts/image/logo_b.jpg");
 	background-repeat: no-repeat;
 	background-size: auto 18px;
 	background-position: 100%;

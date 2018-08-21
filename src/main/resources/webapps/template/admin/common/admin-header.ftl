@@ -1,8 +1,8 @@
 <header class="header header-border">
     <div class="u-float-left">
         <h1 class="site-title u-float-left">
-            <a href="http://www.moondev.cn" class="logo" title="no pursuit coder">
-                <img src="//apps.moondev.cn/image/home/logo2.png" width=38 alt="moon blog"/>
+            <a href="//hicsc.com" class="logo" title="no pursuit coder">
+                <img src="/webapps/asserts/image/logo.png" width=38 alt="HICSC.COM"/>
             </a>
         </h1>
     </div>
