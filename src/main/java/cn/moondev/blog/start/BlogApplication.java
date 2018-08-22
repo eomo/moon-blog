@@ -1,6 +1,6 @@
 package cn.moondev.blog.start;
 
-import cn.moondev.framework.provider.spring.SpringBeanHelper;
+import cn.moondev.framework.provider.spring.SpringBeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.core.env.Environment;
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(value = "cn.moondev.blog",basePackageClasses = SpringBeanHelper.class)
+@ComponentScan(value = "cn.moondev.blog",basePackageClasses = SpringBeanUtils.class)
 public class BlogApplication implements CommandLineRunner {
     private static final Logger LOG = LoggerFactory.getLogger(BlogApplication.class);
 

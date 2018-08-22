@@ -7,6 +7,7 @@ import cn.moondev.blog.service.ArticleService;
 import cn.moondev.blog.service.CategoryService;
 import cn.moondev.blog.service.TopicService;
 import cn.moondev.framework.annotation.Permit;
+import cn.moondev.framework.provider.markdown.MarkdownOperations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,8 @@ public class BlogController {
     private CategoryService categoryService;
     @Autowired
     private TopicService topicService;
+    @Autowired
+    private MarkdownOperations markdownOperations;
 
     /**
      * 首页
@@ -129,7 +132,7 @@ public class BlogController {
         if (Objects.isNull(article)) {
             article = new Article();
         }
-        article.content = Base64.getEncoder().encodeToString(article.content.getBytes("utf-8"));
+        article.content = markdownOperations.markdown2Html(article.content);
         model.addAttribute("article", article);
         return "/app/app-article";
     }

@@ -2,9 +2,10 @@ package cn.moondev.blog.configuration;
 
 import cn.moondev.blog.provider.QiniuOperations;
 import cn.moondev.blog.service.UserService;
+import cn.moondev.framework.provider.markdown.MarkdownOperations;
 import cn.moondev.framework.provider.mysql.MybatisConfigurationSupport;
 import cn.moondev.framework.provider.okhttp3.OkHttpOperations;
-import cn.moondev.framework.provider.spring.SpringBeanHelper;
+import cn.moondev.framework.provider.spring.SpringBeanUtils;
 import cn.moondev.framework.provider.web.ExceptionInterceptor;
 import cn.moondev.framework.provider.web.WebConfigurationSupport;
 import cn.moondev.framework.provider.web.XssFilter;
@@ -33,13 +34,18 @@ public class BlogConfiguration {
         protected void addInterceptors(InterceptorRegistry registry) {
             super.addInterceptors(registry);
             registry.addInterceptor(new ExceptionInterceptor());
-            registry.addInterceptor(new AuthenticationInterceptor(SpringBeanHelper.getBean(UserService.class)));
+            registry.addInterceptor(new AuthenticationInterceptor(SpringBeanUtils.getBean(UserService.class)));
         }
     }
 
     @Bean
     public OkHttpOperations okHttpOperations() {
         return new OkHttpOperations(120, 0);
+    }
+
+    @Bean
+    public MarkdownOperations markdownOperations() {
+        return new MarkdownOperations();
     }
 
     @Bean
