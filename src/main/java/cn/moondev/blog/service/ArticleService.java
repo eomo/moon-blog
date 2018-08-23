@@ -118,6 +118,8 @@ public class ArticleService extends BaseService {
         tmp.publishTime = LocalDateTime.now();
         tmp.status = 1;
         mapper.upsert(tmp);
+        // 如果重新发布文章，清理缓存中的内容
+        articleCache.invalidate(article.id);
         return article.id;
     }
 
