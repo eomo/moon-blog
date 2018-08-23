@@ -5,7 +5,9 @@ import cn.moondev.blog.dto.QueryDTO;
 import cn.moondev.blog.mapper.ArticleMapper;
 import cn.moondev.blog.model.Article;
 import cn.moondev.framework.model.PaginationDTO;
+import cn.moondev.framework.provider.markdown.MarkdownOperations;
 import com.google.common.base.Strings;
+import com.google.common.cache.Cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 /**
@@ -27,6 +31,10 @@ public class ArticleService extends BaseService {
 
     @Autowired
     private ArticleMapper mapper;
+    @Autowired
+    private Cache<String, String> articleCache;
+    @Autowired
+    private MarkdownOperations markdownOperations;
 
     public PaginationDTO<Article> page(QueryDTO dto) {
         PaginationDTO<Article> pagination = PaginationDTO.create(dto.pager, dto.size);
@@ -68,9 +76,13 @@ public class ArticleService extends BaseService {
             throw MessageCode.ex(MessageCode.ARTICLE_NOT_EXISTS);
         }
         tmp.title = article.title;
+        tmp.summary = article.summary;
         tmp.content = article.content;
         tmp.topicId = article.topicId;
         tmp.categoryId = article.categoryId;
+        tmp.image = article.image;
+        tmp.aformat = article.aformat;
+        tmp.mformat = article.mformat;
         tmp.updatedTime = LocalDateTime.now();
         tmp.status = 0;
         mapper.upsert(tmp);
@@ -95,9 +107,13 @@ public class ArticleService extends BaseService {
             throw MessageCode.ex(MessageCode.ARTICLE_NOT_EXISTS);
         }
         tmp.title = article.title;
+        tmp.summary = article.summary;
         tmp.content = article.content;
         tmp.topicId = article.topicId;
         tmp.categoryId = article.categoryId;
+        tmp.image = article.image;
+        tmp.aformat = article.aformat;
+        tmp.mformat = article.mformat;
         tmp.updatedTime = LocalDateTime.now();
         tmp.publishTime = LocalDateTime.now();
         tmp.status = 1;
@@ -106,7 +122,13 @@ public class ArticleService extends BaseService {
     }
 
     public Article detail(String id) {
-        return mapper.findDetailById(id);
+        viewCountxx(id);
+        Article article = mapper.findDetailById(id);
+        if (Objects.isNull(article)) {
+            article = new Article();
+        }
+        article.content = getArticleContent(id);
+        return article;
     }
 
     /**
@@ -142,5 +164,21 @@ public class ArticleService extends BaseService {
     public Map<String, List<Article>> archive() {
         List<Article> articles = mapper.all();
         return articles.stream().collect(Collectors.groupingBy(Article::year));
+    }
+
+    private String getArticleContent(String id) {
+        try {
+            String content = articleCache.get(id, new Callable<String>() {
+                @Override
+                public String call() throws Exception {
+                    Article article = mapper.findContentById(id);
+                    return markdownOperations.markdown2Html(article.content);
+                }
+            });
+            return content;
+        } catch (ExecutionException e) {
+            LOG.error("获取文章内容出现异常", e);
+            return "您浏览的文章已删除，请阅读其他文章或联系作者";
+        }
     }
 }

@@ -59,6 +59,11 @@ public class BlogConfiguration {
     }
 
     @Bean
+    public Cache<String, String> articleCache() {
+        return CacheBuilder.newBuilder().maximumSize(50).expireAfterAccess(5, TimeUnit.HOURS).build();
+    }
+
+    @Bean
     public XssFilter xssFilter() {
         return new XssFilter();
     }

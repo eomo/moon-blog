@@ -24,14 +24,19 @@
     </resultMap>
 
     <select id="findById" resultMap="articleMap" parameterType="java.lang.String">
-        SELECT * FROM t_article WHERE `id` = #{id}
+        SELECT id,title,image,aformat,mformat,comment_count,view_count,publish_time FROM t_article WHERE `id` = #{id}
     </select>
 
     <select id="findDetailById" resultMap="articleMap" parameterType="java.lang.String">
-        SELECT a.*, c.name as categoryName, t.name as topicName FROM t_article a
+        SELECT a.id,a.title,a.comment_count,a.view_count,a.publish_time, c.name as categoryName, t.name as topicName
+        FROM t_article a
         LEFT JOIN t_category c on a.category_id = c.id
         LEFT JOIN t_topic t on t.id = a.topic_id
         WHERE a.`id` = #{id}
+    </select>
+
+    <select id="findContentById" resultMap="articleMap" parameterType="java.lang.String">
+        SELECT content FROM t_article WHERE `id` = #{id}
     </select>
 
     <select id="count" resultType="java.lang.Long" parameterType="cn.moondev.blog.dto.QueryDTO">

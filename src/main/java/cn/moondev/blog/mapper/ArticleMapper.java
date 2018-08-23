@@ -16,6 +16,8 @@ public interface ArticleMapper {
 
     Article findDetailById(@Param("id") String id);
 
+    Article findContentById(@Param("id") String id);
+
     Long count(@Param("item") QueryDTO dto);
 
     List<Article> find(@Param("item") QueryDTO dto);
