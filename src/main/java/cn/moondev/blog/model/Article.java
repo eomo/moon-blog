@@ -19,7 +19,7 @@ public class Article {
     /**
      * 文章图片
      */
-    public String image;
+    public String image = "";
     // 首页图片格式
     public String mformat;
     // 归档页图片格式
@@ -33,12 +33,12 @@ public class Article {
     /**
      * 文章摘要
      */
-    public String summary;
+    public String summary = "";
 
     /**
      * 文章作者，暂未使用
      */
-    public String author;
+    public String author = "";
 
     /**
      * 创建时间
@@ -87,6 +87,11 @@ public class Article {
      * 置顶标志：1表示置顶，0表示未置顶
      */
     public int stick;
+
+    /**
+     * 页面标识，比如：ABOUTME，普通文章属性为空
+     */
+    public String badge;
 
     public String year() {
         return String.valueOf(publishTime.getYear());

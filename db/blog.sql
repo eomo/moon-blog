@@ -104,6 +104,7 @@ CREATE TABLE IF NOT EXISTS `t_article`(
     `category_id` varchar(32) NOT NULL DEFAULT '' COMMENT '分类ID',
     `view_count` INT NOT NULL DEFAULT 0 COMMENT '浏览量',
     `comment_count` INT NOT NULL DEFAULT 0 COMMENT '评论数量',
+    `badge` VARCHAR(16) COMMIT '特殊标记，用于标识某些特殊的页面',
     `stick` INT NOT NULL DEFAULT 0 COMMENT '置顶标识',
     PRIMARY KEY (`id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4;

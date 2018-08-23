@@ -24,7 +24,7 @@ public class ArticleController {
     public ResponseDTO<Article> page(@PathVariable String id) {
         Article article = new Article();
         if (!"id_NuLlaRtIclE".equalsIgnoreCase(id)) {
-            article = service.detail(id);
+            article = service.detail4Admin(id);
         }
         return ResponseDTO.success(article);
     }
@@ -49,6 +49,31 @@ public class ArticleController {
     @RequestMapping(value = "/publish", method = RequestMethod.POST)
     public ResponseDTO<String> publish(@RequestBody Article article) {
         return ResponseDTO.success(service.publish(article));
+    }
+
+    /**
+     * 删除文章
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseDTO<Void> delete(@PathVariable String id) {
+        service.delete(id);
+        return ResponseDTO.success();
+    }
+
+    /**
+     * 保存特殊文章
+     */
+    @RequestMapping(value = "/badge", method = RequestMethod.POST)
+    public ResponseDTO<String> publishBadgeArticle(@RequestBody Article article) {
+        return ResponseDTO.success(service.publishBadgeArticle(article));
+    }
+
+    /**
+     * 特殊文章
+     */
+    @RequestMapping(value = "/badge/{badge}", method = RequestMethod.GET)
+    public ResponseDTO<Article> publishBadgeArticle(@PathVariable String badge) {
+        return ResponseDTO.success(service.findByBadge(badge));
     }
 
 }

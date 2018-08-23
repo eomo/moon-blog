@@ -28,7 +28,7 @@
                                   label="创作年份"
                                   label-for="input">
                         <b-form-input type="text"
-                                      placeholder="请输入图书名称进行查找"
+                                      placeholder="请输入年份进行查找：2018"
                                       v-model="condition.year">
                         </b-form-input>
                     </b-form-group>
@@ -39,7 +39,7 @@
                                   label="分类："
                                   label-for="input">
                         <b-form-input type="text"
-                                      placeholder="请输入图书作者进行查找"
+                                      placeholder="请输入文章分类进行查找"
                                       v-model="condition.categoryId">
                         </b-form-input>
                     </b-form-group>
@@ -58,11 +58,11 @@
             </template>
             <template slot="action" slot-scope="row">
                 <a :href="jump(row.item.id)" target="_blank">修改</a>
-                <a href="" @click="showConfirmModal(row.item.id)">删除</a>
+                <a @click="showConfirmModal(row.item.id)" style="color: #007bff;cursor: pointer">删除</a>
             </template>
         </b-table>
-        <b-pagination size="md" align="right"
-                      :total-rows="articles.total" v-model="articles.pager" per-page="15">
+        <b-pagination size="md" align="right" @input="step"
+                      :total-rows="articles.total" v-model="articles.pager" :per-page="10">
         </b-pagination>
     </div>
     <b-modal ref="confirmModal" centered
@@ -82,8 +82,8 @@
 <script>
     var getArticleList = function (vm) {
         var condition = vm.condition || {};
-        condition.pager = vm.books ? vm.books.pager : 1;
-        condition.size = vm.books ? vm.books.size : 15;
+        condition.pager = vm.articles ? vm.articles.pager : 1;
+        condition.size = vm.articles ? vm.articles.size : 15;
         HttpUtils.post('/v1/article/page', condition).done(function (data) {
             vm.articles = data;
         });
@@ -108,7 +108,8 @@
                 {key: 'updatedTime', label: '最后修改日期', thStyle: {width:'20%'}},
                 {key: 'action', label: '操作', thStyle: {width:'10%'}}
             ],
-            articles: null
+            article: {},
+            articles: {}
         },
         created: function () {
             let self = this;
@@ -120,24 +121,27 @@
         },
         methods: {
             showConfirmModal: function (id) {
-                this.book = {id: id};
+                this.article = {id: id};
                 this.$refs.confirmModal.show();
             },
             del: function () {
-                deleteBook(this, this.book.id);
+                deleteArticle(this, this.article.id);
             },
             close: function () {
                 this.$refs.comfirmModal.hide();
             },
             search: function () {
                 this.articles.pager = 1;
-                getBookList(this);
+                getArticleList(this);
             },
             jump: function (id) {
                 return '/admin/write/article/' + id + '?token=' + localStorage.getItem('x-api-token');
             },
             jumpPost: function (id) {
                 return '/post/' + id;
+            },
+            step: function () {
+                getArticleList(this);
             }
         }
     });

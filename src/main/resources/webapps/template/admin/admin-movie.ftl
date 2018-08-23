@@ -189,7 +189,7 @@
                 {key: 'action', label: '操作',thStyle: {width:'10%'}}
             ],
             isUpdated: false,
-            movies: null,
+            movies: {},
             movie: {},
             state: {
                 doubanId: null,

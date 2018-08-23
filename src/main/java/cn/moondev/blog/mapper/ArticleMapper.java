@@ -4,6 +4,7 @@ import cn.moondev.blog.dto.QueryDTO;
 import cn.moondev.blog.model.Article;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -33,4 +34,9 @@ public interface ArticleMapper {
     Article statByTopic(@Param("topicId") long topicId);
 
     List<Article> all();
+
+    @Select("delete from t_article where id = #{id}")
+    void delete(@Param("id") String id);
+
+    Article findContentByBadge(@Param("badge") String badge);
 }

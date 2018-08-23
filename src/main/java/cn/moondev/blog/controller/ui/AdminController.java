@@ -75,4 +75,13 @@ public class AdminController {
         model.addAttribute("article_id", id);
         return "/admin/write-article";
     }
+
+    /**
+     * 编辑[关于我]页面内容
+     */
+    @Permit
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    public String about(Model model) {
+        return "/admin/admin-about";
+    }
 }

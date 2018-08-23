@@ -19,12 +19,13 @@
         <result column="view_count" property="viewCount"/>
         <result column="comment_count" property="commentCount"/>
         <result column="stick" property="stick"/>
+        <result column="badge" property="badge"/>
         <result column="categoryName" property="categoryName"/>
         <result column="topicName" property="topicName"/>
     </resultMap>
 
     <select id="findById" resultMap="articleMap" parameterType="java.lang.String">
-        SELECT id,title,image,aformat,mformat,comment_count,view_count,publish_time FROM t_article WHERE `id` = #{id}
+        SELECT * FROM t_article WHERE `id` = #{id}
     </select>
 
     <select id="findDetailById" resultMap="articleMap" parameterType="java.lang.String">
@@ -39,10 +40,16 @@
         SELECT content FROM t_article WHERE `id` = #{id}
     </select>
 
+    <select id="findContentByBadge" resultMap="articleMap" parameterType="java.lang.String">
+        SELECT id,title,image,content,comment_count,view_count,publish_time
+        FROM t_article
+        WHERE `badge` = #{badge} LIMIT 1
+    </select>
+
     <select id="count" resultType="java.lang.Long" parameterType="cn.moondev.blog.dto.QueryDTO">
         SELECT count(*)
         FROM t_article
-        WHERE 1 = 1
+        WHERE (badge = '' OR badge IS NULL)
         <if test='item.year != null'>
             AND `year` = #{item.year}
         </if>
@@ -58,7 +65,7 @@
         SELECT a.*, c.name as categoryName, t.name as topicName FROM t_article a
         LEFT JOIN t_category c on a.category_id = c.id
         LEFT JOIN t_topic t on t.id = a.topic_id
-        WHERE 1 = 1
+        WHERE (badge = '' OR badge IS NULL)
         <if test='item.year != null'>
             AND a.`year` = #{item.year}
         </if>
@@ -74,6 +81,7 @@
     <select id="hot" resultMap="articleMap">
         SELECT id,title,image,aformat,mformat,view_count,comment_count
         FROM t_article
+        WHERE (badge = '' OR badge IS NULL)
         ORDER BY view_count,comment_count DESC
         limit 5
     </select>
@@ -81,7 +89,7 @@
     <select id="all" resultMap="articleMap">
         SELECT id,title,image,aformat,mformat,comment_count,view_count,publish_time
         FROM t_article
-        WHERE `status` = 1
+        WHERE `status` = 1 AND (badge = '' OR badge IS NULL)
         ORDER BY publish_time DESC
     </select>
 
@@ -121,7 +129,8 @@
             `view_count`,
             `comment_count`,
             `stick`,
-            `year`
+            `year`,
+            `badge`
       ) VALUES (
             #{item.id},
             #{item.title},
@@ -139,7 +148,8 @@
             #{item.viewCount},
             #{item.commentCount},
             #{item.stick},
-            YEAR(NOW())
+            YEAR(NOW()),
+            #{item.badge}
       ) ON DUPLICATE KEY UPDATE
             `title` = VALUES(title),
             `content` = VALUES(content),

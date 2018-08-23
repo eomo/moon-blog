@@ -123,6 +123,40 @@ public class ArticleService extends BaseService {
         return article.id;
     }
 
+    /**
+     * 发布文章
+     */
+    public String publishBadgeArticle(Article article) {
+        if (Strings.isNullOrEmpty(article.id)) {
+            article.id = genArticleId();
+            article.updatedTime = LocalDateTime.now();
+            article.createdTime = LocalDateTime.now();
+            article.publishTime = LocalDateTime.now();
+            article.status = 1;
+            mapper.upsert(article);
+            return article.id;
+        }
+        Article tmp = mapper.findById(article.id);
+        if (Objects.isNull(tmp)) {
+            throw MessageCode.ex(MessageCode.ARTICLE_NOT_EXISTS);
+        }
+        tmp.title = article.title;
+        tmp.summary = article.summary;
+        tmp.content = article.content;
+        tmp.topicId = article.topicId;
+        tmp.categoryId = article.categoryId;
+        tmp.image = article.image;
+        tmp.aformat = article.aformat;
+        tmp.mformat = article.mformat;
+        tmp.updatedTime = LocalDateTime.now();
+        tmp.publishTime = LocalDateTime.now();
+        tmp.status = 1;
+        mapper.upsert(tmp);
+        // 如果重新发布文章，清理缓存中的内容
+        articleCache.invalidate(article.id);
+        return article.id;
+    }
+
     public Article detail(String id) {
         viewCountxx(id);
         Article article = mapper.findDetailById(id);
@@ -130,6 +164,20 @@ public class ArticleService extends BaseService {
             article = new Article();
         }
         article.content = getArticleContent(id);
+        return article;
+    }
+
+    public Article detail4Admin(String id) {
+        return mapper.findById(id);
+    }
+
+    public Article findByBadge(String badge) {
+        return mapper.findContentByBadge(badge);
+    }
+
+    public Article aboutme() {
+        Article article = findByBadge("ABOUTME");
+        article.content = markdownOperations.markdown2Html(article.content);
         return article;
     }
 
@@ -145,6 +193,13 @@ public class ArticleService extends BaseService {
      */
     public void commentCountxx(String id) {
         mapper.commentCountxx(id);
+    }
+
+    /**
+     * 删除指定文章
+     */
+    public void delete(String id) {
+        mapper.delete(id);
     }
 
     /**

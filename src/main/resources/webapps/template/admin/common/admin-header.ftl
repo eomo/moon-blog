@@ -2,7 +2,7 @@
     <div class="u-float-left">
         <h1 class="site-title u-float-left">
             <a href="//hicsc.com" class="logo" title="no pursuit coder">
-                <img src="/webapps/asserts/image/logo.png" width=38 alt="HICSC.COM"/>
+                <img src="/webapps/asserts/image/logo.png" width=80 alt="HICSC.COM"/>
             </a>
         </h1>
     </div>
@@ -24,6 +24,9 @@
                     </li>
                     <li class="menu-li">
                         <a class="menu-item" href="/admin/article" title="">文章</a>
+                    </li>
+                    <li class="menu-li">
+                        <a class="menu-item" href="/admin/about" title="">关于我</a>
                     </li>
                 </ul>
             </div>

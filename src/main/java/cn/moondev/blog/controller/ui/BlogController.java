@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Objects;
 
@@ -121,8 +120,17 @@ public class BlogController {
      * 文章详情
      */
     @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
-    public String getArticleById(Model model, @PathVariable String id) throws UnsupportedEncodingException {
+    public String getArticleById(Model model, @PathVariable String id) {
         model.addAttribute("article", articleService.detail(id));
         return "/app/app-article";
+    }
+
+    /**
+     * 关于我
+     */
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    public String aboutme(Model model) {
+        model.addAttribute("article", articleService.aboutme());
+        return "/app/aboutme";
     }
 }
