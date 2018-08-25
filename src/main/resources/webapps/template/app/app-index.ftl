@@ -25,7 +25,7 @@
                     </h2>
                     <div class="block-snippet">{{item.summary}}</div>
                     <div class="block-post-meta">
-                        <a v-bind:href="'/category/' + item.code" rel="category tag">{{item.categoryName}}</a>
+                        <a v-bind:href="'/category/' + item.categoryId" rel="category tag">{{item.categoryName}}</a>
                         <span class="mid-dot-divider"></span>
                         <time itemprop="datePublished" v-bind:datetime="item.publishTime">
                             发布于 {{item.publishTimeDesc}}
