@@ -10,7 +10,7 @@
 
 <#include "common/app-header.ftl"/>
 <div class="multi-column-layout-container">
-    <div v-cloak id="articleEL" class="multi-column-layout multi-column-layout-primary" style="[v-cloak] {display: none;}">
+    <div id="articleEL" class="multi-column-layout multi-column-layout-primary" style="display: none">
         <div class="block-group u-padding-top50">
             <div class="heading-title">最新文章</div>
             <article v-for="item in articles" class="block-list">
@@ -124,6 +124,7 @@
                     self.articles = data.list;
                 });
             });
+            $('#articleEL').show();
         },
         methods: {
             loadArticleList: function () {
