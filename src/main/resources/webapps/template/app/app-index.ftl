@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,minimal-ui">
     <title>首页 - HICSC</title>
+    <style>[v-cloak] {display: none;}</style>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link rel="stylesheet" href="/webapps/asserts/header.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/webapps/asserts/vendor.css" type="text/css" media="screen">
