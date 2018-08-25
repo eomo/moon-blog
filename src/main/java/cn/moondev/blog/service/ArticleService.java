@@ -44,8 +44,8 @@ public class ArticleService extends BaseService {
             List<Article> articles = mapper.find(dto);
             articles.parallelStream().forEach(article -> {
                 article.publishTimeDesc = replyTimeDesc(article.publishTime);
-                article.summary = article.summary.length() > 90 ?
-                        article.summary.substring(0, 90) + "..." : article.summary;
+                article.summary = article.summary.length() > 95 ?
+                        article.summary.substring(0, 95) + "..." : article.summary;
             });
             pagination.setList(articles);
         }
