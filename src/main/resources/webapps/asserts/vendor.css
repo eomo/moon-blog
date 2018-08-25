@@ -517,7 +517,7 @@ input[disabled] {
 
 .widget-article-item-description {
 	color: rgba(0,0,0,.3);
-	font-size: 14px;
-	margin-bottom: 0;
+	font-size: 12px;
+	margin-top: 4px;
 	margin-right: 20px
 }
