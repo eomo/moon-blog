@@ -3,7 +3,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,minimal-ui">
     <title>首页 - HICSC</title>
-    <style>[v-cloak] {display: none;}</style>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link rel="stylesheet" href="/webapps/asserts/header.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/webapps/asserts/vendor.css" type="text/css" media="screen">
@@ -11,7 +10,7 @@
 
 <#include "common/app-header.ftl"/>
 <div class="multi-column-layout-container">
-    <div v-cloak id="articleEL" class="multi-column-layout multi-column-layout-primary">
+    <div v-cloak id="articleEL" class="multi-column-layout multi-column-layout-primary" style="[v-cloak] {display: none;}">
         <div class="block-group u-padding-top50">
             <div class="heading-title">最新文章</div>
             <article v-for="item in articles" class="block-list">
