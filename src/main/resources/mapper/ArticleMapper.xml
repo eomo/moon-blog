@@ -66,7 +66,7 @@
         SELECT a.*, c.code as categoryCode, c.name as categoryName, t.name as topicName FROM t_article a
         LEFT JOIN t_category c on a.category_id = c.id
         LEFT JOIN t_topic t on t.id = a.topic_id
-        WHERE (badge = '' OR badge IS NULL)
+        WHERE `status` = 1 AND (badge = '' OR badge IS NULL)
         <if test='item.year != null'>
             AND a.`year` = #{item.year}
         </if>
@@ -76,6 +76,7 @@
         <if test='item.topicId != null'>
             AND a.`topic_id` = #{item.topicId}
         </if>
+        ORDER BY publish_time DESC 
         limit #{item.offset}, #{item.size}
     </select>
 
