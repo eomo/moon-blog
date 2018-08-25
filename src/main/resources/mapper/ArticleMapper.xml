@@ -21,6 +21,7 @@
         <result column="stick" property="stick"/>
         <result column="badge" property="badge"/>
         <result column="categoryName" property="categoryName"/>
+        <result column="categoryCode" property="categoryCode"/>
         <result column="topicName" property="topicName"/>
     </resultMap>
 
@@ -62,7 +63,7 @@
     </select>
 
     <select id="find" resultMap="articleMap" parameterType="cn.moondev.blog.dto.QueryDTO">
-        SELECT a.*, c.code as category_id, c.name as categoryName, t.name as topicName FROM t_article a
+        SELECT a.*, c.code as categoryCode, c.name as categoryName, t.name as topicName FROM t_article a
         LEFT JOIN t_category c on a.category_id = c.id
         LEFT JOIN t_topic t on t.id = a.topic_id
         WHERE (badge = '' OR badge IS NULL)

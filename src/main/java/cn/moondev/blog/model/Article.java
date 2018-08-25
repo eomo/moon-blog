@@ -71,6 +71,7 @@ public class Article {
      * 所属分类
      */
     public String categoryId;
+    public String categoryCode;
     public String categoryName;
 
     /**
@@ -156,6 +157,14 @@ public class Article {
 
     public String getCategoryId() {
         return categoryId;
+    }
+
+    public String getCategoryCode() {
+        return categoryCode;
+    }
+
+    public String getBadge() {
+        return badge;
     }
 
     public String getCategoryName() {
