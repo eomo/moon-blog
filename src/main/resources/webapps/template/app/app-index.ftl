@@ -85,7 +85,7 @@
                                        title="${item.title}"
                                        href="/post/${item.id}">${item.title}</a>
                                 </h4>
-                                <p class="widget-article-item-description JiEun">CHEN.CHUAN
+                                <p class="widget-article-item-description JiEun">CHEN川
                                     <span class="mid-dot-divider"></span>${item.commentCount} replies
                                 </p>
                             </div>
