@@ -512,7 +512,8 @@ input[disabled] {
 	max-width: 96%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: nowrap
+	white-space: nowrap;
+	padding-top: 2px;
 }
 
 .widget-article-item-description {
