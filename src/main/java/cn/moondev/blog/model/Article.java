@@ -139,8 +139,8 @@ public class Article {
         return updatedTime;
     }
 
-    public LocalDateTime getPublishTime() {
-        return publishTime;
+    public String getPublishTime() {
+        return publishTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm"));
     }
 
     public int getStatus() {
