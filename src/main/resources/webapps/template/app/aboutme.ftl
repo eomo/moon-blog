@@ -6,7 +6,7 @@
     <#include "common/app-css.ftl"/>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link href="https://cdn.bootcss.com/emojione/2.2.7/assets/css/emojione.min.css" rel="stylesheet">
-    <link href="http://apps.moondev.cn/css/emojionearea.min.css" rel="stylesheet">
+    <link href="/webapps/asserts/css/emojionearea.min.css" rel="stylesheet">
 </head>
 <body>
 <#include "common/app-header.ftl"/>
@@ -119,7 +119,7 @@
 <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/emojione/2.2.7/lib/js/emojione.min.js"></script>
-<script src="http://apps.moondev.cn/js/emojionearea.min.js"></script>
+<script src="/webapps/asserts/js/emojionearea.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
     var vm = new Vue({
