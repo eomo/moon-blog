@@ -15,7 +15,7 @@
         <header class="entry-header">
             <h2 class="entry-title" itemprop="headline">${article.title}</h2>
             <div class="entry-meta">
-                <time datetime="${article.publishTime}">${article.publishTime?datetime('yyyy-MM-dd hh:mm')}</time>
+                <time datetime="${article.publishTime}">${article.publishTime?string('yyyy-MM-dd hh:mm')}</time>
                 <span class="mid-dot-divider"></span>
                 <span>阅读 ${article.viewCount}</span>
                 <span class="mid-dot-divider"></span>
