@@ -38,10 +38,16 @@ public class BookService {
         Book book = mapper.findByDoubanId(dto.doubanId);
         Book newBook = getBookInfoFromDouban(dto);
         book.rating = newBook.rating;
+        book.author = newBook.author;
+        book.translator = newBook.translator;
         book.jingdongUrl = newBook.jingdongUrl;
         book.duokanUrl = newBook.duokanUrl;
         book.year = newBook.year;
         book.remark = newBook.remark;
+        book.remarkUrl = newBook.remarkUrl;
+        book.smallImage = newBook.smallImage;
+        book.largeImage = newBook.largeImage;
+        book.mediumImage = newBook.mediumImage;
         mapper.upsert(book);
     }
 
@@ -80,6 +86,7 @@ public class BookService {
         book.duokanUrl = Strings.isNullOrEmpty(dto.duokanUrl) ? "" : dto.duokanUrl;
         book.year = Strings.isNullOrEmpty(dto.year) ? "" : dto.year;
         book.remark = Strings.isNullOrEmpty(dto.remark) ? "" : dto.remark;
+        book.remarkUrl = dto.remarkUrl;
         return book;
     }
 

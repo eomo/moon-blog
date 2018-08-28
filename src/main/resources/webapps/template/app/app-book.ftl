@@ -37,6 +37,7 @@
             <div class="book-info">
                 <p class="title">{{item.title}}</p>
                 <p class="author" v-bind:title="item.author">作者：{{item.author}}</p>
+                <p v-if="!!item.translator" class="author" v-bind:title="item.translator">译者：{{item.translator}}</p>
                 <p class="fenlei">{{item.tag}}</p>
                 <p class="extra-link">
                     <a v-bind:href="item.doubanUrl" class="badge douban" target="_blank"><span class="link-title">豆瓣</span></a>
@@ -46,7 +47,8 @@
                             class="link-title">多看电子书</span></a>
                 </p>
                 <p class="reviews">
-                    {{item.remark}}
+                    {{item.remark}} <a v-if="!!item.remarkUrl" target="_blank" v-bind:href="item.remarkUrl"
+                                       style="cursor: pointer;color: #007bff;margin-left: 5px">完整评论</a>
                 </p>
             </div>
         </div>

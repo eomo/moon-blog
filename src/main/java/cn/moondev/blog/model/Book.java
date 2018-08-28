@@ -112,6 +112,10 @@ public class Book {
     public String year;
 
     public String remark;
+    /**
+     * 书评链接
+     */
+    public String remarkUrl;
 
     public Book() {
 
@@ -171,7 +175,17 @@ public class Book {
             return "";
         }
         List<String> list = stringArray.stream().map(item -> item.toString()).collect(Collectors.toList());
-        return Joiner.on(',').join(list);
+        StringBuilder sb = new StringBuilder();
+        for (String str : list) {
+            int index = str.indexOf('（');
+            if (index > 0) {
+                sb.append(str.substring(0,index)).append(",");
+            } else {
+                sb.append(str).append(",");
+            }
+        }
+        sb = sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
     }
 
 }

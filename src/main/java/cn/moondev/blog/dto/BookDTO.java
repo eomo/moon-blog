@@ -11,4 +11,6 @@ public class BookDTO {
     public String year;
 
     public String remark;
+
+    public String remarkUrl;
 }

@@ -149,6 +149,19 @@
                     <b-col>
                         <b-form-group horizontal
                                       :label-cols="2"
+                                      label="完整书评："
+                                      label-for="input">
+                            <b-form-input type="text"
+                                          placeholder="完整书评的链接地址，比如豆瓣的评论"
+                                          v-model="book.remarkUrl">
+                            </b-form-input>
+                        </b-form-group>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <b-form-group horizontal
+                                      :label-cols="2"
                                       label="京东购买连接："
                                       label-for="input">
                             <b-form-input type="text"
