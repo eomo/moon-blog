@@ -37,7 +37,7 @@ public class QiniuOperations {
         Auth auth = Auth.create(accessKey, secretKey);
         BucketManager bucketManager = new BucketManager(auth, cfg);
         // 获取文件名称，新的文件名与原来的文件名称一致
-        String fileName = RandomStringUtils.randomAlphabetic(2) + "_" +
+        String fileName = RandomStringUtils.randomAlphabetic(2).toLowerCase() + "_" +
                 sourceRemoteUrl.substring(sourceRemoteUrl.lastIndexOf('/') + 1);
         try {
             FetchRet fetchRet = bucketManager.fetch(sourceRemoteUrl, bucket, prefix + fileName);
