@@ -1,5 +1,6 @@
 package cn.moondev.blog.provider;
 
+import cn.moondev.framework.provider.random.RandomStringUtils;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.storage.BucketManager;
@@ -36,7 +37,8 @@ public class QiniuOperations {
         Auth auth = Auth.create(accessKey, secretKey);
         BucketManager bucketManager = new BucketManager(auth, cfg);
         // 获取文件名称，新的文件名与原来的文件名称一致
-        String fileName = sourceRemoteUrl.substring(sourceRemoteUrl.lastIndexOf('/'));
+        String fileName = RandomStringUtils.randomAlphabetic(2) + "_" +
+                sourceRemoteUrl.substring(sourceRemoteUrl.lastIndexOf('/'));
         try {
             FetchRet fetchRet = bucketManager.fetch(sourceRemoteUrl, bucket, prefix + fileName);
             return domain + fetchRet.key;
