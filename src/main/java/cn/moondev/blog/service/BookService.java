@@ -84,7 +84,7 @@ public class BookService {
     }
 
     private String fetchImage(String doubanImage) {
-        String qiniuImage = qiniuOperations.fetch(doubanImage, "hicsc", "book/image", "https://static.hicsc.com/");
+        String qiniuImage = qiniuOperations.fetch(doubanImage, "hicsc", "book/image/", "https://static.hicsc.com/");
         return Strings.isNullOrEmpty(qiniuImage) ? doubanImage : qiniuImage;
     }
 }
