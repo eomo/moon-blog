@@ -72,7 +72,7 @@ public class MovieService {
     }
 
     private String fetchImage(String doubanImage) {
-        String qiniuImage = qiniuOperations.fetch(doubanImage, "sources", "movie/image", "http://apps.moondev.cn/");
+        String qiniuImage = qiniuOperations.fetch(doubanImage, "hicsc", "movie/image", "https://static.hicsc.com/");
         return Strings.isNullOrEmpty(qiniuImage) ? doubanImage : qiniuImage;
     }
 }
