@@ -38,12 +38,11 @@ public class QiniuOperations {
         // 获取文件名称，新的文件名与原来的文件名称一致
         String fileName = sourceRemoteUrl.substring(sourceRemoteUrl.lastIndexOf('/'));
         try {
-            FetchRet fetchRet = bucketManager.fetch(sourceRemoteUrl, "sources", prefix + fileName);
+            FetchRet fetchRet = bucketManager.fetch(sourceRemoteUrl, bucket, prefix + fileName);
             return domain + fetchRet.key;
         } catch (QiniuException e) {
             LOG.error("上传至七牛云失败", e);
             return null;
         }
     }
-
 }
