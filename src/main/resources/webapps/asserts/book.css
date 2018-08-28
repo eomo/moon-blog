@@ -108,7 +108,7 @@
 .book-info .title {
     font-size: 15px;
     height: auto;
-    margin: 0;
+    margin: 2px 0 2px 0;
     color: #3377aa;
 }
 
@@ -147,4 +147,8 @@
 
 .block-more {
 	margin-bottom: 30px;
+}
+
+.extra-link {
+    margin-top: 5px;
 }

@@ -16,7 +16,7 @@
         <div class="category-header-logo">
             <a href="/book">
                 <img class="category-header-image"
-                     src="http://apps.moondev.cn/image/book3.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim">
+                     src="https://static.hicsc.com/image/tc/book3.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim">
             </a>
         </div>
         <div class="u-float-left">
@@ -36,7 +36,7 @@
             </div>
             <div class="book-info">
                 <p class="title">{{item.title}}</p>
-                <p class="author">作者：{{item.author}}</p>
+                <p class="author" v-bind:title="item.author">作者：{{item.author}}</p>
                 <p class="fenlei">{{item.tag}}</p>
                 <p class="extra-link">
                     <a v-bind:href="item.doubanUrl" class="badge douban" target="_blank"><span class="link-title">豆瓣</span></a>
