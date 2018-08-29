@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `t_book`(
     `duokan_url` varchar(512) NOT NULL DEFAULT '' COMMENT '多看电子书链接',
     `year` varchar(4) NOT NULL DEFAULT '2018' COMMENT '哪一年看的此书',
     `remark` varchar(512) NOT NULL DEFAULT '' COMMENT '你自己的评论',
+    `remark_url` varchar(512) COMMENT '评论链接',
     PRIMARY KEY (`id`),
     UNIQUE KEY unique_index_douban(`douban_id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
@@ -71,12 +72,9 @@ CREATE TABLE IF NOT EXISTS `t_movie`(
     `douban_url` varchar(512) NOT NULL DEFAULT '' COMMENT '豆瓣URL地址',
     `languages` varchar(32) NOT NULL DEFAULT '' COMMENT '语言',
     `summary` varchar(1024) NOT NULL DEFAULT '' COMMENT '电影介绍',
-    `douban_image1` varchar(512) NOT NULL DEFAULT '' COMMENT '图书图片',
-    `douban_image2` varchar(512) NOT NULL DEFAULT '' COMMENT '图书图片',
-    `douban_image3` varchar(512) NOT NULL DEFAULT '' COMMENT '图书图片',
-    `backup_image1` varchar(512) NOT NULL DEFAULT '' COMMENT '备份图片',
-    `backup_image2` varchar(512) NOT NULL DEFAULT '' COMMENT '备份图片',
-    `backup_image3` varchar(512) NOT NULL DEFAULT '' COMMENT '备份图片',
+    `small_image` varchar(512) NOT NULL DEFAULT '' COMMENT '图片',
+    `large_image` varchar(512) NOT NULL DEFAULT '' COMMENT '图片',
+    `medium_image` varchar(512) NOT NULL DEFAULT '' COMMENT '图片',
     `durations` varchar(8) NOT NULL DEFAULT '' COMMENT '片长',
     `genres` varchar(64) NOT NULL DEFAULT '' COMMENT '影片类型',
     `countries` varchar(64) NOT NULL DEFAULT '' COMMENT '制片国家/地区',
@@ -106,6 +104,8 @@ CREATE TABLE IF NOT EXISTS `t_article`(
     `comment_count` INT NOT NULL DEFAULT 0 COMMENT '评论数量',
     `badge` VARCHAR(16) COMMIT '特殊标记，用于标识某些特殊的页面',
     `stick` INT NOT NULL DEFAULT 0 COMMENT '置顶标识',
+    `remark` varchar(512) NOT NULL DEFAULT '' COMMENT '你自己的评论'
+    `remark_url` varchar(512) COMMENT '评论链接'
     PRIMARY KEY (`id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
