@@ -20,7 +20,7 @@
         </div>
         <div class="u-float-left">
             <h1 class="category-header-name">看过的电影</h1>
-            <div class="category-header-desc"><p>人生不止眼前，还有远方</p></div>
+            <div class="category-header-desc"><p>电影是世界上最美的骗局</p></div>
         </div>
     </div>
 </header>
