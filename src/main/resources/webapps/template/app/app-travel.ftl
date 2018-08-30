@@ -25,7 +25,7 @@
     </div>
 </header>
 <div id="travelEL"  class="single-column-layout single-column-layout-wide travel-wrapper">
-    <div class="block-list">
+    <div class="block-list" style="margin-right: 20%;">
         <div v-for="item in articles" class="travel-article-item" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="travel-article-title">
                 <h2 itemprop="headline">

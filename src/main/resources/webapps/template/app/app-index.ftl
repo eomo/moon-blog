@@ -13,7 +13,7 @@
     <div id="articleEL" class="multi-column-layout multi-column-layout-primary" style="display: none">
         <div class="block-group u-padding-top50">
             <div class="heading-title">最新文章</div>
-            <article v-for="item in articles" class="block-list-index">
+            <article v-for="item in articles" class="block-list">
                 <a class="block-image" v-bind:aria-label="item.title"
                    v-bind:href="'/post/' + item.id"
                    v-bind:style="'background-image: url(' + item.image + ');'"></a>

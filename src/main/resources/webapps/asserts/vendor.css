@@ -206,18 +206,10 @@ input[disabled] {
 	text-align: center
 }
 
-.block-list-index {
-	border-bottom: 1px solid rgba(0,0,0,.05);
-	padding-top: 30px;
-	padding-bottom: 40px;
-	line-height: 1.1
-}
-
 .block-list {
 	border-bottom: 1px solid rgba(0,0,0,.05);
 	padding-top: 30px;
 	padding-bottom: 40px;
-    margin-right: 20%;
 	line-height: 1.1
 }
 
