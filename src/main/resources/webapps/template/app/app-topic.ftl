@@ -61,7 +61,7 @@
         created: function () {
             let self = this;
             self.$nextTick(function () {
-                HttpUtils.post('/v1/article/page', {pager: self.pager, topicId:${topic.id}}).done(function (data) {
+                HttpUtils.post('/v1/article/font/page', {pager: self.pager, topicId:${topic.id}}).done(function (data) {
                     self.showloadMore = data.pages > data.pager;
                     self.articles = data.list;
                     self.articleCount = data.total;
@@ -70,7 +70,7 @@
         },
         methods: {
             loadArticleList: function () {
-                HttpUtils.post('/v1/article/page', {
+                HttpUtils.post('/v1/article/font/page', {
                     pager: this.pager + 1,
                     topicId:${topic.id}}).done(function (data) {
                     vm.showloadMore = data.pages > data.pager;
