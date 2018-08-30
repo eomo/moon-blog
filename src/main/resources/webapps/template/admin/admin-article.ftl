@@ -84,7 +84,7 @@
         var condition = vm.condition || {};
         condition.pager = vm.articles ? vm.articles.pager : 1;
         condition.size = vm.articles ? vm.articles.size : 15;
-        HttpUtils.post('/v1/article/page', condition).done(function (data) {
+        HttpUtils.post('/v1/article/back/page', condition).done(function (data) {
             vm.articles = data;
         });
     };
@@ -114,7 +114,7 @@
         created: function () {
             let self = this;
             self.$nextTick(function () {
-                HttpUtils.post('/v1/article/page', {pager: 1, size: 15}).done(function (data) {
+                HttpUtils.post('/v1/article/back/page', {pager: 1, size: 15}).done(function (data) {
                     self.articles = data;
                 });
             });

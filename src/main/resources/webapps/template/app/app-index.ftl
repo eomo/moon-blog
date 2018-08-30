@@ -119,7 +119,7 @@
         created: function () {
             let self = this;
             self.$nextTick(function () {
-                HttpUtils.post('/v1/article/page', {pager: self.pager}).done(function (data) {
+                HttpUtils.post('/v1/article/font/page', {pager: self.pager}).done(function (data) {
                     self.showloadMore = data.pages > data.pager;
                     self.articles = data.list;
                 });
@@ -128,7 +128,7 @@
         },
         methods: {
             loadArticleList: function () {
-                HttpUtils.post('/v1/article/page', {pager: this.pager + 1}).done(function (data) {
+                HttpUtils.post('/v1/article/font/page', {pager: this.pager + 1}).done(function (data) {
                     vm.showloadMore = data.pages > data.pager;
                     vm.articles = vm.articles.concat(data.list);
                 });

@@ -30,8 +30,22 @@ public class ArticleController {
     }
 
     @Permit
-    @RequestMapping(value = "/page", method = RequestMethod.POST)
+    @RequestMapping(value = "/font/page", method = RequestMethod.POST)
     public ResponseDTO<PaginationDTO<Article>> page(@RequestBody QueryDTO query) {
+        query.point = "font";
+        return ResponseDTO.success(service.page(query));
+    }
+
+    @RequestMapping(value = "/back/page", method = RequestMethod.POST)
+    public ResponseDTO<PaginationDTO<Article>> backPage(@RequestBody QueryDTO query) {
+        query.point = "back";
+        return ResponseDTO.success(service.page(query));
+    }
+
+    @Permit
+    @RequestMapping(value = "/badge/page", method = RequestMethod.POST)
+    public ResponseDTO<PaginationDTO<Article>> badgePage(@RequestBody QueryDTO query) {
+        query.point = "badge";
         return ResponseDTO.success(service.page(query));
     }
 

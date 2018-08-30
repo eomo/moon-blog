@@ -50,7 +50,7 @@ a {
 }
 
 .mid-dot-divider::after {
-	content: ".";
+	content: "·";
 }
 
 .u-color-red-purple {

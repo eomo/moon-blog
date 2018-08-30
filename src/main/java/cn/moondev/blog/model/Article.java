@@ -94,6 +94,10 @@ public class Article {
      */
     public String badge;
 
+    public String month;
+
+    public String day;
+
     public String year() {
         return String.valueOf(publishTime.getYear());
     }
@@ -193,5 +197,21 @@ public class Article {
 
     public String getAformat() {
         return aformat;
+    }
+
+    public String getMonth() {
+        int month = publishTime.getMonthValue();
+        if (month < 10) {
+            return "0" + month;
+        }
+        return String.valueOf(month);
+    }
+
+    public String getDay() {
+        int day = publishTime.getDayOfMonth();
+        if (day < 10) {
+            return "0" + day;
+        }
+        return String.valueOf(day);
     }
 }

@@ -50,7 +50,15 @@
     <select id="count" resultType="java.lang.Long" parameterType="cn.moondev.blog.dto.QueryDTO">
         SELECT count(*)
         FROM t_article
-        WHERE (badge = '' OR badge IS NULL)
+        <if test="item.point == 'back'">
+            <![CDATA[ WHERE badge <> 'ABOUTME' ]]>
+        </if>
+        <if test="item.point == 'font'">
+            WHERE `status` = 1 AND (badge = '' OR badge IS NULL)
+        </if>
+        <if test="item.point == 'badge'">
+            WHERE `status` = 1 and badge = #{item.badge}
+        </if>
         <if test='item.year != null'>
             AND `year` = #{item.year}
         </if>
@@ -63,10 +71,20 @@
     </select>
 
     <select id="find" resultMap="articleMap" parameterType="cn.moondev.blog.dto.QueryDTO">
-        SELECT a.*, c.code as categoryCode, c.name as categoryName, t.name as topicName FROM t_article a
+        SELECT a.aformat,a.comment_count,a.created_time,a.id,a.image,a.mformat,a.publish_time,a.summary,a.title,a.view_count,
+               c.code as categoryCode, c.name as categoryName, t.name as topicName
+        FROM t_article a
         LEFT JOIN t_category c on a.category_id = c.id
         LEFT JOIN t_topic t on t.id = a.topic_id
-        WHERE `status` = 1 AND (badge = '' OR badge IS NULL)
+        <if test="item.point == 'back'">
+            <![CDATA[ WHERE a.badge <> 'ABOUTME' ]]>
+        </if>
+        <if test="item.point == 'font'">
+            WHERE a.`status` = 1 AND (a.badge = '' OR a.badge IS NULL)
+        </if>
+        <if test="item.point == 'badge'">
+            WHERE  a.`status` = 1 and a.badge = #{item.badge}
+        </if>
         <if test='item.year != null'>
             AND a.`year` = #{item.year}
         </if>

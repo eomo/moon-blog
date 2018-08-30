@@ -9,24 +9,38 @@
     <link href="/webapps/asserts/css/emojionearea.min.css" rel="stylesheet">
 </head>
 <body>
-<#include "common/app-header.ftl"/>
+<header class="header">
+    <div class="u-float-left">
+        <h1 class="site-title u-float-left">
+            <a href="/" class="logo" title="no pursuit coder">
+                <img src="/webapps/asserts/image/logo.png" width=65 alt="HICSC.COM"/>
+            </a>
+        </h1>
+    </div>
+</header>
 <div class="single-column-layout single-column-layout-wide article-container">
-    <div class="block-group u-padding-top50">
+    <div class="block-group">
         <header class="entry-header">
             <h2 class="entry-title" itemprop="headline">${article.title}</h2>
             <div class="entry-meta">
-                <time datetime="${article.publishTime}">${article.publishTime}</time>
+                <time datetime="${article.publishTime}">发表于 ${article.publishTimeDesc}</time>
                 <span class="mid-dot-divider"></span>
                 <span>阅读 ${article.viewCount}</span>
                 <span class="mid-dot-divider"></span>
                 <span>评论 ${article.commentCount}</span>
+            </div>
+            <div class="postArticle-meta">
+                <time datetime="${article.publishTime}">
+                    <span class="month">${article.month}</span>
+                    <span class="day">${article.day}</span>
+                </time>
             </div>
         </header>
         <input type="hidden" id="article_id">
         <article id="article" class="markdown-section">${article.content}</article>
     </div>
 </div>
-<div class="single-column-layout single-column-layout-wide">
+<div class="single-column-layout single-column-layout-wide" style="max-width: 780px">
     <div id="commentEL" v-cloak>
         <meta v-bind:content="'UserComments:'+commentCount" itemprop="interactionCount">
         <h3 class="responses-title">{{commentCount}}条评论</h3>
@@ -123,9 +137,12 @@
 </div>
 <#include "common/app-footer.ftl"/>
 </body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/emojione/2.2.7/lib/js/emojione.min.js"></script>
+<script src="/webapps/asserts/js/notify.js"></script>
+<script src="/webapps/asserts/js/utils.js"></script>
 <script src="/webapps/asserts/js/emojionearea.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">

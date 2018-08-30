@@ -20,6 +20,10 @@ public class QueryDTO {
 
     public long offset;
 
+    public String point;
+
+    public String badge;
+
     public QueryDTO() {
 
     }

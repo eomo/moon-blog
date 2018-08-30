@@ -20,69 +20,65 @@
         </div>
         <div class="u-float-left">
             <h1 class="category-header-name">足迹</h1>
-            <div class="category-header-desc"><p>人生不止眼前，还有远方</p></div>
+            <div class="category-header-desc"><p>世界那么大，我想去看看</p></div>
         </div>
     </div>
 </header>
-<div class="single-column-layout single-column-layout-wide travel-wrapper">
+<div id="travelEL"  class="single-column-layout single-column-layout-wide travel-wrapper">
     <div class="block-list">
-        <div class="travel-article-item" itemscope="itemscope" itemtype="http://schema.org/Article">
+        <div v-for="item in articles" class="travel-article-item" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="travel-article-title">
-                <h2 itemprop="headline"><a target="_blank" class="js-trackedPostLink" data-id="100262"
-                                           href="https://fatesinger.com/100262" title="去栈桥喂个海鸥">去栈桥喂个海鸥</a></h2>
+                <h2 itemprop="headline">
+                    <a target="_blank" class="js-trackedPostLink"
+                       v-bind:data-id="item.id"
+                       v-bind:href="'/post/' + item.id"
+                       v-bind:title="item.title">
+                        {{item.title}}
+                    </a>
+                </h2>
             </div>
-            <a class="travel-article-image js-trackedPostLink" target="_blank" data-id="100262" title="去栈桥喂个海鸥"
-               href="https://fatesinger.com/100262"
-               style="background-image: url(http://static.fatesinger.com/2018/07/mhavkbihri4bqk27.JPG!/both/560x360/format/webp);"
-               aria-label="去栈桥喂个海鸥"></a>
-        </div>
-        <div class="travel-article-item" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="travel-article-title">
-                <h2 itemprop="headline"><a target="_blank" class="js-trackedPostLink" data-id="100262"
-                                           href="https://fatesinger.com/100262" title="去栈桥喂个海鸥">去栈桥喂个海鸥</a></h2>
-            </div>
-            <a class="travel-article-image js-trackedPostLink" target="_blank" data-id="100262" title="去栈桥喂个海鸥"
-               href="https://fatesinger.com/100262"
-               style="background-image: url(http://static.fatesinger.com/2018/07/mhavkbihri4bqk27.JPG!/both/560x360/format/webp);"
-               aria-label="去栈桥喂个海鸥"></a>
-        </div>
-        <div class="travel-article-item" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="travel-article-title">
-                <h2 itemprop="headline"><a target="_blank" class="js-trackedPostLink" data-id="100262"
-                                           href="https://fatesinger.com/100262" title="去栈桥喂个海鸥">去栈桥喂个海鸥</a></h2>
-            </div>
-            <a class="travel-article-image js-trackedPostLink" target="_blank" data-id="100262" title="去栈桥喂个海鸥"
-               href="https://fatesinger.com/100262"
-               style="background-image: url(http://static.fatesinger.com/2018/07/mhavkbihri4bqk27.JPG!/both/560x360/format/webp);"
-               aria-label="去栈桥喂个海鸥"></a>
-        </div>
-        <div class="travel-article-item" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="travel-article-title">
-                <h2 itemprop="headline"><a target="_blank" class="js-trackedPostLink" data-id="100262"
-                                           href="https://fatesinger.com/100262" title="去栈桥喂个海鸥">去栈桥喂个海鸥</a></h2>
-            </div>
-            <a class="travel-article-image js-trackedPostLink" target="_blank" data-id="100262" title="去栈桥喂个海鸥"
-               href="https://fatesinger.com/100262"
-               style="background-image: url(http://static.fatesinger.com/2018/07/mhavkbihri4bqk27.JPG!/both/560x360/format/webp);"
-               aria-label="去栈桥喂个海鸥"></a>
-        </div>
-        <div class="travel-article-item" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="travel-article-title">
-                <h2 itemprop="headline"><a target="_blank" class="js-trackedPostLink" data-id="100262"
-                                           href="https://fatesinger.com/100262" title="去栈桥喂个海鸥">去栈桥喂个海鸥</a></h2>
-            </div>
-            <a class="travel-article-image js-trackedPostLink" target="_blank" data-id="100262" title="去栈桥喂个海鸥"
-               href="https://fatesinger.com/100262"
-               style="background-image: url(http://static.fatesinger.com/2018/07/mhavkbihri4bqk27.JPG!/both/560x360/format/webp);"
-               aria-label="去栈桥喂个海鸥"></a>
+            <a class="travel-article-image js-trackedPostLink" target="_blank"
+               v-bind:data-id="item.id"
+               v-bind:title="item.title"
+               v-bind:href="'/post/' + item.id"
+               v-bind:style="'background-image: url(' + item.image + ');'"
+               v-bind:aria-label="item.title">
+            </a>
         </div>
     </div>
 
-    <div class="block-more">
-        <button id="show-more" aria-label="加载更多" title="加载更多" class="loading-button" data-paged="2"
-                data-total="36">加载更多
+    <div v-if="showloadMore" class="block-more" @click="travelList">
+        <button id="show-more" aria-label="加载更多" title="加载更多" class="loading-button" data-paged="2" data-total="36">
+            加载更多
         </button>
     </div>
 </body>
-
+<script>
+    var vm = new Vue({
+        el: '#travelEL',
+        data: {
+            showloadMore: false,
+            pager: 1,
+            articles: []
+        },
+        created: function () {
+            let self = this;
+            self.$nextTick(function () {
+                HttpUtils.post('/v1/article/badge/page', {pager: self.pager, badge:'TRAVEL'}).done(function (data) {
+                    self.showloadMore = data.pages > data.pager;
+                    self.articles = data.list;
+                    self.articleCount = data.total;
+                });
+            });
+        },
+        methods: {
+            travelList: function () {
+                HttpUtils.post('/v1/article/badge/page', {pager: this.pager + 1, badge:'TRAVEL'}).done(function (data) {
+                    vm.showloadMore = data.pages > data.pager;
+                    vm.articles = vm.articles.concat(data.list);
+                });
+            }
+        }
+    });
+</script>
 </html>

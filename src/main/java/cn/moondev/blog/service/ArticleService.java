@@ -163,6 +163,7 @@ public class ArticleService extends BaseService {
         if (Objects.isNull(article)) {
             article = new Article();
         }
+        article.publishTimeDesc = replyTimeDesc(article.publishTime);
         article.content = getArticleContent(id);
         return article;
     }
