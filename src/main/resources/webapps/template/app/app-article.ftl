@@ -29,12 +29,14 @@
                 <span class="mid-dot-divider"></span>
                 <span>评论 ${article.commentCount}</span>
             </div>
+            <!--
             <div class="postArticle-meta">
                 <time datetime="${article.publishTime}">
                     <span class="month">${article.month}</span>
                     <span class="day">${article.day}</span>
                 </time>
             </div>
+             -->
         </header>
         <input type="hidden" id="article_id">
         <article id="article" class="markdown-section">${article.content}</article>

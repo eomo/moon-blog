@@ -92,6 +92,14 @@ public class BlogController {
     }
 
     /**
+     * 十万个为什么
+     */
+    @RequestMapping(value = "/why", method = RequestMethod.GET)
+    public String whyIndex(Model model) {
+        return "/app/app-why";
+    }
+
+    /**
      * 图书
      */
     @RequestMapping(value = "/book", method = RequestMethod.GET)

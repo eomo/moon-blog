@@ -196,7 +196,8 @@
                 aformat: '?imageView2/2/w/48/h/48/format/webp'
             },
             badges:[
-                {value: 'TRAVEL', text: '足迹'}
+                {value: 'TRAVEL', text: '足迹'},
+                {value: 'WHY', text: '十万个为什么'}
             ],
             categories: [],
             topics: []

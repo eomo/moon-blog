@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link rel="stylesheet" href="/webapps/asserts/header.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/webapps/asserts/book.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/webapps/asserts/category.css" type="text/css" media="screen">
 </head>
 
 <body>
@@ -20,7 +21,7 @@
             </a>
         </div>
         <div class="u-float-left">
-            <h1 class="category-header-name">看过的书</h1>
+            <h1 class="category-header-name-2">看过的书</h1>
             <div class="category-header-desc">
                 <p>如果你愿意购买或者与我交换图书，请与我联系</p>
             </div>

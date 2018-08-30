@@ -50,7 +50,7 @@ public class Category {
         category.id = -1L;
         category.code = "travel";
         category.name = "足迹";
-        category.image = "http://apps.moondev.cn/image/road.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim";
+        category.image = "";
         category.desc = "世界那么大，我想去走走。";
         category.url = "/travel";
         return category;
@@ -61,9 +61,20 @@ public class Category {
         category.id = -2L;
         category.code = "book";
         category.name = "图书";
-        category.image = "http://apps.moondev.cn/image/book3.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim";
+        category.image = "";
         category.desc = "夫读书将以何为哉？辨其大义，以修己治人之体也，察其微言，以善精义入神之用也。";
         category.url = "/book";
+        return category;
+    }
+
+    public static Category why() {
+        Category category = new Category();
+        category.id = -3L;
+        category.code = "why";
+        category.name = "十万个为什么";
+        category.image = "";
+        category.desc = "";
+        category.url = "/why";
         return category;
     }
 

@@ -71,8 +71,8 @@
     </select>
 
     <select id="find" resultMap="articleMap" parameterType="cn.moondev.blog.dto.QueryDTO">
-        SELECT a.aformat,a.comment_count,a.created_time,a.id,a.image,a.mformat,a.publish_time,a.summary,a.title,a.view_count,
-               c.code as categoryCode, c.name as categoryName, t.name as topicName
+        SELECT a.aformat,a.comment_count,a.created_time,a.id,a.image,a.mformat,a.publish_time,a.summary,a.title,
+               a.updated_time,a.view_count,a.status,c.code as categoryCode, c.name as categoryName, t.name as topicName
         FROM t_article a
         LEFT JOIN t_category c on a.category_id = c.id
         LEFT JOIN t_topic t on t.id = a.topic_id

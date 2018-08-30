@@ -34,6 +34,7 @@ public class UserController {
         List<Category> categories = categoryService.getMenuCategory();
         categories.add(Category.travel());
         categories.add(Category.book());
+        categories.add(Category.why());
         return ResponseDTO.success(categories);
     }
 }
