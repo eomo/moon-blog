@@ -44,7 +44,7 @@
     <select id="findContentByBadge" resultMap="articleMap" parameterType="java.lang.String">
         SELECT id,title,image,content,comment_count,view_count,publish_time
         FROM t_article
-        WHERE `badge` = #{badge} LIMIT 1
+        WHERE `badge` = #{badge}
     </select>
 
     <select id="count" resultType="java.lang.Long" parameterType="cn.moondev.blog.dto.QueryDTO">

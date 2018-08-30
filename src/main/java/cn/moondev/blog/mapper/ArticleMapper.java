@@ -38,5 +38,5 @@ public interface ArticleMapper {
     @Select("delete from t_article where id = #{id}")
     void delete(@Param("id") String id);
 
-    Article findContentByBadge(@Param("badge") String badge);
+    List<Article> findContentByBadge(@Param("badge") String badge);
 }

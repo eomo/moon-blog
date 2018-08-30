@@ -35,7 +35,7 @@
             <b-row>
                 <b-col>
                     <b-form-group horizontal
-                                  :label-cols="2"
+                                  :label-cols="3"
                                   label="所属分类："
                                   label-for="input">
                         <b-form-select v-model="article.categoryId" :options="categories"/>
@@ -43,10 +43,18 @@
                 </b-col>
                 <b-col>
                     <b-form-group horizontal
-                                  :label-cols="2"
+                                  :label-cols="3"
                                   label="所属专题："
                                   label-for="input">
                         <b-form-select v-model="article.topicId" :options="topics"/>
+                    </b-form-group>
+                </b-col>
+                <b-col>
+                    <b-form-group horizontal
+                                  :label-cols="3"
+                                  label="特殊标记："
+                                  label-for="input">
+                        <b-form-select v-model="article.badge" :options="badges"/>
                     </b-form-group>
                 </b-col>
             </b-row>
@@ -187,6 +195,9 @@
                 mformat: '?imageView2/2/w/140/h/120/format/webp',
                 aformat: '?imageView2/2/w/48/h/48/format/webp'
             },
+            badges:[
+                {value: 'TRAVEL', text: '足迹'}
+            ],
             categories: [],
             topics: []
         },

@@ -172,7 +172,8 @@ public class ArticleService extends BaseService {
     }
 
     public Article findByBadge(String badge) {
-        return mapper.findContentByBadge(badge);
+        List<Article> articles = mapper.findContentByBadge(badge);
+        return articles.isEmpty() ? null : articles.get(0);
     }
 
     public Article aboutme() {
