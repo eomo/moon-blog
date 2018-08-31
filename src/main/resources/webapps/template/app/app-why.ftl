@@ -26,7 +26,7 @@
     </div>
 </header>
 <div v-cloak id="whyEL" class="single-column-layout single-column-layout-wide category-wrapper">
-    <article v-for="item in articles" class="block-list">
+    <article v-for="item in articles" class="block-list" style="margin-right: 20%;">
         <!-- 图片规格：140x120 -->
         <a class="block-image" v-bind:aria-label="item.title"
            v-bind:href="'/post/' + item.id"
