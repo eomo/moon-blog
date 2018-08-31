@@ -14,7 +14,6 @@
         <div class="block-group u-padding-top50">
             <div class="heading-title">最新文章</div>
             <article v-for="item in articles" class="block-list">
-                <!-- 图片规格：140x120 -->
                 <a class="block-image" v-bind:aria-label="item.title"
                    v-bind:href="'/post/' + item.id"
                    v-bind:style="'background-image: url(' + item.image + ');'"></a>
@@ -86,7 +85,7 @@
                                        href="/post/${item.id}">${item.title}</a>
                                 </h4>
                                 <p class="widget-article-item-description JiEun">CHEN川
-                                    <span class="mid-dot-divider"></span>${item.commentCount} replies
+                                    <span class="mid-dot-divider"></span>${item.commentCount} 评论
                                 </p>
                             </div>
                         </li>
