@@ -1,5 +1,6 @@
 package cn.moondev.blog.provider;
 
+import cn.moondev.blog.dto.QiniuSignatureDTO;
 import cn.moondev.framework.provider.random.RandomStringUtils;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
@@ -16,10 +17,14 @@ public class QiniuOperations {
 
     private String accessKey;
     private String secretKey;
+    private String endpoint;
+    private String host;
 
-    public QiniuOperations(String accessKey, String secretKey) {
+    public QiniuOperations(String accessKey, String secretKey, String endpoint, String host) {
         this.accessKey = accessKey;
         this.secretKey = secretKey;
+        this.endpoint = endpoint;
+        this.host = host;
     }
 
     /**
@@ -46,5 +51,20 @@ public class QiniuOperations {
             LOG.error("上传至七牛云失败", e);
             return null;
         }
+    }
+
+    /**
+     * 获取上传的Token
+     *
+     * @param bucket 存储空间名称
+     * @return
+     */
+    public QiniuSignatureDTO getUploadToken() {
+        QiniuSignatureDTO dto = new QiniuSignatureDTO();
+        Auth auth = Auth.create(accessKey, secretKey);
+        dto.token = auth.uploadToken("hicsc", null, 30, null);
+        dto.endpoint = endpoint;
+        dto.host = host;
+        return dto;
     }
 }

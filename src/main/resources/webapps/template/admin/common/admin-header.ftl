@@ -28,6 +28,9 @@
                     <li class="menu-li">
                         <a class="menu-item" href="/admin/about" title="">关于我</a>
                     </li>
+                    <li class="menu-li">
+                        <a class="menu-item" href="/admin/upload" title="">文件上传</a>
+                    </li>
                 </ul>
             </div>
         </nav>
