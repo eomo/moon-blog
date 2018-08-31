@@ -77,7 +77,7 @@ public class ArticleController {
     /**
      * 保存特殊文章
      */
-    @RequestMapping(value = "/save/badge", method = RequestMethod.POST)
+    @RequestMapping(value = "/badge", method = RequestMethod.POST)
     public ResponseDTO<String> publishBadgeArticle(@RequestBody Article article) {
         return ResponseDTO.success(service.publishBadgeArticle(article));
     }
