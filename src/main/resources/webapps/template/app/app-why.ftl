@@ -15,7 +15,7 @@
 <header class="category-header">
     <div class="single-column-layout single-column-layout-wide u-clearfix">
         <div class="category-header-logo">
-            <a href="/travel">
+            <a href="/why">
                 <img class="category-header-image"
                      src="https://static.hicsc.com/image/tc/why-7.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim"></a>
         </div>
@@ -26,27 +26,11 @@
     </div>
 </header>
 <div v-cloak id="whyEL" class="single-column-layout single-column-layout-wide category-wrapper">
-    <article v-for="item in articles" class="block-list" style="margin-right: 20%;">
-        <!-- 图片规格：140x120 -->
-        <a class="block-image" v-bind:aria-label="item.title"
-           v-bind:href="'/post/' + item.id"
-           v-bind:style="'background-image: url(' + item.image + ');'"></a>
-        <div class="block-content">
-            <h2 class="block-title">
-                <a v-bind:href="'/post/' + item.id" v-bind:aria-label="item.title"
-                   v-bind:title="item.title">{{item.title}}</a>
-            </h2>
-            <div class="block-snippet">{{item.summary}}</div>
-            <div class="block-post-meta">
-                {{item.viewCount}} 次浏览
-                <span class="mid-dot-divider"></span>
-                <time itemprop="datePublished" v-bind:datetime="item.publishTime">
-                    发布于 {{item.publishTimeDesc}}
-                </time>
-            </div>
-        </div>
+    <article v-for="item in articles" class="question-list" style="margin-right: 20%;">
+        <a v-bind:href="'/post/' + item.id" v-bind:aria-label="item.title"
+           v-bind:title="item.title">{{item.title}}</a>
     </article>
-    <div v-if="showloadMore" class="block-more" @click="loadArticleList">
+    <div v-if="showloadMore" class="block-more" @click="whyList">
         <button id="show-more" aria-label="加载更多" title="加载更多" class="loading-button" data-paged="2" data-total="36">
             加载更多
         </button>
@@ -72,7 +56,7 @@
             });
         },
         methods: {
-            travelList: function () {
+            whyList: function () {
                 HttpUtils.post('/v1/article/badge/page', {pager: this.pager + 1, badge:'WHY'}).done(function (data) {
                     vm.showloadMore = data.pages > data.pager;
                     vm.articles = vm.articles.concat(data.list);
