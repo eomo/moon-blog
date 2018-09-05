@@ -115,7 +115,7 @@ public class ArticleService extends BaseService {
         tmp.aformat = article.aformat;
         tmp.mformat = article.mformat;
         tmp.updatedTime = LocalDateTime.now();
-        tmp.publishTime = LocalDateTime.now();
+        tmp.publishTime = Objects.isNull(tmp.publishTime) ? LocalDateTime.now() : tmp.publishTime;
         tmp.status = 1;
         mapper.upsert(tmp);
         // 如果重新发布文章，清理缓存中的内容
@@ -149,7 +149,7 @@ public class ArticleService extends BaseService {
         tmp.aformat = article.aformat;
         tmp.mformat = article.mformat;
         tmp.updatedTime = LocalDateTime.now();
-        tmp.publishTime = LocalDateTime.now();
+        tmp.publishTime = Objects.isNull(tmp.publishTime) ? LocalDateTime.now() : tmp.publishTime;
         tmp.status = 1;
         mapper.upsert(tmp);
         // 如果重新发布文章，清理缓存中的内容
