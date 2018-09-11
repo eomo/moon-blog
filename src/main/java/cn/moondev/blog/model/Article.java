@@ -98,7 +98,9 @@ public class Article {
 
     public String day;
 
-    public String year() {
+    public String year;
+
+    public String getYear() {
         return String.valueOf(publishTime.getYear());
     }
 
