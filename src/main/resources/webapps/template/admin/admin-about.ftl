@@ -90,6 +90,7 @@
                     this.article.badge = 'ABOUTME';
                     this.article.summary = '';
                     this.article.image = '';
+                    this.article.publishTime = null;
                     HttpUtils.post('/v1/article/badge', this.article).done(function (data) {
                         UiTools.alert('文章发布成功！', 'success');
                     });

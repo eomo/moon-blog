@@ -177,7 +177,7 @@
             UiTools.alert('请输入文章标题!', 'error');
             return false;
         }
-        if (!vm.article.image) {
+        if (vm.article.badge != 'WHY' && !vm.article.image) {
             UiTools.alert('请输入描述图片地址!', 'error');
             return false;
         }

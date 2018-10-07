@@ -65,7 +65,7 @@ var HttpUtils = (function ($) {
                 UiTools.alert(errorMsg, 'error');
                 deferred.reject(res);
             }
-        }).fail(function(xhr) {
+        }).fail(function (xhr) {
             if (xhr.status == 404) {
                 UiTools.alert('您访问的API不存在，请联系管理员', 'error');
             } else if (xhr.status == 403) {
@@ -77,6 +77,57 @@ var HttpUtils = (function ($) {
             }
         });
         return deferred;
+    };
+
+    var isQiniuUpload = function (options) {
+        return !options || !!options && options.qiniu;
+    };
+
+    var createFormData = function (file, options) {
+        var formData = new FormData();
+        if (isQiniuUpload(options)) {
+            formData.append('token', options.token);
+            formData.append('key', options.key + file.name);
+        }
+        for (var key in options) {
+            if (options.hasOwnProperty(key)) {
+                formData.append(key, options[key]);
+            }
+        }
+        formData.append('file', file);
+        return formData;
+    };
+
+    var doUpload = function (deferred, file, options) {
+        var formData = createFormData(file, options);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', options.endpoint, true);
+        xhr.onload = function () {
+            if (xhr.status === 200)
+                if (isQiniuUpload(options)) {
+                    var resp = JSON.parse(xhr.response);
+                    deferred.resolve(options.host + '/'  + resp.key);
+                } else {
+                    deferred.resolve(JSON.parse(xhr.response));
+                }
+            else {
+                UiTools.alert('上传失败，' + xhr.responseText, 'error');
+                deferred.reject(null);
+            }
+        };
+        xhr.send(formData);
+    };
+
+    var submitUpload = function (deferred, file, options) {
+        if (isQiniuUpload(options)) {
+            HttpUtils.get("/v1/user/upload/token", null, false).done(function (params) {
+                params.key = options.key;
+                params.qiniu = options.qiniu;
+                doUpload(deferred, file, params);
+            });
+        } else {
+            doUpload(deferred, file, options);
+        }
     };
 
     return {
@@ -110,6 +161,12 @@ var HttpUtils = (function ($) {
 
         delete: function (url, param) {
             return ajax("DELETE", url, param || null, "application/x-www-form-urlencoded");
-        }
+        },
+
+        upload: function (file, key) {
+            var deferred = $.Deferred();
+            submitUpload(deferred, file, {key: key,qiniu: true});
+            return deferred;
+        },
     };
 })(jQuery);

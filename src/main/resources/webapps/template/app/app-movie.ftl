@@ -19,7 +19,7 @@
                      src="https://static.hicsc.com/image/tc/movie.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim"></a>
         </div>
         <div class="u-float-left">
-            <h1 class="category-header-name-2">看过的电影</h1>
+            <h1 class="category-header-name">看过的电影</h1>
             <div class="category-header-desc"><p>电影是世界上最美的骗局</p></div>
         </div>
     </div>

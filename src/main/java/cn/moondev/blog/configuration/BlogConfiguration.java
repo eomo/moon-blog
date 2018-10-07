@@ -26,6 +26,10 @@ public class BlogConfiguration {
     private String qiniuAccessKey;
     @Value("${qiniu.secret.key}")
     private String qiniuSecretKey;
+    @Value("${qiniu.endpoint}")
+    private String endpoint;
+    @Value("${qiniu.host}")
+    private String host;
 
     @Configuration
     public static class WebConfiguration extends WebConfigurationSupport {
@@ -50,7 +54,7 @@ public class BlogConfiguration {
 
     @Bean
     public QiniuOperations qiniuOperations() {
-        return new QiniuOperations(qiniuAccessKey, qiniuSecretKey);
+        return new QiniuOperations(qiniuAccessKey, qiniuSecretKey, endpoint, host);
     }
 
     @Bean

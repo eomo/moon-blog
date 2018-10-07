@@ -84,4 +84,13 @@ public class AdminController {
     public String about(Model model) {
         return "/admin/admin-about";
     }
+
+    /**
+     * 文件上传
+     */
+    @Permit
+    @RequestMapping(value = "/upload", method = RequestMethod.GET)
+    public String upload(Model model) {
+        return "/admin/admin-upload";
+    }
 }

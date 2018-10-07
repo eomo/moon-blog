@@ -51,7 +51,7 @@
         SELECT count(*)
         FROM t_article
         <if test="item.point == 'back'">
-            <![CDATA[ WHERE badge <> 'ABOUTME' ]]>
+            <![CDATA[ WHERE (badge <> 'ABOUTME' OR badge IS NULL) ]]>
         </if>
         <if test="item.point == 'font'">
             WHERE `status` = 1 AND (badge = '' OR badge IS NULL)
@@ -77,7 +77,7 @@
         LEFT JOIN t_category c on a.category_id = c.id
         LEFT JOIN t_topic t on t.id = a.topic_id
         <if test="item.point == 'back'">
-            <![CDATA[ WHERE a.badge <> 'ABOUTME' ]]>
+            <![CDATA[ WHERE (badge <> 'ABOUTME' OR badge IS NULL) ]]>
         </if>
         <if test="item.point == 'font'">
             WHERE a.`status` = 1 AND (a.badge = '' OR a.badge IS NULL)
