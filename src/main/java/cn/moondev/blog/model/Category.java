@@ -50,7 +50,7 @@ public class Category {
         category.id = -1L;
         category.code = "travel";
         category.name = "足迹";
-        category.image = "";
+        category.image = "//static.hicsc.com/image/tc/travel.jpg?imageMogr2/thumbnail/!80x80r/format/webp/blur/1x0/quality/75|imageslim";
         category.desc = "世界那么大，我想去走走。";
         category.url = "/travel";
         return category;
@@ -61,7 +61,7 @@ public class Category {
         category.id = -2L;
         category.code = "book";
         category.name = "图书";
-        category.image = "";
+        category.image = "//static.hicsc.com/image/tc/book3.jpg?imageMogr2/thumbnail/!80x80r/format/webp/blur/1x0/quality/75|imageslim";
         category.desc = "夫读书将以何为哉？辨其大义，以修己治人之体也，察其微言，以善精义入神之用也。";
         category.url = "/book";
         return category;
@@ -72,12 +72,12 @@ public class Category {
         category.id = -3L;
         category.code = "why";
         category.name = "十万个为什么";
-        category.image = "";
-        category.desc = "";
+        category.image = "//static.hicsc.com/image/tc/why-7.jpg?imageMogr2/thumbnail/!80x80r/format/webp/blur/1x0/quality/75|imageslim";
+        category.desc = "世界真奇妙";
         category.url = "/why";
         return category;
     }
-
+    
     public Long getId() {
         return id;
     }
