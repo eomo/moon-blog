@@ -21,7 +21,7 @@
         </div>
         <div class="u-float-left">
             <h1 class="category-header-name-2">十万个为什么</h1>
-            <div class="category-header-desc"><p>世界那么大，我想去看看</p></div>
+            <div class="category-header-desc"><p>世界真奇妙</p></div>
         </div>
     </div>
 </header>
