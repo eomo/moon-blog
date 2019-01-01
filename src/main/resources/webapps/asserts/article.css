@@ -104,7 +104,7 @@ body {
 
 .markdown-section > * {
     box-sizing: border-box;
-    font-size: inherit
+    font-size: medium
 }
 
 .markdown-section > :first-child {
