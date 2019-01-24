@@ -7,7 +7,7 @@
     <#include "common/admin-css.ftl"/>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="/webapps/asserts/editor.css" media="screen">
-    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 </head>
 <body>
