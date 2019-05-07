@@ -164,7 +164,7 @@ public class ArticleService extends BaseService {
             article = new Article();
         }
         article.publishTimeDesc = replyTimeDesc(article.publishTime);
-        article.content = getArticleContent(id);
+//        article.content = getArticleContent(id);
         return article;
     }
 
