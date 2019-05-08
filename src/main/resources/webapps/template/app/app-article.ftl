@@ -41,11 +41,11 @@
         <input type="hidden" id="article_id">
         <article id="article" class="markdown-section">${article.content}</article>
         <div class="appreciate">
-            <img class="appreciate-img" src="https://static.hicsc.com/image/post/appreciate.png">
+            <img class="appreciate-img" src="//static.hicsc.com/image/post/appreciate.png">
         </div>
     </div>
-    <div>
-        <a href="javascript:void(0);"><img src="https://static.hicsc.com/image/post/heart.png"/></a>
+    <div style="margin: 10px 0 20px 0;">
+        <a href="javascript:void(0);"><img src="//static.hicsc.com/image/post/heart_green.png" style="width: 29px;height: 29px"/></a>
     </div>
 </div>
 <div class="single-column-layout single-column-layout-wide">
