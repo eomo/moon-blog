@@ -108,9 +108,21 @@ a {
 	line-height: 1.4
 }
 
+.site-info-media {
+	display: none;
+}
+
 @media screen and (max-width:900px) {
-	.site-title .designed-info {
+	.site-title .site-info {
 		display: none;
+	}
+
+	.site-info-media {
+		background-image: url("/webapps/asserts/image/logo_b.jpg");
+		background-repeat: no-repeat;
+		background-size: auto 18px;
+		background-position: 100%;
+		line-height: 1.4
 	}
 }
 
