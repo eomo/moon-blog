@@ -254,9 +254,11 @@ input[disabled] {
 }
 
 .block-title {
-	font-size: 24px;
+	font-size: 22px;
 	line-height: 1.3;
-	margin-left: -1.2px
+	margin-left: -1.2px;
+	font-weight: 600;
+	position: relative;
 }
 
 .block-snippet {
