@@ -45,7 +45,7 @@
         </div>
     </div>
     <div>
-        如果觉得文章对你有帮助，想请我喝杯可乐，点这里<a id="appreciate_url" href="javascript:void(0);">赞赏</a>
+        <a href="javascript:void(0);"><img src="https://static.hicsc.com/image/post/heart.png"/></a>
     </div>
 </div>
 <div class="single-column-layout single-column-layout-wide">
