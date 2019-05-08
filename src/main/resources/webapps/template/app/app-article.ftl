@@ -44,11 +44,14 @@
             <img class="appreciate-img" src="https://static.hicsc.com/image/post/appreciate.png">
         </div>
     </div>
+    <div>
+        如果觉得文章对你有帮助，想请我喝杯可乐，点这里<a id="appreciate_url" href="javascript:void(0);">赞赏</a>
+    </div>
 </div>
 <div class="single-column-layout single-column-layout-wide">
     <div id="commentEL" v-cloak>
         <meta v-bind:content="'UserComments:'+commentCount" itemprop="interactionCount">
-        <h3 class="responses-title">{{commentCount}}条评论</h3> 如果觉得文章对你有帮助，想请我喝杯可乐，点这里<a id="appreciate_url" href="javascript:void(0);">赞赏</a>
+        <h3 class="responses-title">{{commentCount}}条评论</h3>
         <ol id='comment-list' class="commentlist">
             <li v-for="item in comments" class="comment" itemtype="http://schema.org/Comment" v-bind:data-id="item.id"
                 itemscope="" itemprop="comment">
