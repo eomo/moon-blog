@@ -8,7 +8,7 @@
     </div>
     <div class="header-center">
         <nav class="navs">
-            <div class="single-column-layout single-column-layout-wide menu" style="max-width: 1000px">
+            <div class="single-column-layout single-column-layout-wide menu">
                 <ul id="menu" class="menu-ul">
 
                 </ul>
