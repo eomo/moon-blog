@@ -40,9 +40,9 @@
         </header>
         <input type="hidden" id="article_id">
         <article id="article" class="markdown-section">${article.content}</article>
-        <div>
-            <img v-if="showAppreciate" src="https://static.hicsc.com/image/post/appreciate.png" style="width: 400px; height: 400px">
-            如果觉得文章对你有帮助，想请我喝杯可乐，点这里<div class="submit" v-on:click="appreciate">赞赏</div>
+        <a class="appreciate">
+            <img class="appreciate-img" src="https://static.hicsc.com/image/post/appreciate.png">
+            如果觉得文章对你有帮助，想请我喝杯可乐，点这里<a id="appreciate_url" href="javascript:void(0);">赞赏</a>
         </div>
     </div>
 </div>
@@ -152,10 +152,13 @@
 <script src="/webapps/asserts/js/emojionearea.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
+    $('#appreciate_url').click(function () {
+        $('.appreciate-img').show();
+    });
+
     var vm = new Vue({
         el: '#commentEL',
         data: {
-            showAppreciate: false,
             comment: {
                 author: CookieUtils.get('comment_author'),
                 authorEmail: CookieUtils.get('comment_author_email'),
@@ -222,9 +225,6 @@
                 this.comment.articleId = articleId;
                 this.comment.parentId = commentId;
                 this.comment.rootId = rootId;
-            },
-            appreciate: function () {
-                this.showAppreciate = !this.showAppreciate
             }
         }
     });

@@ -525,3 +525,20 @@ pre:after {
         margin: 0;
     }
 }
+
+.appreciate {
+    text-align: center;
+}
+
+.appreciate a {
+    color: var(--theme-color, #42b983);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.appreciate-img {
+    width: 400px;
+    height: 400px;
+    display: none;
+    margin-bottom: 20px
+}
