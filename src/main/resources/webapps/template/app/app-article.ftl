@@ -7,6 +7,22 @@
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/css/emojione.min.css" rel="stylesheet">
     <link href="/webapps/asserts/css/emojionearea.min.css" rel="stylesheet">
+    <link href="/webapps/asserts/css/github-markdown.css">
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
 <header class="header">
@@ -39,7 +55,7 @@
              -->
         </header>
         <input type="hidden" id="article_id">
-        <article id="article" class="markdown-section">${article.content}</article>
+        <article id="article" class="markdown-body">${article.content}</article>
     </div>
 </div>
 <div class="single-column-layout single-column-layout-wide" style="max-width: 780px">
