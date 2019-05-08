@@ -108,8 +108,10 @@ a {
 	line-height: 1.4
 }
 
-.site-info-media {
-	display: none;
+@media screen and (min-width:900px) {
+	.site-info-media {
+		display: none;
+	}
 }
 
 @media screen and (max-width:900px) {
