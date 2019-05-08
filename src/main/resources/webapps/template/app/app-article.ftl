@@ -40,7 +40,7 @@
         </header>
         <input type="hidden" id="article_id">
         <article id="article" class="markdown-section">${article.content}</article>
-        <a class="appreciate">
+        <div class="appreciate">
             <img class="appreciate-img" src="https://static.hicsc.com/image/post/appreciate.png">
             如果觉得文章对你有帮助，想请我喝杯可乐，点这里<a id="appreciate_url" href="javascript:void(0);">赞赏</a>
         </div>
