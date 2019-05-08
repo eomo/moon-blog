@@ -67,6 +67,7 @@ public class ArticleService extends BaseService {
             article.id = genArticleId();
             article.updatedTime = LocalDateTime.now();
             article.createdTime = LocalDateTime.now();
+            article.publishTime = LocalDateTime.of(1970,1,1,0,0,0,0);
             article.status = 0;
             mapper.upsert(article);
             return article.id;
