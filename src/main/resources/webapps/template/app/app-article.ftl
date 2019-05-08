@@ -45,7 +45,7 @@
         </div>
     </div>
     <div style="margin: 10px 0 20px 0;">
-        <a class="appreciate-url" href="javascript:void(0);"><img src="//static.hicsc.com/image/post/heart_green.png" style="width: 29px;height: 29px"/></a>
+        <a id="appreciate-url" href="javascript:void(0);"><img src="//static.hicsc.com/image/post/heart_green.png" style="width: 29px;height: 29px"/></a>
     </div>
 </div>
 <div class="single-column-layout single-column-layout-wide">
@@ -154,7 +154,7 @@
 <script src="/webapps/asserts/js/emojionearea.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
-    $('#appreciate_url').click(function () {
+    $('.appreciate_url').click(function () {
         $('.appreciate-img').show();
     });
 
