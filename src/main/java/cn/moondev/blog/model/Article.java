@@ -6,6 +6,7 @@ import com.google.common.base.Strings;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Article {
 
@@ -101,7 +102,10 @@ public class Article {
     public String year;
 
     public String getYear() {
-        return String.valueOf(publishTime.getYear());
+        if (Objects.nonNull(publishTime)) {
+            return String.valueOf(publishTime.getYear());
+        }
+        return "2019";
     }
 
     public Article() {
