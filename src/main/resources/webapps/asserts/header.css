@@ -109,7 +109,7 @@ a {
 }
 
 @media screen and (max-width:900px) {
-	.site-title {
+	.site-title .designed-info {
 		display: none;
 	}
 }
