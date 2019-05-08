@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -165,7 +164,7 @@ public class ArticleService extends BaseService {
             article = new Article();
         }
         article.publishTimeDesc = replyTimeDesc(article.publishTime);
-        article.content = Base64.getEncoder().encodeToString(article.content.getBytes());
+        article.content = getArticleContent(id);
         return article;
     }
 

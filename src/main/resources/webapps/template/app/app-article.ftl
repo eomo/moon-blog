@@ -39,7 +39,7 @@
              -->
         </header>
         <input type="hidden" id="article_id">
-        <article id="article" class="markdown-section"></article>
+        <article id="article" class="markdown-section">${article.content}</article>
     </div>
 </div>
 <div class="single-column-layout single-column-layout-wide" style="max-width: 780px">
@@ -143,16 +143,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/lib/js/emojione.min.js"></script>
-<script src="/webapps/asserts/js/hyperdown.js"></script>
 <script src="/webapps/asserts/js/notify.js"></script>
 <script src="/webapps/asserts/js/utils.js"></script>
 <script src="/webapps/asserts/js/emojionearea.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
-    var parser = new HyperDown;
-    var html = parser.makeHtml(decodeURIComponent(escape(atob('${article.content}'))));
-    document.getElementById("article").innerHTML = html;
-
     var vm = new Vue({
         el: '#commentEL',
         data: {

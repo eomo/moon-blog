@@ -30,7 +30,7 @@
     </select>
 
     <select id="findDetailById" resultMap="articleMap" parameterType="java.lang.String">
-        SELECT a.id,a.title,a.comment_count,a.content,a.view_count,a.publish_time, c.name as categoryName, t.name as topicName
+        SELECT a.id,a.title,a.comment_count,a.view_count,a.publish_time, c.name as categoryName, t.name as topicName
         FROM t_article a
         LEFT JOIN t_category c on a.category_id = c.id
         LEFT JOIN t_topic t on t.id = a.topic_id
