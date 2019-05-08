@@ -101,9 +101,10 @@
                     <span class="mid-dot-divider"></span>
                     <a href="/movie" class="widget-list-item">观影记录</a>
                     <span class="mid-dot-divider"></span>
-                    <a href="/book" class="widget-list-item">读过的书</a>
-                    <span class="mid-dot-divider"></span>
                     <a href="/why" class="widget-list-item">好奇心</a>
+                </div>
+                <div class="widget-list">
+                    <a href="/book" class="widget-list-item">读过的书</a>
                 </div>
             </div>
         </div>
