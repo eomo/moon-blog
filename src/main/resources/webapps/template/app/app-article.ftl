@@ -40,6 +40,10 @@
         </header>
         <input type="hidden" id="article_id">
         <article id="article" class="markdown-section">${article.content}</article>
+        <div>
+            <img v-if="showAppreciate" src="./appreciate.png" style="width: 400px; height: 400px">
+            如果觉得文章对你有帮助，想请我喝杯可乐，点这里<div class="submit" v-on:click="appreciate">赞赏</div>
+        </div>
     </div>
 </div>
 <div class="single-column-layout single-column-layout-wide">
@@ -151,6 +155,7 @@
     var vm = new Vue({
         el: '#commentEL',
         data: {
+            showAppreciate: false,
             comment: {
                 author: CookieUtils.get('comment_author'),
                 authorEmail: CookieUtils.get('comment_author_email'),
@@ -217,6 +222,9 @@
                 this.comment.articleId = articleId;
                 this.comment.parentId = commentId;
                 this.comment.rootId = rootId;
+            },
+            appreciate: function () {
+                this.showAppreciate = !this.showAppreciate
             }
         }
     });
