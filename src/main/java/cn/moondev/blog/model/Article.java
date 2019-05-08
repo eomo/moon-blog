@@ -150,6 +150,9 @@ public class Article {
     }
 
     public String getPublishTime() {
+        if (Objects.isNull(publishTime)) {
+            return ""
+        }
         return publishTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm"));
     }
 
@@ -206,6 +209,9 @@ public class Article {
     }
 
     public String getMonth() {
+        if (Objects.isNull(publishTime)) {
+            return "";
+        }
         int month = publishTime.getMonthValue();
         if (month < 10) {
             return "0" + month;
@@ -214,6 +220,9 @@ public class Article {
     }
 
     public String getDay() {
+        if (Objects.isNull(publishTime)) {
+            return "";
+        }
         int day = publishTime.getDayOfMonth();
         if (day < 10) {
             return "0" + day;
