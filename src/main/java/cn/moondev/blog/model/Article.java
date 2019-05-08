@@ -151,7 +151,7 @@ public class Article {
 
     public String getPublishTime() {
         if (Objects.isNull(publishTime)) {
-            return ""
+            return "";
         }
         return publishTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm"));
     }
