@@ -71,7 +71,7 @@ public class Category {
         Category category = new Category();
         category.id = -3L;
         category.code = "why";
-        category.name = "十万个为什么";
+        category.name = "好奇心";
         category.image = "//static.hicsc.com/image/tc/why-7.jpg?imageMogr2/thumbnail/!80x80r/format/webp/blur/1x0/quality/75|imageslim";
         category.desc = "世界真奇妙";
         category.url = "/why";
