@@ -44,7 +44,7 @@
             <img class="appreciate-img" src="//static.hicsc.com/image/post/appreciate.png">
         </div>
     </div>
-    <div style="margin: 10px 0 20px 0;">
+    <div style="margin-bottom:30px;">
         <a id="appreciate-url" href="javascript:void(0);"><img src="//static.hicsc.com/image/post/heart_green.png" style="width: 29px;height: 29px"/></a>
     </div>
 </div>
