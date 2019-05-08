@@ -41,7 +41,7 @@
         <input type="hidden" id="article_id">
         <article id="article" class="markdown-section">${article.content}</article>
         <div>
-            <img v-if="showAppreciate" src="./appreciate.png" style="width: 400px; height: 400px">
+            <img v-if="showAppreciate" src="https://static.hicsc.com/image/post/appreciate.png" style="width: 400px; height: 400px">
             如果觉得文章对你有帮助，想请我喝杯可乐，点这里<div class="submit" v-on:click="appreciate">赞赏</div>
         </div>
     </div>
