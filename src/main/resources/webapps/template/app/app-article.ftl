@@ -155,7 +155,11 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
     $('#appreciate-url').click(function () {
-        $('.appreciate-img').show();
+        if ($('.appreciate-img').is(":hidden")) {
+            $('.appreciate-img').show();
+        } else {
+            $('.appreciate-img').hidden();
+        }
     });
 
     var vm = new Vue({
