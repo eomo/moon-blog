@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,minimal-ui">
-    <title>看过的电影 - HICSC</title>
+    <title>观影记录 - 电影是世界上最美的骗局 - HICSC</title>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link rel="stylesheet" href="/webapps/asserts/header.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/webapps/asserts/movie.css" type="text/css" media="screen">

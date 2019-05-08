@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,minimal-ui">
-    <title>看过的书 - HICSC</title>
+    <title>读过的书 - 夫读书将以何为哉？辨其大义，以修己治人之体也，察其微言，以善精义入神之用也 - HICSC</title>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link rel="stylesheet" href="/webapps/asserts/header.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/webapps/asserts/book.css" type="text/css" media="screen">
@@ -21,7 +21,7 @@
             </a>
         </div>
         <div class="u-float-left">
-            <h1 class="category-header-name-2">看过的书</h1>
+            <h1 class="category-header-name-2">读过的书</h1>
             <div class="category-header-desc">
                 <p>如果你愿意购买或者与我交换图书，请与我联系</p>
             </div>
