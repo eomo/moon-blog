@@ -101,7 +101,7 @@
     <select id="hot" resultMap="articleMap">
         SELECT id,title,image,aformat,mformat,view_count,comment_count
         FROM t_article
-        WHERE (badge = '' OR badge IS NULL)
+        WHERE `status` = 1 and (badge = '' OR badge IS NULL)
         ORDER BY view_count,comment_count DESC
         limit 5
     </select>
