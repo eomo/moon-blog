@@ -211,6 +211,7 @@
             saveDraft: function () {
                 if (checkArticle(this)) {
                     this.article.content = mde.value();
+                    this.article.publishTime = null;
                     HttpUtils.post('/v1/article/draft', this.article).done(function (data) {
                         UiTools.alert('保存草稿成功！', 'success');
                         app.article.id = data;
