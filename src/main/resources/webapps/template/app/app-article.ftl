@@ -154,7 +154,7 @@
 <script src="/webapps/asserts/js/emojionearea.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
-    $('.appreciate-url').click(function () {
+    $('#appreciate-url').click(function () {
         $('.appreciate-img').show();
     });
 
