@@ -113,7 +113,11 @@ a {
 }
 
 @media screen and (max-width:900px) {
-	.site-title .site-info {
+	.site-title {
+		display: none;
+	}
+
+	.site-info {
 		display: none;
 	}
 
