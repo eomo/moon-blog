@@ -158,7 +158,7 @@
         if ($('.appreciate-img').is(":hidden")) {
             $('.appreciate-img').show();
         } else {
-            $('.appreciate-img').hidden();
+            $('.appreciate-img').hide();
         }
     });
 
