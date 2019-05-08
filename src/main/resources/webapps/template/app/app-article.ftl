@@ -42,7 +42,7 @@
         <article id="article" class="markdown-section">${article.content}</article>
     </div>
 </div>
-<div class="single-column-layout single-column-layout-wide" style="max-width: 780px">
+<div class="single-column-layout single-column-layout-wide">
     <div id="commentEL" v-cloak>
         <meta v-bind:content="'UserComments:'+commentCount" itemprop="interactionCount">
         <h3 class="responses-title">{{commentCount}}条评论</h3>
