@@ -6,7 +6,7 @@
     </div>
     <div class="site-info-media">
         <p>
-            © 2018 - ${.now?string("yyyy")} SHOUCHUAN.CHEN | <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+            © 2018 - ${.now?string("yyyy")} SHOUCHUAN.CHEN
         </p>
     </div>
 </footer>
