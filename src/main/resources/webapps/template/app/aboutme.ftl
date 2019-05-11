@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/css/emojione.min.css" rel="stylesheet">
     <link href="/webapps/asserts/css/emojionearea.min.css" rel="stylesheet">
+    <#include "common/app-baidu.ftl"/>
 </head>
 <body>
 <#include "common/app-header.ftl"/>

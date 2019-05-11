@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link rel="stylesheet" href="/webapps/asserts/header.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/webapps/asserts/movie.css" type="text/css" media="screen">
+    <#include "common/app-baidu.ftl"/>
 </head>
 <body>
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/webapps/asserts/header.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/webapps/asserts/vendor.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/webapps/asserts/category.css" type="text/css" media="screen">
+    <#include "common/app-baidu.ftl"/>
 </head>
 <body>
 <#include "common/app-header.ftl"/>
