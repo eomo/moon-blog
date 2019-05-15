@@ -173,10 +173,6 @@ body {
     top: 14px
 }
 
-.markdown-section p.tip code {
-    background-color: #efefef
-}
-
 .markdown-section p.tip em {
     color: #34495e
 }
@@ -270,72 +266,6 @@ body {
 
 .markdown-section em {
     color: #7f8c8d
-}
-
-.markdown-section code {
-    border-radius: 2px;
-    color: #c7254e;
-    font-size: .8rem;
-    margin: 0 2px;
-    padding: 3px 5px;
-    white-space: pre-wrap
-}
-
-.markdown-section code, .markdown-section pre {
-    background-color: #f8f8f8;
-    font-family: Roboto Mono, Monaco, courier, monospace
-}
-
-.markdown-section pre {
-    -moz-osx-font-smoothing: initial;
-    -webkit-font-smoothing: initial;
-    line-height: 1.5rem;
-    margin: 1.2em 0;
-    overflow: auto;
-    padding: 0 1.4rem;
-    position: relative;
-    word-wrap: normal
-}
-
-.markdown-section pre > code {
-    -moz-osx-font-smoothing: initial;
-    -webkit-font-smoothing: initial;
-    background-color: #f8f8f8;
-    border-radius: 2px;
-    color: #525252;
-    display: block;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-    font-size: 16px;
-    line-height: inherit;
-    margin: 0 2px;
-    max-width: inherit;
-    overflow: inherit;
-    padding: 2.2em 5px;
-    white-space: inherit
-}
-
-.markdown-section code:after, .markdown-section code:before {
-    letter-spacing: .05rem
-}
-
-code .token {
-    -moz-osx-font-smoothing: initial;
-    -webkit-font-smoothing: initial;
-    min-height: 1.5rem
-}
-
-pre:after {
-    color: #ccc;
-    content: attr(data-lang);
-    font-size: .6rem;
-    font-weight: 600;
-    height: 15px;
-    line-height: 15px;
-    padding: 5px 10px 0;
-    position: absolute;
-    right: 0;
-    text-align: right;
-    top: 0
 }
 
 .respond {
