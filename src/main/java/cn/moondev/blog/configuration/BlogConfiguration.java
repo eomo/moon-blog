@@ -2,7 +2,6 @@ package cn.moondev.blog.configuration;
 
 import cn.moondev.blog.provider.QiniuOperations;
 import cn.moondev.blog.service.UserService;
-import cn.moondev.framework.provider.markdown.MarkdownOperations;
 import cn.moondev.framework.provider.mysql.MybatisConfigurationSupport;
 import cn.moondev.framework.provider.okhttp3.OkHttpOperations;
 import cn.moondev.framework.provider.spring.SpringBeanUtils;
@@ -47,10 +46,10 @@ public class BlogConfiguration {
         return new OkHttpOperations(120, 0);
     }
 
-    @Bean
-    public MarkdownOperations markdownOperations() {
-        return new MarkdownOperations();
-    }
+//    @Bean
+//    public MarkdownOperations markdownOperations() {
+//        return new MarkdownOperations();
+//    }
 
     @Bean
     public QiniuOperations qiniuOperations() {
