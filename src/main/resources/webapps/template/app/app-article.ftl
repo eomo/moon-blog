@@ -41,7 +41,7 @@
              -->
         </header>
         <input type="hidden" id="article_id">
-        <article id="article" class="markdown-section">${article.content}</article>
+        <div class="moon-article">${article.content}</div>
         <div class="appreciate">
             <img class="appreciate-img" src="//static.hicsc.com/image/post/appreciate.png">
         </div>
