@@ -233,7 +233,8 @@ public class ArticleService extends BaseService {
                 @Override
                 public String call() throws Exception {
                     Article article = mapper.findContentById(id);
-                    return markdownOperations.markdown2Html(article.content);
+//                    return markdownOperations.markdown2Html(article.content);
+                    return article.content;
                 }
             });
             return content;
