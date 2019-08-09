@@ -179,7 +179,6 @@ public class ArticleService extends BaseService {
 
     public Article aboutme() {
         Article article = findByBadge("ABOUTME");
-        article.content = markdownOperations.markdown2Html(article.content);
         return article;
     }
 
