@@ -12,15 +12,15 @@
     <#include "common/app-baidu.ftl"/>
 </head>
 <body>
-<header class="header">
-    <div class="u-float-left">
-        <h1 class="site-title u-float-left">
-            <a href="/" class="logo" title="no pursuit coder">
-                <img src="/webapps/asserts/image/logo.png" width=65 alt="HICSC.COM"/>
-            </a>
-        </h1>
-    </div>
-</header>
+<#--<header class="header">-->
+<#--    <div class="u-float-left">-->
+<#--        <h1 class="site-title u-float-left">-->
+<#--            <a href="/" class="logo" title="no pursuit coder">-->
+<#--                <img src="/webapps/asserts/image/logo.png" width=65 alt="HICSC.COM"/>-->
+<#--            </a>-->
+<#--        </h1>-->
+<#--    </div>-->
+<#--</header>-->
 <div class="single-column-layout single-column-layout-wide article-container">
     <div class="block-group">
         <header class="entry-header">

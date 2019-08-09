@@ -523,6 +523,7 @@ table tr td:last-child {
 }
 
 #write strong {
+    font-weight: 500;
     padding: 0 1px;
 }
 
