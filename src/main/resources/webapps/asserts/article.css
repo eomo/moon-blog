@@ -262,7 +262,7 @@ body {
 #write {
     max-width: 960px;
     margin: 0 auto;
-    padding: 20px 0 100px;
+    padding: 20px 0 20px;
 }
 
 #write p {
