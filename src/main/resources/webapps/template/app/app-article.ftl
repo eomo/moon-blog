@@ -10,10 +10,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" rel="stylesheet">
     <link href="/webapps/asserts/css/emojionearea.min.css" rel="stylesheet">
     <#include "common/app-baidu.ftl"/>
-    <style>.logo {margin: 0 0 0 10px;}</style>
 </head>
 <body>
-<#include "common/app-header.ftl"/>
 <div class="single-column-layout single-column-layout-wide article-container">
     <div class="block-group">
         <header class="entry-header">
