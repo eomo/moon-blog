@@ -250,7 +250,7 @@ html {
 }
 
 body {
-    font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+    font-family: Source Sans Pro, Arial, sans-serif !important;
     color: #34495e;
     -webkit-font-smoothing: antialiased;
     line-height: 1.6rem;
@@ -551,6 +551,9 @@ table tr td:last-child {
 
 #write .CodeMirror-wrap .CodeMirror-code pre {
     padding-left: 12px;
+    font-size: 15px;
+    font-family: monospace;
+    line-height: 1.5em;
 }
 
 #write code, tt {
