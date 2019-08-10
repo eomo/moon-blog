@@ -253,7 +253,7 @@ body {
     font-family: Source Sans Pro, Arial, sans-serif !important;
     color: #34495e;
     -webkit-font-smoothing: antialiased;
-    line-height: 1.6rem;
+    line-height: 1.8rem;
     letter-spacing: 0;
     margin: 0;
     overflow-x: hidden;
@@ -266,8 +266,9 @@ body {
 }
 
 #write p {
-    line-height: 1.6rem;
+    line-height: 1.8rem;
     word-spacing: .05rem;
+    font-size: 15px;
 }
 
 #write ol li {
@@ -552,7 +553,6 @@ table tr td:last-child {
 #write .CodeMirror-wrap .CodeMirror-code pre {
     padding-left: 12px;
     font-size: 15px;
-    font-family: monospace;
     line-height: 1.5em;
 }
 
@@ -560,7 +560,7 @@ table tr td:last-child {
     margin: 0 2px;
     padding: 2px 4px;
     border-radius: 2px;
-    font-family: Roboto Mono, Source Sans Pro, Monaco, courier, monospace !important;
+    font-family: Source Sans Pro, Monaco, courier, monospace !important;
     font-size: 0.92rem;
     color: #e96900;
     background-color: #f8f8f8;
