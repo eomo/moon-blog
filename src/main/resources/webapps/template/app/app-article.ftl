@@ -22,7 +22,7 @@
 <#--    </div>-->
 <#--</header>-->
 <div class="single-column-layout single-column-layout-wide article-container">
-    <bo class="block-group">
+    <div class="block-group">
         <header class="entry-header">
             <h2 class="entry-title" itemprop="headline">${article.title}</h2>
             <div class="entry-meta">
@@ -42,7 +42,7 @@
              -->
         </header>
         <input type="hidden" id="article_id">
-        <body class='typora-export' >${article.content}</body>
+        <div class="moon-article">${article.content}</div>
         <div class="appreciate">
             <img class="appreciate-img" src="//static.hicsc.com/image/post/appreciate.png">
         </div>
