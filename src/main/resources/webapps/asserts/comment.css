@@ -66,12 +66,13 @@
 }
 
 .comment-time {
+    margin-top: 4px;
     font-size: 12px;
     color: rgba(0, 0, 0, .3)
 }
 
 .comment-content {
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 14px;
     color: rgba(0, 0, 0, .66)
 }
