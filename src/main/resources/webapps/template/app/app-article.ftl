@@ -7,7 +7,6 @@
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link href="/webapps/asserts/comment.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/css/emojione.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" rel="stylesheet">
     <link href="/webapps/asserts/css/emojionearea.min.css" rel="stylesheet">
     <#include "common/app-baidu.ftl"/>
 </head>
@@ -139,14 +138,12 @@
 </div>
 <#include "common/app-footer.ftl"/>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+<script src="https://static.hicsc.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://static.hicsc.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/lib/js/emojione.min.js"></script>
 <script src="/webapps/asserts/js/notify.js"></script>
 <script src="/webapps/asserts/js/utils.js"></script>
 <script src="/webapps/asserts/js/emojionearea.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
     $('#appreciate-url').click(function () {
         if ($('.appreciate-img').is(":hidden")) {
