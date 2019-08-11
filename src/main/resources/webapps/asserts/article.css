@@ -1321,7 +1321,7 @@ li p.first {
     display: inline-block;
 }
 
-.is-mac > ul, ol {
+ul, ol {
     padding-left: 30px;
 }
 

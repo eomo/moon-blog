@@ -7,6 +7,10 @@
     list-style: none;
 }
 
+.commentlist ol {
+    padding-left: 0;
+}
+
 .responses-title {
     font-weight: 700;
     font-size: 1.25em;
