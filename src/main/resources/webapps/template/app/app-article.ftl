@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>${article.title} - HICSC</title>
-    <meta name="description" content="${article.title} - 作者: chen.chuan,首发于HICSC.COM">
+    <meta name="description" content="${article.title} - 作者: RYAN,首发于HICSC.COM">
     <#include "common/app-css.ftl"/>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link href="/webapps/asserts/comment.css" rel="stylesheet" />
@@ -11,6 +11,7 @@
     <#include "common/app-baidu.ftl"/>
 </head>
 <body>
+<#include "common/app-header.ftl"/>
 <div class="single-column-layout single-column-layout-wide article-container">
     <div class="block-group">
         <header class="entry-header">
