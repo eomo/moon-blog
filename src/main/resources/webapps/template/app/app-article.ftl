@@ -11,6 +11,7 @@
     <#include "common/app-baidu.ftl"/>
 </head>
 <body>
+<#include "common/app-header.ftl"/>
 <div class="single-column-layout single-column-layout-wide article-container">
     <div class="block-group">
         <header class="entry-header">
