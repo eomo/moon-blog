@@ -191,6 +191,7 @@ a {
 }
 
 .menu-li {
+	font-weight: 500;
 	float: left;
     margin-right: 20px;
     list-style: none;
