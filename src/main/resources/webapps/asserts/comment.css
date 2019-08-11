@@ -7,8 +7,8 @@
     list-style: none;
 }
 
-.commentlist ol {
-    padding-left: 0 !important;
+.commentlist {
+    padding: 0;
 }
 
 .responses-title {
