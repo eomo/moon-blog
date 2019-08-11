@@ -17,7 +17,7 @@
             <article v-for="item in articles" class="block-list">
                 <a class="block-image" v-bind:aria-label="item.title"
                    v-bind:href="'/post/' + item.id"
-                   v-bind:style="'background-image: url(' + item.image + ');'"></a>
+                   v-bind:style="'background-image: url(' + item.image + item.mformat + ');'"></a>
                 <div class="block-content">
                     <h2 class="block-title">
                         <a v-bind:href="'/post/' + item.id" v-bind:aria-label="item.title"
