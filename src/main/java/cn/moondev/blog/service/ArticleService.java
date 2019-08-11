@@ -58,11 +58,8 @@ public class ArticleService extends BaseService {
     public List<Article> hotArticles() {
         List<Article> articles = mapper.hot();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH);
-        articles.stream().forEach(a -> {
-            a.publishTimeDesc = a.publishTime.format(dateTimeFormatter);
-        });
-
-        return mapper.hot();
+        articles.stream().forEach(a -> a.publishTimeDesc = a.publishTime.format(dateTimeFormatter));
+        return articles;
     }
 
     /**
