@@ -9,10 +9,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/css/emojione.min.css" rel="stylesheet">
     <link href="/webapps/asserts/css/emojionearea.min.css" rel="stylesheet">
     <#include "common/app-baidu.ftl"/>
+    <style>.heaer{top: 0;}</style>
 </head>
 <body>
 <#include "common/app-header.ftl"/>
-<div class="single-column-layout single-column-layout-wide article-container">
+<div class="single-column-layout single-column-layout-wide article-container" style="position: relative;top: 65px;">
     <div class="block-group">
         <header class="entry-header">
             <h2 class="entry-title" itemprop="headline">${article.title}</h2>
