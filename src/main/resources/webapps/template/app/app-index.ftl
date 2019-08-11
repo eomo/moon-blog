@@ -86,7 +86,7 @@
                                        href="/post/${item.id}">${item.title}</a>
                                 </h4>
                                 <p class="widget-article-item-description JiEun">
-                                    ${item.publishTime?string.long}
+                                    <#assign item.publishTime = "1995-10-25T15:05"?string.long>
                                 </p>
                             </div>
                         </li>
