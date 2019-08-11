@@ -86,7 +86,7 @@
                                        href="/post/${item.id}">${item.title}</a>
                                 </h4>
                                 <p class="widget-article-item-description JiEun">
-                                    ${item.publishTime}
+                                    ${item.publishTime?string.long}
                                 </p>
                             </div>
                         </li>
