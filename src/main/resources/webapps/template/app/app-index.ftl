@@ -64,7 +64,7 @@
                     <#list topics as topic>
                         <a href="/topic/${topic.code!}" class="widget-topic-item widthImage"
                            title="和${topic.name!}有关的文章">
-                            <img src="${topic.image!}" alt="${topic.name!}" aria-label="${topic.name!}"
+                            <img src="${topic.image!}${topic.format!}" alt="${topic.name!}" aria-label="${topic.name!}"
                                  class="widget-topic-image">${topic.name!}
                         </a>
                     </#list>
