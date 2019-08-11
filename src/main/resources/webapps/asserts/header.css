@@ -205,6 +205,10 @@ a {
 	color: rgba(0,0,0,.3)
 }
 
+.menu-ul:hover .menu-item:hover {
+	color: #42b983;
+}
+
 .menu-item {
 	color: rgba(0,0,0,.68);
     display: inline-block;
