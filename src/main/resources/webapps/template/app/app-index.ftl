@@ -77,7 +77,7 @@
                         <li class="widget-article-item">
                             <div class="widget-article-item-image">
                                 <img aria-label="${item.title}" alt="${item.title}" class="image--outlined"
-                                     src="${item.image}">
+                                     src="${item.image}${item.aformat}">
                             </div>
                             <div class="widget-article-item-info">
                                 <h4 class="widget-article-item-title">
