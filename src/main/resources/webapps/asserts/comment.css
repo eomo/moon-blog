@@ -8,7 +8,7 @@
 }
 
 .commentlist ol {
-    padding-left: 0;
+    padding-left: 0 !important;
 }
 
 .responses-title {
