@@ -9,7 +9,7 @@
     <div class="header-center">
         <nav class="navs">
             <div class="single-column-layout single-column-layout-wide menu">
-                <ul id="menu" class="menu-ul">
+                <ul id="menu" class="menu-ul" style="padding: 0">
 
                 </ul>
             </div>
