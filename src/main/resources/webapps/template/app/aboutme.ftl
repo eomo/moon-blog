@@ -20,6 +20,12 @@
         </header>
         <input type="hidden" id="article_id">
         <article id="article" class="markdown-section">${article.content}</article>
+        <div class="appreciate">
+            <img class="appreciate-img" src="//static.hicsc.com/image/post/appreciate.png">
+        </div>
+    </div>
+    <div style="margin-bottom:30px;">
+        <a id="appreciate-url" href="javascript:void(0);"><img src="//static.hicsc.com/image/post/heart_green.png" style="width: 29px;height: 29px"/></a>
     </div>
 </div>
 <div class="single-column-layout single-column-layout-wide">
@@ -123,6 +129,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/lib/js/emojione.min.js"></script>
 <script src="/webapps/asserts/js/emojionearea.min.js"></script>
 <script type="text/javascript">
+    $('#appreciate-url').click(function () {
+        if ($('.appreciate-img').is(":hidden")) {
+            $('.appreciate-img').show();
+        } else {
+            $('.appreciate-img').hide();
+        }
+    });
     var vm = new Vue({
         el: '#commentEL',
         data: {
