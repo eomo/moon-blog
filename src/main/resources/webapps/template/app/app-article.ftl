@@ -2,16 +2,18 @@
 <head>
     <meta charset="UTF-8">
     <title>${article.title} - HICSC</title>
-    <meta name="description" content="${article.title} - 作者: chen.chuan,首发于HICSC.COM">
+    <meta name="description" content="${article.title} - 作者: RYAN,首发于HICSC.COM">
     <#include "common/app-css.ftl"/>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link href="/webapps/asserts/comment.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/css/emojione.min.css" rel="stylesheet">
     <link href="/webapps/asserts/css/emojionearea.min.css" rel="stylesheet">
     <#include "common/app-baidu.ftl"/>
+    <style>.header {top: 0;} .logo {margin: -4px 0 0 8px;}</style>
 </head>
 <body>
-<div class="single-column-layout single-column-layout-wide article-container">
+<#include "common/app-header.ftl"/>
+<div class="single-column-layout single-column-layout-wide article-container" style="position: relative;top: 65px;">
     <div class="block-group">
         <header class="entry-header">
             <h2 class="entry-title" itemprop="headline">${article.title}</h2>
@@ -33,7 +35,6 @@
         </header>
         <input type="hidden" id="article_id">
         <div class="moon-article">${article.content}</div>
-    </div>
 </div>
 <div class="single-column-layout single-column-layout-wide">
     <div id="commentEL" v-cloak>

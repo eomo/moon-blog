@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,minimal-ui">
-    <title>记录生活，记录美好 - 不爱写代码的程序员，一定是一个好作者 - HICSC</title>
+    <title>记录生活，记录美好 - 不爱写代码的程序员，应该是一个好作家 - HICSC</title>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link rel="stylesheet" href="/webapps/asserts/header.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/webapps/asserts/vendor.css" type="text/css" media="screen">
@@ -17,7 +17,7 @@
             <article v-for="item in articles" class="block-list">
                 <a class="block-image" v-bind:aria-label="item.title"
                    v-bind:href="'/post/' + item.id"
-                   v-bind:style="'background-image: url(' + item.image + ');'"></a>
+                   v-bind:style="'background-image: url(' + item.image + item.mformat + ');'"></a>
                 <div class="block-content">
                     <h2 class="block-title">
                         <a v-bind:href="'/post/' + item.id" v-bind:aria-label="item.title"
@@ -49,7 +49,7 @@
                         <img src="/webapps/asserts/image/avastar.jpg" class="avatar" width="32"
                              height="32">
                     </div>
-                    <div class="widget-card-content">CHEN川</div>
+                    <div class="widget-card-content">RYAN</div>
                     <div class="widget-card-description">
                         <p>混迹于非知名科技公司的非知名非文艺青年</p>
                         <p class="more">
@@ -64,7 +64,7 @@
                     <#list topics as topic>
                         <a href="/topic/${topic.code!}" class="widget-topic-item widthImage"
                            title="和${topic.name!}有关的文章">
-                            <img src="${topic.image!}" alt="${topic.name!}" aria-label="${topic.name!}"
+                            <img src="${topic.image!}${topic.format!}" alt="${topic.name!}" aria-label="${topic.name!}"
                                  class="widget-topic-image">${topic.name!}
                         </a>
                     </#list>
@@ -77,7 +77,7 @@
                         <li class="widget-article-item">
                             <div class="widget-article-item-image">
                                 <img aria-label="${item.title}" alt="${item.title}" class="image--outlined"
-                                     src="${item.image}">
+                                     src="${item.image}${item.aformat}">
                             </div>
                             <div class="widget-article-item-info">
                                 <h4 class="widget-article-item-title">
@@ -85,8 +85,8 @@
                                        title="${item.title}"
                                        href="/post/${item.id}">${item.title}</a>
                                 </h4>
-                                <p class="widget-article-item-description JiEun">CHEN川
-                                    <span class="mid-dot-divider"></span>${item.commentCount} 评论
+                                <p class="widget-article-item-description JiEun">
+                                    ${item.publishTimeDesc}
                                 </p>
                             </div>
                         </li>
