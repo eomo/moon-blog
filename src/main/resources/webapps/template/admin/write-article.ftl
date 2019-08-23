@@ -163,8 +163,8 @@
 
     var getArticle = function (vm) {
         HttpUtils.get("/v1/article/${article_id}", null).done(function (data) {
-            data.mformat = !!data.mformat ? data.mformat : '?imageView2/2/w/140/h/120/format/webp';
-            data.aformat = !!data.aformat ? data.aformat : '?imageView2/2/w/48/h/48/format/webp';
+            data.mformat = !!data.mformat ? data.mformat : '?imageView2/2/w/280/h/240/format/webp';
+            data.aformat = !!data.aformat ? data.aformat : '?imageView2/2/w/96/h/96/format/webp';
             vm.article = data;
             if (!!data.id) {
                 mde.value(data.content);
