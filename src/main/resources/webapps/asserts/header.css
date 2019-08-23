@@ -178,12 +178,12 @@ a {
 .single-column-layout {
     margin-left: auto;
 	margin-right: auto;
-	max-width: 1060px;
+	max-width: 960px;
 	width: 90%
 }
 
 .single-column-layout-wide {
-    max-width: 1060px;
+    max-width: 960px;
 }
 
 .single-column-layout-admin {
