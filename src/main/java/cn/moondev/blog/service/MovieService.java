@@ -56,7 +56,7 @@ public class MovieService {
 
     private Movie getMovieInfoFromDouban(String doubanId, String remark) {
         OkHttpRequest request = new OkHttpRequest();
-        request.domain = "https://api.douban.com/v2/movie/subject/" + doubanId;
+        request.domain = "https://api.douban.com/v2/movie/subject/" + doubanId + "?apikey=0df993c66c0c636e29ecbb5344252a4a";
         String content = okHttpOperations.directSyncRequest(request);
         LOG.info("获取电影信息:{}", content);
         if (Strings.isNullOrEmpty(content)) {

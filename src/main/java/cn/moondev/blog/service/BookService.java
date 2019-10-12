@@ -71,7 +71,7 @@ public class BookService {
 
     private Book getBookInfoFromDouban(BookDTO dto) {
         OkHttpRequest request = new OkHttpRequest();
-        request.domain = "https://api.douban.com/v2/book/" + dto.doubanId;
+        request.domain = "https://api.douban.com/v2/book/" + dto.doubanId + "?apikey=0df993c66c0c636e29ecbb5344252a4a";
         String content = okHttpOperations.directSyncRequest(request);
         LOG.info("douban api return:{}", content);
         if (Strings.isNullOrEmpty(content)) {
