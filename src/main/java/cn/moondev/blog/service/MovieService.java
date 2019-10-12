@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.URLDecoder;
 import java.util.List;
 
 @Service
@@ -58,6 +59,7 @@ public class MovieService {
         OkHttpRequest request = new OkHttpRequest();
         request.domain = "https://api.douban.com/v2/movie/subject/" + doubanId + "?apikey=0df993c66c0c636e29ecbb5344252a4a";
         String content = okHttpOperations.directSyncRequest(request);
+        content = URLDecoder.decode(content);
         LOG.info("获取电影信息:{}", content);
         if (Strings.isNullOrEmpty(content)) {
             throw MessageCode.ex(MessageCode.API_ERROR);
