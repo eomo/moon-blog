@@ -231,6 +231,7 @@
                     this.topic = JsonTools.toJson(item);
                 } else {
                     this.title = '添加专题';
+                    this.topic.format='/topic';
                 }
                 this.$refs.topicModal.show();
             },

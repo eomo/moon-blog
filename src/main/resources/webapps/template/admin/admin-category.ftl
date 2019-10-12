@@ -282,6 +282,8 @@
             showAddCategoryModal: function () {
                 this.title = '添加文章分类';
                 this.category.menu = '0';
+                this.category.format1='/category';
+                this.category.format2='/categorylist';
                 this.$refs.categoryModal.show();
             },
             showUpdateCategoryModal: function (item) {
