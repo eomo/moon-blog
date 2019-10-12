@@ -42,7 +42,7 @@
                v-bind:data-id="item.id"
                v-bind:title="item.title"
                v-bind:href="'/post/' + item.id"
-               v-bind:style="'background-image: url(' + item.image + ');'"
+               v-bind:style="'background-image: url(' + item.image + '/360);'"
                v-bind:aria-label="item.title">
             </a>
         </div>
