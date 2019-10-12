@@ -21,7 +21,7 @@
                 <ul class="archive-list">
                     <#list articles as item>
                     <li class="archive-item">
-                        <img class="u-float-right archive-list-image" src="${item.image}">
+                        <img class="u-float-right archive-list-image" src="${item.image}${item.aformat}">
                         <a class="archive-item-title" href="/post/${item.id}">${item.title}</a>
                         <div class="archive-item-meta">${item.viewCount} 阅读 / ${item.commentCount} 回应</div>
                     </li>

@@ -17,7 +17,7 @@
         <div class="category-header-logo">
             <a href="/movie">
                 <img class="category-header-image"
-                     src="https://static.hicsc.com/image/tc/movie.jpg?imageMogr2/thumbnail/!194x194r/format/webp/blur/1x0/quality/75|imageslim"></a>
+                     src="https://static.hicsc.com/image/tc/movie.jpg/category"></a>
         </div>
         <div class="u-float-left">
             <h1 class="category-header-name">看过的电影</h1>
