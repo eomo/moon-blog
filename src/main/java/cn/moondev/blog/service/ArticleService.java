@@ -186,7 +186,6 @@ public class ArticleService extends BaseService {
 
     public Article aboutme() {
         Article article = findByBadge("ABOUTME");
-        article.content = getArticleContent(article.id);
         return article;
     }
 
