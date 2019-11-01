@@ -35,6 +35,8 @@ public class ArticleService extends BaseService {
     private ArticleMapper mapper;
     @Autowired
     private Cache<String, String> articleCache;
+    @Autowired
+    private MarkdownOperations markdownOperations;
 
     public PaginationDTO<Article> page(QueryDTO dto) {
         PaginationDTO<Article> pagination = PaginationDTO.create(dto.pager, dto.size);
@@ -235,7 +237,7 @@ public class ArticleService extends BaseService {
                 @Override
                 public String call() throws Exception {
                     Article article = mapper.findContentById(id);
-                    return article.content;
+                    return markdownOperations.markdown2Html(article.content);
                 }
             });
             return content;
