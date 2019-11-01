@@ -186,6 +186,7 @@ public class ArticleService extends BaseService {
 
     public Article aboutme() {
         Article article = findByBadge("ABOUTME");
+        article.content = getArticleContent(article.id);
         return article;
     }
 
@@ -245,10 +246,5 @@ public class ArticleService extends BaseService {
             LOG.error("获取文章内容出现异常", e);
             return "您浏览的文章已删除，请阅读其他文章或联系作者";
         }
-    }
-
-    public static void main(String[] args) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH);
-        System.out.println(LocalDateTime.now().format(dateTimeFormatter));
     }
 }
