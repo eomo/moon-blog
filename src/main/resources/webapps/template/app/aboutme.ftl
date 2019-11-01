@@ -22,9 +22,6 @@
         <input type="hidden" id="article_id">
         <article id="article" class="markdown-section">${article.content}</article>
     </div>
-    <div style="margin-bottom:30px;">
-        <a id="appreciate-url" href="javascript:void(0);"><img src="//static.hicsc.com/image/post/heart_green.png" style="width: 29px;height: 29px"/></a>
-    </div>
 </div>
 <div class="single-column-layout single-column-layout-wide">
     <div id="commentEL" v-cloak>
