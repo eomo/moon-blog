@@ -6,7 +6,7 @@
     </div>
     <div class="site-info-media">
         <p>
-            © 2018 - ${.now?string("yyyy")} SHOUCHUAN.CHEN | 蜀ICP备15021762号-2
+            © 2018 - ${.now?string("yyyy")} SHOUCHUAN.CHEN
         </p>
     </div>
 </footer>
