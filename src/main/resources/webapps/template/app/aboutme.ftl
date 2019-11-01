@@ -3,7 +3,8 @@
     <meta charset="UTF-8">
     <title>${article.title} - HICSC</title>
     <meta name="description" content="${article.title} - 作者: chen.chuan,首发于HICSC.COM">
-    <#include "common/app-css.ftl"/>
+    <link href="/webapps/asserts/header.css" rel="stylesheet" />
+    <link href="/webapps/asserts/article.css" rel="stylesheet" />
     <link href="/webapps/asserts/comment.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/css/emojione.min.css" rel="stylesheet">
