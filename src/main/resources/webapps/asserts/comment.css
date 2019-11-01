@@ -103,10 +103,6 @@
     cursor: pointer
 }
 
-.children {
-    margin-left: 50px;
-}
-
 .comment-block:hover .comment-reply-link {
     display: block
 }
