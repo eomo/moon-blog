@@ -1,6 +1,6 @@
 #moon-article  {
 	font-size: 16px;
-	color: #444443;
+	color: black;
 	background: #fff;
 	font-family: Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "WenQuanYi Micro Hei", "tohoma,sans-serif";
 	margin: 0;
@@ -69,6 +69,7 @@ h5 {
 	margin: 0 0 20px;
 	padding: 0;
 	line-height: 1.8;
+	font-size: 16px;
 }
 #moon-article a {
 	color: #f22f27;
