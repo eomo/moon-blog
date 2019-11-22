@@ -108,7 +108,7 @@ a {
 	line-height: 1.4
 }
 
-.site-info .a:hover {
+.site-info a:hover {
 	color: #de0056;
 }
 
