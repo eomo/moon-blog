@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0,minimal-ui">
-    <title>个人技术文摘 - HICSC</title>
+    <title>记录生活，记录美好 - 不爱写代码的程序员，应该是一个好作家 - HICSC</title>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link rel="stylesheet" href="/webapps/asserts/header.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/webapps/asserts/vendor.css" type="text/css" media="screen">
