@@ -94,7 +94,7 @@
                 </ul>
             </div>
             <div class="widget">
-                <div class="heading-title">留给朋友</div>
+                <div class="heading-title">更多</div>
                 <div class="widget-list">
                     <a href="/archive" class="widget-list-item">所有文章</a>
                     <span class="mid-dot-divider"></span>
