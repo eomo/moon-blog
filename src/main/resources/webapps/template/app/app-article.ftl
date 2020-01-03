@@ -9,7 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/css/emojione.min.css" rel="stylesheet">
     <link href="/webapps/asserts/css/emojionearea.min.css" rel="stylesheet">
     <#include "common/app-baidu.ftl"/>
-    <style>.header {top: 0;} .logo {margin: -4px 0 0 8px;}</style>
+    <style>.header {top: 0;} .logo {margin: -4px 0 0 8px;} .hljs {background: #f1f3f7}</style>
 </head>
 <body>
 <#include "common/app-header.ftl"/>
@@ -35,6 +35,7 @@
         </header>
         <input type="hidden" id="article_id">
         <div id="moon-article">${article.content}</div>
+    </div>
 </div>
 <div class="single-column-layout single-column-layout-wide">
     <div id="commentEL" v-cloak>
@@ -135,10 +136,12 @@
 </body>
 <script src="https://resources.hicsc.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://resources.hicsc.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/lib/js/emojione.min.js"></script>
 <script src="/webapps/asserts/js/notify.js"></script>
 <script src="/webapps/asserts/js/utils.js"></script>
 <script src="/webapps/asserts/js/emojionearea.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
     var vm = new Vue({
         el: '#commentEL',
