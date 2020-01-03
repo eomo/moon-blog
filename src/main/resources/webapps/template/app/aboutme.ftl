@@ -20,7 +20,7 @@
             <h2 class="entry-title" itemprop="headline">${article.title}</h2>
         </header>
         <input type="hidden" id="article_id">
-        <article id="article" class="markdown-section">${article.content}</article>
+        <article id="moon-article">${article.content}</article>
     </div>
 </div>
 <div class="single-column-layout single-column-layout-wide">
