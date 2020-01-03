@@ -30,7 +30,7 @@
                    v-bind:title="item.title"
                    v-bind:href="'/post/' + item.id"
                    v-bind:aria-label="item.title"
-                   v-bind:style="'background-image: url(' + item.image + ');'"></a>
+                   v-bind:style="'background-image: url(' + item.image + '/main);'"></a>
                 <div class="topic-article-title">
                     <h2 itemprop="headline">
                         <a target="_blank" class="js-trackedPostLink" v-bind:data-id="item.id"
