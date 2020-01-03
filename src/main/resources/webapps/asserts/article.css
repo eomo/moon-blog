@@ -1,11 +1,15 @@
 #moon-article {
     margin: 0 auto;
-    padding: 0 0 100px;
+    padding: 0 0 20px;
 }
 
 #moon-article p {
     line-height: 1.8rem;
     word-spacing: .2rem;
+}
+
+#moon-article p img{
+    max-width: 960px;
 }
 
 #moon-article ol li {
