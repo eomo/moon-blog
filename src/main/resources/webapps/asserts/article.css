@@ -12,6 +12,11 @@
     max-width: 960px;
 }
 
+#moon-article pre code {
+    font-family: Consolas, Monaco, monospace;
+    font-size: 14px;
+}
+
 #moon-article ol li {
     text-indent: 0.5rem;
 }
