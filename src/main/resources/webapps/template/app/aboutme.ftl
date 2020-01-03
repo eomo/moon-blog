@@ -5,10 +5,10 @@
     <meta name="description" content="${article.title} - 作者: chen.chuan,首发于HICSC.COM">
     <link href="/webapps/asserts/header.css" rel="stylesheet" />
     <link href="/webapps/asserts/article.css" rel="stylesheet" />
-    <link href="/webapps/asserts/comment.css" rel="stylesheet" />
+    <link href="https://resources.hicsc.com/ajax/libs/hicsc/comment.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link href="https://resources.hicsc.com/ajax/libs/emojione/2.2.7/emojione.min.css" rel="stylesheet">
-    <link href="/webapps/asserts/css/emojionearea.min.css" rel="stylesheet">
+    <link href="https://resources.hicsc.com/ajax/libs/emojionearea/emojionearea.min.css" rel="stylesheet">
     <#include "common/app-baidu.ftl"/>
     <style>.logo {margin: -4px 0 0 8px;}</style>
 </head>
@@ -122,7 +122,7 @@
 </body>
 <script src="https://resources.hicsc.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
 <script src="https://resources.hicsc.com/ajax/libs/emojione/2.2.7/emojione.min.js"></script>
-<script src="/webapps/asserts/js/emojionearea.min.js"></script>
+<script src="https://resources.hicsc.com/ajax/libs/emojionearea/emojionearea.min.js"></script>
 <script type="text/javascript">
     $('#appreciate-url').click(function () {
         if ($('.appreciate-img').is(":hidden")) {

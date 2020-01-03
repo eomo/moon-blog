@@ -5,9 +5,9 @@
     <meta name="description" content="${article.title} - 作者: RYAN,首发于HICSC.COM">
     <#include "common/app-css.ftl"/>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
-    <link href="/webapps/asserts/comment.css" rel="stylesheet" />
+    <link href="https://resources.hicsc.com/ajax/libs/hicsc/comment.css" rel="stylesheet" />
     <link href="https://resources.hicsc.com/ajax/libs/emojione/2.2.7/emojione.min.css" rel="stylesheet">
-    <link href="/webapps/asserts/css/emojionearea.min.css" rel="stylesheet">
+    <link href="https://resources.hicsc.com/ajax/libs/emojionearea/emojionearea.min.css" rel="stylesheet">
     <#include "common/app-baidu.ftl"/>
     <style>.header {top: 0;} .logo {margin: -4px 0 0 8px;} .hljs {background: #f1f3f7}</style>
 </head>
@@ -140,7 +140,7 @@
 <script src="https://resources.hicsc.com/ajax/libs/emojione/2.2.7/emojione.min.js"></script>
 <script src="/webapps/asserts/js/notify.js"></script>
 <script src="/webapps/asserts/js/utils.js"></script>
-<script src="/webapps/asserts/js/emojionearea.min.js"></script>
+<script src="https://resources.hicsc.com/ajax/libs/emojionearea/emojionearea.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
     var vm = new Vue({
