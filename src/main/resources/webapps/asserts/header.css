@@ -1,7 +1,7 @@
 body {
 	line-height: 1.8;
 	color: rgba(0,0,0,.8);
-	font-family: Roboto Mono, Source Sans Pro,Monaco, courier, Helvetica Neue,Arial,sans-serif;
+	font-family: PingFang SC,Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif,Arial;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -13,7 +13,7 @@ body {
 
 a,abbr,acronym,address,applet,big,blockquote,body,caption,cite,code,dd,del,dfn,div,dl,dt,em,fieldset,figure,font,form,h1,h2,h3,h4,h5,h6,html,iframe,ins,kbd,label,legend,li,object,ol,p,pre,q,s,samp,small,span,strike,strong,sub,sup,table,tbody,td,tfoot,th,thead,tr,tt,ul,var {
 	border: 0;
-	font-family: Roboto Mono, Source Sans Pro,Monaco, courier, Helvetica Neue,Arial,sans-serif;
+	font-family: PingFang SC,Helvetica Neue,Helvetica,-apple-system,BlinkMacSystemFont,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif,Arial;
 	font-size: 100%;
 	font-style: inherit;
 	font-weight: inherit;
