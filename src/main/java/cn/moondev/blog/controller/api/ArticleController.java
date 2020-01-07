@@ -90,4 +90,12 @@ public class ArticleController {
         return ResponseDTO.success(service.findByBadge(badge));
     }
 
+    /**
+     * 控制文章显隐
+     */
+    @RequestMapping(value = "/show/{id}/{show}", method = RequestMethod.POST)
+    public ResponseDTO<Void> hideOrShow(@PathVariable String id, @PathVariable int show) {
+        service.updateShowFlag(id, show);
+        return ResponseDTO.success();
+    }
 }

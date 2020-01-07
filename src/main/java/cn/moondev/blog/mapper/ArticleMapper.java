@@ -5,6 +5,7 @@ import cn.moondev.blog.model.Article;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -37,6 +38,9 @@ public interface ArticleMapper {
 
     @Select("delete from t_article where id = #{id}")
     void delete(@Param("id") String id);
+
+    @Update("update t_article set shows=#{flag} where id = #{id}")
+    void updateShowFlag(@Param("id") String id, @Param("flag") int flag);
 
     List<Article> findContentByBadge(@Param("badge") String badge);
 }

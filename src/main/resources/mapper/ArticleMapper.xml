@@ -54,7 +54,7 @@
             <![CDATA[ WHERE (badge <> 'ABOUTME' OR badge IS NULL) ]]>
         </if>
         <if test="item.point == 'font'">
-            WHERE `status` = 1 AND (badge = '' OR badge IS NULL)
+            WHERE `status` = 1 AND (badge = '' OR badge IS NULL) AND shows = 1
         </if>
         <if test="item.point == 'badge'">
             WHERE `status` = 1 and badge = #{item.badge}
@@ -71,8 +71,8 @@
     </select>
 
     <select id="find" resultMap="articleMap" parameterType="cn.moondev.blog.dto.QueryDTO">
-        SELECT a.aformat,a.comment_count,a.created_time,a.id,a.image,a.mformat,a.publish_time,a.summary,a.title,
-               a.updated_time,a.view_count,a.status,c.code as categoryCode, c.name as categoryName, t.name as topicName
+        SELECT a.aformat,a.comment_count,a.created_time,a.id,a.image,a.mformat,a.publish_time,a.summary,a.title,a.shows,
+        a.updated_time,a.view_count,a.status,c.code as categoryCode, c.name as categoryName, t.name as topicName
         FROM t_article a
         LEFT JOIN t_category c on a.category_id = c.id
         LEFT JOIN t_topic t on t.id = a.topic_id
@@ -80,10 +80,10 @@
             <![CDATA[ WHERE (badge <> 'ABOUTME' OR badge IS NULL) ]]>
         </if>
         <if test="item.point == 'font'">
-            WHERE a.`status` = 1 AND (a.badge = '' OR a.badge IS NULL)
+            WHERE a.`status` = 1 AND (a.badge = '' OR a.badge IS NULL) AND shows = 1
         </if>
         <if test="item.point == 'badge'">
-            WHERE  a.`status` = 1 and a.badge = #{item.badge}
+            WHERE a.`status` = 1 and a.badge = #{item.badge}
         </if>
         <if test='item.year != null'>
             AND a.`year` = #{item.year}
@@ -94,14 +94,14 @@
         <if test='item.topicId != null'>
             AND a.`topic_id` = #{item.topicId}
         </if>
-        ORDER BY publish_time DESC 
+        ORDER BY publish_time DESC
         limit #{item.offset}, #{item.size}
     </select>
 
     <select id="hot" resultMap="articleMap">
         SELECT id,title,image,aformat,mformat,view_count,comment_count,publish_time
         FROM t_article
-        WHERE `status` = 1 and (badge = '' OR badge IS NULL)
+        WHERE `status` = 1 and (badge = '' OR badge IS NULL) AND shows = 1
         ORDER BY view_count,comment_count DESC
         limit 5
     </select>
@@ -109,7 +109,7 @@
     <select id="all" resultMap="articleMap">
         SELECT id,title,image,aformat,mformat,comment_count,view_count,publish_time
         FROM t_article
-        WHERE `status` = 1 AND (badge = '' OR badge IS NULL)
+        WHERE `status` = 1 AND (badge = '' OR badge IS NULL) AND shows = 1
         ORDER BY publish_time DESC
     </select>
 

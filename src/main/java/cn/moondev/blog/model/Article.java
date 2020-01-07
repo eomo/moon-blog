@@ -101,6 +101,11 @@ public class Article {
 
     public String year;
 
+    /**
+     * 是否展示，如果show=0，任何地方都不展示，只能通过连接访问文章
+     */
+    public int shows = 1;
+
     public String getYear() {
         if (Objects.nonNull(publishTime)) {
             return String.valueOf(publishTime.getYear());

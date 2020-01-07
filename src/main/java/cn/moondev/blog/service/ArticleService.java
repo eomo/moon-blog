@@ -231,6 +231,10 @@ public class ArticleService extends BaseService {
         return articles.stream().collect(Collectors.groupingBy(Article::getYear));
     }
 
+    public void updateShowFlag(String id, int flag) {
+        mapper.updateShowFlag(id, flag);
+    }
+
     private String getArticleContent(String id) {
         try {
             String content = articleCache.get(id, new Callable<String>() {

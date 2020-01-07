@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>管理后台 - 文章管理 - HICSC</title>
-    <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico"/>
     <#include "common/admin-css.ftl"/>
 </head>
 <body>
@@ -58,7 +58,11 @@
             </template>
             <template slot="action" slot-scope="row">
                 <a :href="jump(row.item.id)" target="_blank">修改</a>
-                <a @click="showConfirmModal(row.item.id)" style="color: #007bff;cursor: pointer">删除</a>
+                <a @click="showConfirmModal(row.item.id)" style="color: #fa2037;cursor: pointer">删除</a>
+                <a v-if="row.item.shows == 1" @click="hidenOrShow(row.item.id, 0)"
+                   style="color: orangered;cursor: pointer">隐藏</a>
+                <a v-if="row.item.shows == 0" @click="hidenOrShow(row.item.id, 1)"
+                   style="color: forestgreen;cursor: pointer">显示</a>
             </template>
         </b-table>
         <b-pagination size="md" align="right" @input="step"
@@ -96,17 +100,24 @@
         });
     };
 
+    var hidenOrShow = function (vm, id, flag) {
+        HttpUtils.post('/v1/article/show/' + id + '/' + flag, null).done(function (data) {
+            UiTools.alert('操作成功!', 'success');
+            getArticleList(vm);
+        });
+    }
+
     var app = new Vue({
         el: '#app',
         data: {
             condition: {},
             fields: [
-                {key: 'title', label: '文章标题', thStyle: {width:'40%'}},
-                {key: 'categoryName', label: '分类目录', thStyle: {width:'10%'}},
-                {key: 'topicName', label: '专题', thStyle: {width:'10%'}},
-                {key: 'status', label: '类别', thStyle: {width:'10%'}},
-                {key: 'updatedTime', label: '最后修改日期', thStyle: {width:'20%'}},
-                {key: 'action', label: '操作', thStyle: {width:'10%'}}
+                {key: 'title', label: '文章标题', thStyle: {width: '40%'}},
+                {key: 'categoryName', label: '分类目录', thStyle: {width: '10%'}},
+                {key: 'topicName', label: '专题', thStyle: {width: '10%'}},
+                {key: 'status', label: '类别', thStyle: {width: '10%'}},
+                {key: 'updatedTime', label: '最后修改日期', thStyle: {width: '15%'}},
+                {key: 'action', label: '操作', thStyle: {width: '15%'}}
             ],
             article: {},
             articles: {}
@@ -142,6 +153,9 @@
             },
             step: function () {
                 getArticleList(this);
+            },
+            hidenOrShow: function (id, flag) {
+                hidenOrShow(this, id, flag);
             }
         }
     });
