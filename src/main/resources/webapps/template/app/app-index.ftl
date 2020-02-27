@@ -102,10 +102,9 @@
                     <span class="mid-dot-divider"></span>
                     <a href="/movie" class="widget-list-item">电影</a>
                     <span class="mid-dot-divider"></span>
-                    <a href="/why" class="widget-list-item">好奇心</a>
-                </div>
-                <div class="widget-list">
                     <a href="/book" class="widget-list-item">读书</a>
+                    <span class="mid-dot-divider"></span>
+                    <a href="/why" class="widget-list-item">好奇心</a>
                 </div>
             </div>
         </div>
