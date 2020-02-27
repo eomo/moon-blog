@@ -96,16 +96,16 @@
             <div class="widget">
                 <div class="heading-title">自留地</div>
                 <div class="widget-list">
-                    <a href="/archive" class="widget-list-item">所有文章</a>
+                    <a href="/archive" class="widget-list-item">文章</a>
                     <span class="mid-dot-divider"></span>
-                    <a href="/categories" class="widget-list-item">所有分类</a>
+                    <a href="/categories" class="widget-list-item">分类</a>
                     <span class="mid-dot-divider"></span>
-                    <a href="/movie" class="widget-list-item">观影记录</a>
+                    <a href="/movie" class="widget-list-item">电影</a>
                     <span class="mid-dot-divider"></span>
                     <a href="/why" class="widget-list-item">好奇心</a>
                 </div>
                 <div class="widget-list">
-                    <a href="/book" class="widget-list-item">读过的书</a>
+                    <a href="/book" class="widget-list-item">读书</a>
                 </div>
             </div>
         </div>
