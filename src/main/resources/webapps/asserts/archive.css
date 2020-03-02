@@ -23,6 +23,7 @@
 }
 
 .archive-list {
+    margin-left: -12px;
     letter-spacing: -.8em;
     padding-bottom: 50px;
     list-style: none;
