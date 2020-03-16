@@ -239,6 +239,7 @@ table tr td:last-child {
 
 #moon-article strong {
     padding: 0 1px;
+    font-weight: bolder;
 }
 
 #moon-article em {
