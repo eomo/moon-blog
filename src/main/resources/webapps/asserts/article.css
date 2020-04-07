@@ -8,12 +8,12 @@
     word-spacing: .2rem;
 }
 
-#moon-article p img{
+#moon-article p img {
     max-width: 960px;
 }
 
 #moon-article pre code {
-    font-family: Courier,Monaco,Consolas,Liberation Mono,monospace;
+    font-family: JetBrainsMono, Courier, Monaco, Consolas, Liberation Mono, monospace;
     font-size: 14px;
 }
 

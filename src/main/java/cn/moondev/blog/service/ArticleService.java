@@ -62,7 +62,7 @@ public class ArticleService extends BaseService {
      */
     public List<Article> hotArticles() {
         List<Article> articles = mapper.hot();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH);
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.CHINA);
         articles.stream().forEach(a -> a.publishTimeDesc = a.publishTime.format(dateTimeFormatter));
         return articles;
     }
