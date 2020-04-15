@@ -36,7 +36,7 @@
                         <a target="_blank" class="js-trackedPostLink" v-bind:data-id="item.id"
                            v-bind:href="'/post/' + item.id"
                            v-bind:title="item.title">
-                            {{item.title.length > 14 ? item.title.substring(0,14) + '...' : item.title}}
+                            {{item.title.length > 30 ? item.title.substring(0,30) + '...' : item.title}}
                         </a>
                     </h2>
                 </div>
