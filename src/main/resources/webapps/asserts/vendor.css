@@ -1,3 +1,15 @@
+@font-face{
+    font-family:oxaniumregular;
+    src:url("https://resources.hicsc.com/fonts/oxanium/Oxanium-Regular.woff2") format("woff2"),
+    url("https://resources.hicsc.com/fonts/oxanium/Oxanium-Regular.woff") format("woff");
+    font-weight:400;
+    font-style:normal
+}
+
+.csc {
+    font-family: oxaniumregular;
+}
+
 html {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
