@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="widget">
-                <div class="heading-title">发现好文章</div>
+                <div class="heading-title csc">Posts</div>
                 <ul class="widget-article-list widget-article-list-withIcon">
                     <#list hots as item>
                         <li class="widget-article-item">
@@ -85,8 +85,10 @@
                                        title="${item.title}"
                                        href="/post/${item.id}">${item.title}</a>
                                 </h4>
-                                <p class="widget-article-item-description JiEun">
+                                <p class="widget-article-item-description csc">
                                     ${item.publishTimeDesc}
+                                    <span class="mid-dot-divider"></span>
+                                    ${item.viewCount} views
                                 </p>
                             </div>
                         </li>
