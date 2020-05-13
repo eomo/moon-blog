@@ -51,6 +51,7 @@
         <if test='author != null'>
             AND `author` LIKE "%"#{author}"%"
         </if>
+        ORDER BY id DESC
         limit #{offset}, #{size}
     </select>
 
