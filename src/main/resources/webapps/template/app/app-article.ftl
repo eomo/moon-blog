@@ -4,43 +4,42 @@
     <title>${article.title} - HICSC</title>
     <meta name="description" content="${article.title} - 作者: RYAN,首发于HICSC.COM">
     <#include "common/app-css.ftl"/>
-    <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
-    <link href="https://resources.hicsc.com/ajax/libs/hicsc/comment.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico"/>
+    <link href="https://resources.hicsc.com/ajax/libs/hicsc/comment.css" rel="stylesheet"/>
     <link href="https://resources.hicsc.com/ajax/libs/emojione/2.2.7/emojione.min.css" rel="stylesheet">
     <link href="https://resources.hicsc.com/ajax/libs/emojionearea/emojionearea.min.css" rel="stylesheet">
     <#include "common/app-baidu.ftl"/>
-    <style>.header {top: 0;} .logo {margin: -4px 0 0 8px;} .hljs {background: #f1f3f7}</style>
+    <style>.hljs {
+            background: #f1f3f7
+        }</style>
 </head>
 <body>
-<#include "common/app-header.ftl"/>
-<div class="single-column-layout single-column-layout-wide article-container" style="position: relative;top: 65px;">
-    <div class="block-group">
-        <header class="entry-header">
-            <h2 class="entry-title" itemprop="headline">${article.title}</h2>
-            <div class="entry-meta">
-                <time datetime="${article.publishTime}">发表于 ${article.publishTimeDesc}</time>
-                <span class="mid-dot-divider"></span>
-                <span>阅读 ${article.viewCount}</span>
-                <span class="mid-dot-divider"></span>
-                <span>评论 ${article.commentCount}</span>
-            </div>
-            <!--
-            <div class="postArticle-meta">
-                <time datetime="${article.publishTime}">
-                    <span class="month">${article.month}</span>
-                    <span class="day">${article.day}</span>
-                </time>
-            </div>
-             -->
-        </header>
-        <input type="hidden" id="article_id">
-        <div id="moon-article">${article.content}</div>
+<header class="article-header">
+    <div class="article-header__content">
+        <a href="https://www.hicsc.com"><img src="/webapps/asserts/image/logo.png" width="64" alt="HICSC"></a>
+        <nav class="article-header--nav csc">
+            <a href="/about" class="article-header--navItem">About</a>
+            <span class="article-header--navItem is-active">Article</span>
+        </nav>
     </div>
+</header>
+<header class="entry-header">
+    <div class="entry-header-container">
+        <div class="entry-title" itemprop="headline">${article.title}</div>
+        <#if article.subTitle??>
+            <div class="entry-subtitle">${article.subTitle}</div>
+        </#if>
+        <div class="entry-meta csc">${article.year}-${article.month}-${article.day} . ${article.viewCount} views</div>
+    </div>
+</header>
+<div class="moon-article-layout">
+    <input type="hidden" id="article_id">
+    <div id="moon-article">${article.content}</div>
 </div>
 <div class="single-column-layout single-column-layout-wide">
-    <div id="commentEL" v-cloak>
+    <div id="commentEL" v-cloak style="width: 780px;margin: auto;">
         <meta v-bind:content="'UserComments:'+commentCount" itemprop="interactionCount">
-        <h3 class="responses-title">{{commentCount}}条评论</h3>
+        <h3 class="responses-title csc">Comments</h3>
         <ol id='comment-list' class="commentlist">
             <li v-for="item in comments" class="comment" itemtype="http://schema.org/Comment" v-bind:data-id="item.id"
                 itemscope="" itemprop="comment">
@@ -53,7 +52,7 @@
                         <div class="comment-meta">
                             <div class="comment-author" itemprop="author">{{item.author}}
                                 <span class="comment-reply-link u-cursorPointer"
-                                      v-on:click="moveResponseForm(item.id,item.articleId,item.id)">回复</span>
+                                      v-on:click="moveResponseForm(item.id,item.articleId,item.id)">REPLY</span>
                             </div>
                             <div class="comment-time" itemprop="datePublished" datetime="{{item.createdTime}}">
                                 发布于{{item.createdTimeDesc}}
@@ -75,7 +74,7 @@
                                 <div class="comment-meta">
                                     <div class="comment-author" itemprop="author">{{child.author}}
                                         <span class="comment-reply-link u-cursorPointer"
-                                              v-on:click="moveResponseForm(child.id,child.articleId,item.id)">回复</span>
+                                              v-on:click="moveResponseForm(child.id,child.articleId,item.id)">REPLY</span>
                                     </div>
                                     <div class="comment-time" itemprop="datePublished"
                                          v-bind:datetime="child.createdTime">
@@ -88,7 +87,7 @@
                                     <a v-bind:href="'#comment-' + child.parentId" rel="nofollow"
                                        class="u-color-red-purple"
                                        v-bind:data-id="child.parentId" class="purple atreply">@{{child.atAuthor}}</a>&nbsp;&nbsp;
-                                    <p v-html="child.content"></p>
+                                <p v-html="child.content"></p>
                                 </p>
                             </div>
                         </div>
@@ -98,41 +97,40 @@
         </ol>
         <div id="splitter"></div>
         <div id="respond" class="respond">
-                <h3 id="reply-title" class="comments-title">发表留言</h3>
-                <div class="responsesForm">
-                    <p class="comment-note">
-                        人生在世，错别字在所难免，无需纠正。
+            <h3 id="reply-title" class="comments-title csc">Post a Message</h3>
+            <div class="responsesForm">
+                <p class="comment-note">
+                    人生在世，错别字在所难免，无需纠正。
+                </p>
+                <div class="info">
+                    <p>
+                        <label for="author">昵称</label>
+                        <input id="author" type="text" class="inputGroup" aria-required="true" v-model="comment.author">
                     </p>
-                    <div class="info">
-                        <p>
-                            <label for="author">昵称</label>
-                            <input id="author" type="text" class="inputGroup" aria-required="true" v-model="comment.author">
-                        </p>
-                        <p class="comment-form-input">
-                            <label for="email">邮箱</label>
-                            <input id="email" class="inputGroup" type="text" aria-required="true"
-                                   v-model="comment.authorEmail">
-                        </p>
-                        <p class="comment-form-input">
-                            <label for="url">网址</label>
-                            <input id="url" class="inputGroup" type="text" v-model="comment.authorUrl">
-                        </p>
-                    </div>
-
-                    <p class="comment-form-comment">
-                        <label for="comment">评论</label>
-                        <textarea id="comment" v-model="comment.content" class="inputGroup inputTextarea" rows="4"
-                                  cols="45"></textarea>
+                    <p class="comment-form-input">
+                        <label for="email">邮箱</label>
+                        <input id="email" class="inputGroup" type="text" aria-required="true"
+                               v-model="comment.authorEmail">
                     </p>
-                    <div class="submit" v-on:click="addComment">提交评论</div>
-                    <input type="hidden" id="article_id" v-model="comment.articleId">
-                    <input type="hidden" id="comment_parent" v-model="comment.parentId">
-                    <input type="hidden" id="comment_root" v-model="comment.rootId">
+                    <p class="comment-form-input">
+                        <label for="url">网址</label>
+                        <input id="url" class="inputGroup" type="text" v-model="comment.authorUrl">
+                    </p>
                 </div>
+
+                <p class="comment-form-comment">
+                    <label for="comment">评论</label>
+                    <textarea id="comment" v-model="comment.content" class="inputGroup inputTextarea" rows="4"
+                              cols="45"></textarea>
+                </p>
+                <div class="submit" v-on:click="addComment">提交评论</div>
+                <input type="hidden" id="article_id" v-model="comment.articleId">
+                <input type="hidden" id="comment_parent" v-model="comment.parentId">
+                <input type="hidden" id="comment_root" v-model="comment.rootId">
             </div>
+        </div>
     </div>
 </div>
-<#include "common/app-footer.ftl"/>
 </body>
 <script src="https://resources.hicsc.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://resources.hicsc.com/ajax/libs/vue/2.5.16/vue.min.js"></script>

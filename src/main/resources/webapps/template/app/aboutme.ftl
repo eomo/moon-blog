@@ -10,11 +10,14 @@
     <link href="https://resources.hicsc.com/ajax/libs/emojione/2.2.7/emojione.min.css" rel="stylesheet">
     <link href="https://resources.hicsc.com/ajax/libs/emojionearea/emojionearea.min.css" rel="stylesheet">
     <#include "common/app-baidu.ftl"/>
-    <style>.logo {margin: -4px 0 0 8px;}</style>
 </head>
 <body>
-<#include "common/app-header.ftl"/>
-<div class="single-column-layout single-column-layout-wide article-container">
+<header class="article-header" style="padding: 20px 0">
+    <div class="article-header__content">
+        <a href="https://www.hicsc.com"><img src="/webapps/asserts/image/logo.png" width="64" alt="HICSC"></a>
+    </div>
+</header>
+<div class="moon-article-layout" style="margin: 0 auto">
     <div class="block-group u-padding-top50">
         <header class="entry-header">
             <h2 class="entry-title" itemprop="headline">${article.title}</h2>
@@ -26,7 +29,7 @@
 <div class="single-column-layout single-column-layout-wide">
     <div id="commentEL" v-cloak>
         <meta v-bind:content="'UserComments:'+commentCount" itemprop="interactionCount">
-        <h3 class="responses-title">{{commentCount}}条评论</h3>
+        <h3 class="responses-title csc">Comments</h3>
         <ol id='comment-list' class="commentlist">
             <li v-for="item in comments" class="comment" itemtype="http://schema.org/Comment" v-bind:data-id="item.id"
                 itemscope="" itemprop="comment">
@@ -84,7 +87,7 @@
         </ol>
         <div id="splitter"></div>
         <div id="respond" class="respond">
-                <h3 id="reply-title" class="comments-title">发表留言</h3>
+                <h3 id="reply-title" class="comments-title csc">Post a Message</h3>
                 <div class="responsesForm">
                     <p class="comment-note">
                         人生在世，错别字在所难免，无需纠正。
@@ -118,7 +121,6 @@
             </div>
     </div>
 </div>
-<#include "common/app-footer.ftl"/>
 </body>
 <script src="https://resources.hicsc.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
 <script src="https://resources.hicsc.com/ajax/libs/emojione/2.2.7/emojione.min.js"></script>

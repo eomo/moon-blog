@@ -24,7 +24,7 @@
         <div class="u-float-left">
             <h1 class="category-header-name-2">读过的书</h1>
             <div class="category-header-desc">
-                <p>如果你愿意购买或者与我交换图书，请与我联系</p>
+                <p></p>
             </div>
         </div>
     </div>

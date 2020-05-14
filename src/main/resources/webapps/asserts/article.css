@@ -1,6 +1,11 @@
+.moon-article-layout {
+    width: 780px;
+    margin: 80px auto 0 auto;
+}
+
 #moon-article {
     margin: 0 auto;
-    padding: 0 0 100px;
+    padding: 0 0 20px;
 }
 
 #moon-article p {
@@ -9,7 +14,7 @@
 }
 
 #moon-article p img {
-    max-width: 960px;
+    max-width: 780px;
 }
 
 #moon-article pre code {
@@ -76,7 +81,6 @@ h2 {
     line-height: 1.225;
     margin: 35px 0 15px;
     padding-bottom: 0.5em;
-    border-bottom: 1px solid #ddd;
 }
 
 h3 {
@@ -391,9 +395,77 @@ table tr td:last-child {
     border-left-color: rgba(85, 85, 85, 0.12);
 }
 
-header,
 .context-menu,
 .megamenu-content,
 footer {
     font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.article-container {
+    max-width: 100%;
+}
+
+.entry-header-container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 95%;
+}
+
+.entry-title {
+    font-size: 38px;
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.entry-subtitle {
+    font-size: 24px;
+    color: rgba(0, 0, 0, .6);
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.entry-meta {
+    font-size: 16px;
+    color: rgba(0, 0, 0, .5);
+    padding-left: 15px;
+}
+
+.article-header {
+    padding: 50px 0;
+}
+
+.article-header__content {
+    max-width: 1300px;
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+.article-header--nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.article-header--navItem {
+    margin: 0 15px;
+    position: relative;
+}
+
+.article-header--navItem.is-active:before {
+    content: "";
+    position: absolute;
+    top: 34px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+    background: #cf3f74;
 }
