@@ -231,7 +231,6 @@ public class ArticleService extends BaseService {
 
     public Map<String, List<Article>> archive() {
         List<Article> articles = mapper.all();
-        return null;
         return articles.stream().collect(
                 Collectors.groupingBy(
                         Article::getYear,
