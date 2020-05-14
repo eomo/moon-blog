@@ -27,7 +27,7 @@
     </div>
 </div>
 <div class="single-column-layout single-column-layout-wide">
-    <div id="commentEL" v-cloak>
+    <div id="commentEL" v-cloak style="width: 780px;margin: auto;">
         <meta v-bind:content="'UserComments:'+commentCount" itemprop="interactionCount">
         <h3 class="responses-title csc">Comments</h3>
         <ol id='comment-list' class="commentlist">
@@ -122,9 +122,12 @@
     </div>
 </div>
 </body>
+<script src="https://resources.hicsc.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://resources.hicsc.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
 <script src="https://resources.hicsc.com/ajax/libs/emojione/2.2.7/emojione.min.js"></script>
 <script src="https://resources.hicsc.com/ajax/libs/emojionearea/emojionearea.min.js"></script>
+<script src="/webapps/asserts/js/notify.js"></script>
+<script src="/webapps/asserts/js/utils.js"></script>
 <script type="text/javascript">
     var vm = new Vue({
         el: '#commentEL',
