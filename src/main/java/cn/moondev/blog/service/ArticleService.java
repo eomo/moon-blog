@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
@@ -233,11 +232,11 @@ public class ArticleService extends BaseService {
     public Map<String, List<Article>> archive() {
         List<Article> articles = mapper.all();
         return null;
-//        return articles.stream().collect(
-//                Collectors.groupingBy(
-//                        Article::getYear,
-//                        () -> new TreeMap(Comparator.naturalOrder().reversed()),
-//                        Collectors.toList()));
+        return articles.stream().collect(
+                Collectors.groupingBy(
+                        Article::getYear,
+                        () -> new TreeMap(Comparator.naturalOrder().reversed()),
+                        Collectors.toList()));
     }
 
     public void updateShowFlag(String id, int flag) {
