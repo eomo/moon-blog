@@ -18,14 +18,13 @@
     <div class="article-header__content">
         <a href="https://www.hicsc.com"><img src="/webapps/asserts/image/logo.png" width="64" alt="HICSC"></a>
         <nav class="article-header--nav csc">
-            <a href="/about" class="article-header--navItem">About</a>
-            <span class="article-header--navItem is-active">Article</span>
+            <span class="article-header--navItem is-active">View Article Content</span>
         </nav>
     </div>
 </header>
 <header class="entry-header">
     <div class="entry-header-container">
-        <div class="entry-title" itemprop="headline">${article.title}</div>
+        <div class="entry-title csc" itemprop="headline">${article.title}</div>
         <#if article.subTitle??>
             <div class="entry-subtitle">${article.subTitle}</div>
         </#if>

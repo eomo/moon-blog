@@ -42,7 +42,7 @@
                         <div class="comment-meta">
                             <div class="comment-author" itemprop="author">{{item.author}}
                                 <span class="comment-reply-link u-cursorPointer"
-                                      v-on:click="moveResponseForm(item.id,item.articleId,item.id)">回复</span>
+                                      v-on:click="moveResponseForm(item.id,item.articleId,item.id)">REPLY</span>
                             </div>
                             <div class="comment-time" itemprop="datePublished" datetime="{{item.createdTime}}">
                                 发布于{{item.createdTimeDesc}}
@@ -64,7 +64,7 @@
                                 <div class="comment-meta">
                                     <div class="comment-author" itemprop="author">{{child.author}}
                                         <span class="comment-reply-link u-cursorPointer"
-                                              v-on:click="moveResponseForm(child.id,child.articleId,item.id)">回复</span>
+                                              v-on:click="moveResponseForm(child.id,child.articleId,item.id)">REPLY</span>
                                     </div>
                                     <div class="comment-time" itemprop="datePublished"
                                          v-bind:datetime="child.createdTime">
@@ -126,13 +126,6 @@
 <script src="https://resources.hicsc.com/ajax/libs/emojione/2.2.7/emojione.min.js"></script>
 <script src="https://resources.hicsc.com/ajax/libs/emojionearea/emojionearea.min.js"></script>
 <script type="text/javascript">
-    $('#appreciate-url').click(function () {
-        if ($('.appreciate-img').is(":hidden")) {
-            $('.appreciate-img').show();
-        } else {
-            $('.appreciate-img').hide();
-        }
-    });
     var vm = new Vue({
         el: '#commentEL',
         data: {
