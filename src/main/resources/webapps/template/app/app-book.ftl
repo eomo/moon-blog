@@ -18,7 +18,7 @@
         <div class="category-header-logo">
             <a href="/book">
                 <img class="category-header-image"
-                     src="https://static.hicsc.com/image/tc/book3.jpg/category">
+                     src="https://static.hicsc.com/image/post/reading_20201.jpg/category">
             </a>
         </div>
         <div class="u-float-left">
