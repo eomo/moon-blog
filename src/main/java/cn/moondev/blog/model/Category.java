@@ -56,17 +56,6 @@ public class Category {
         return category;
     }
 
-    public static Category book() {
-        Category category = new Category();
-        category.id = -2L;
-        category.code = "book";
-        category.name = "读书人";
-        category.image = "//static.hicsc.com/image/tc/book3.jpg/categorylist";
-        category.desc = "夫读书将以何为哉？辨其大义，以修己治人之体也，察其微言，以善精义入神之用也。";
-        category.url = "/book";
-        return category;
-    }
-
     public static Category why() {
         Category category = new Category();
         category.id = -3L;

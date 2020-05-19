@@ -62,7 +62,7 @@ public class BlogController {
     public String categoriesIndex(Model model) {
         List<Category> categories = categoryService.getAllCategory();
         categories.add(Category.travel());
-        categories.add(Category.book());
+        categories.add(Category.why());
         model.addAttribute("categories", categories);
         return "/app/app-categories";
     }

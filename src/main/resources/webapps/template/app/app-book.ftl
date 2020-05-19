@@ -24,7 +24,7 @@
         <div class="u-float-left">
             <h1 class="category-header-name-2">读过的书</h1>
             <div class="category-header-desc">
-                <p></p>
+                <p>已识乾坤大，犹怜草木青</p>
             </div>
         </div>
     </div>
