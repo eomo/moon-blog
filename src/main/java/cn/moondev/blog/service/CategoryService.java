@@ -89,9 +89,6 @@ public class CategoryService {
     }
 
     public Category getCategoryByCode(String code) {
-        if ("readming".equalsIgnoreCase(code)) {
-            return Category.book();
-        }
         if ("travel".equalsIgnoreCase(code)) {
             return Category.travel();
         }
