@@ -128,6 +128,7 @@
                 HttpUtils.post('/v1/article/font/page', {pager: self.pager}).done(function (data) {
                     self.showloadMore = data.pages > data.pager;
                     self.articles = data.list;
+                    self.pager = data.pager;
                 });
             });
             $('#articleEL').show();
@@ -137,6 +138,7 @@
                 HttpUtils.post('/v1/article/font/page', {pager: this.pager + 1}).done(function (data) {
                     vm.showloadMore = data.pages > data.pager;
                     vm.articles = vm.articles.concat(data.list);
+                    vm.pager = data.pager;
                 });
             }
         }
