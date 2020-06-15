@@ -78,6 +78,7 @@
                 }).done(function (data) {
                     self.showloadMore = data.pages > data.pager;
                     self.books = data.list;
+                    self.pager = data.pager;
                 });
             });
         },
@@ -88,6 +89,7 @@
                 }).done(function (data) {
                     vm.showloadMore = data.pages > data.pager;
                     vm.books = vm.books.concat(data.list);
+                    vm.pager = data.pager;
                 });
             }
         }
