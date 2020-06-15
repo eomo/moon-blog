@@ -66,6 +66,7 @@
                     self.showloadMore = data.pages > data.pager;
                     self.articles = data.list;
                     self.articleCount = data.total;
+                    self.pager = data.pager;
                 });
             });
         },
@@ -76,6 +77,7 @@
                     topicId:${topic.id}}).done(function (data) {
                     vm.showloadMore = data.pages > data.pager;
                     vm.articles = vm.articles.concat(data.list);
+                    vm.pager = data.pager;
                 });
             }
         }
