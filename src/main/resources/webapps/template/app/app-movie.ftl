@@ -58,6 +58,7 @@
                 }).done(function (data) {
                     self.showloadMore = data.pages > data.pager;
                     self.movies = data.list;
+                    self.pager = data.pager;
                 });
             });
         },
@@ -68,6 +69,7 @@
                 }).done(function (data) {
                     vm.showloadMore = data.pages > data.pager;
                     vm.movies = vm.movies.concat(data.list);
+                    vm.pager = data.pager;
                 });
             }
         }
