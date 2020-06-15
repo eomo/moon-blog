@@ -70,6 +70,7 @@
                     self.showloadMore = data.pages > data.pager;
                     self.articles = data.list;
                     self.articleCount = data.total;
+                    self.pager = data.pager;
                 });
             });
         },
@@ -78,6 +79,7 @@
                 HttpUtils.post('/v1/article/badge/page', {pager: this.pager + 1, badge:'TRAVEL'}).done(function (data) {
                     vm.showloadMore = data.pages > data.pager;
                     vm.articles = vm.articles.concat(data.list);
+                    vm.pager = data.pager;
                 });
             }
         }
