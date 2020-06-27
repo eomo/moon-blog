@@ -51,7 +51,7 @@
                     </div>
                     <div class="widget-card-content">CHUAN.CHEN</div>
                     <div class="widget-card-description">
-                        <p>Because,I Love.</p>
+                        <p>Because , I Love .</p>
                         <p class="more">
                             <a href="/about" title="更多关于博主的信息" aria-label="更多关于博主的信息">了解更多</a>
                         </p>
