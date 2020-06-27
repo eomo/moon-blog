@@ -49,9 +49,9 @@
                         <img src="/webapps/asserts/image/avastar.jpg" class="avatar" width="32"
                              height="32">
                     </div>
-                    <div class="widget-card-content">RYAN</div>
+                    <div class="widget-card-content">CHUAN.CHEN</div>
                     <div class="widget-card-description">
-                        <p>混迹于非知名科技公司的非知名非文艺青年</p>
+                        <p>这里本来应该有简介的，但我还没想好写什么.</p>
                         <p class="more">
                             <a href="/about" title="更多关于博主的信息" aria-label="更多关于博主的信息">了解更多</a>
                         </p>
