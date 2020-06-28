@@ -22,23 +22,11 @@
 body {
     line-height: 1.8;
     color: rgba(0, 0, 0, .8);
+    background-image:url("https://resources.hicsc.com/image/main/bg.svg");
     font-family: PingFang SC, Helvetica Neue, Helvetica, -apple-system, BlinkMacSystemFont, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif, Arial;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-body:after {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background:url("https://resources.hicsc.com/image/main/bg.svg");
-    opacity: 0.5;
 }
 
 [v-cloak] {
