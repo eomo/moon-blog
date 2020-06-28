@@ -22,6 +22,7 @@
 body {
     line-height: 1.8;
     color: rgba(0, 0, 0, .8);
+    background-image:url("https://resources.hicsc.com/image/main/bg.svg");
     font-family: PingFang SC, Helvetica Neue, Helvetica, -apple-system, BlinkMacSystemFont, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif, Arial;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
