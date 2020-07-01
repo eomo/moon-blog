@@ -7,8 +7,8 @@
     <#include "common/admin-css.ftl"/>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/webapps/asserts/editor.css" media="screen">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css">
+    <link href="https://resources.hicsc.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://resources.hicsc.com/ajax/libs/simplemde/1.11.2/simplemde.min.css">
 </head>
 <body>
 <#include "common/admin-header.ftl"/>
@@ -130,7 +130,7 @@
 </div>
 
 <#include "common/admin-js.ftl"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js"></script>
+<script src="https://resources.hicsc.com/ajax/libs/simplemde/1.11.2/simplemde.min.js"></script>
 <script>
     var mde = new SimpleMDE({
         element: document.getElementById("editor"),

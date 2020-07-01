@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>${article.title} - HICSC</title>
-    <meta name="description" content="${article.title} - 作者: RYAN,首发于HICSC.COM">
+    <meta name="description" content="${article.title} - 作者: SHOUCHUAN.CHEN,首发于HICSC.COM">
     <#include "common/app-css.ftl"/>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico"/>
     <link href="https://resources.hicsc.com/ajax/libs/hicsc/comment.css" rel="stylesheet"/>
@@ -17,9 +17,9 @@
 <header class="article-header">
     <div class="article-header__content">
         <a href="https://www.hicsc.com"><img src="/webapps/asserts/image/logo.png" width="64" alt="HICSC"></a>
-        <nav class="article-header--nav csc">
-            <span class="article-header--navItem is-active">View Article Content</span>
-        </nav>
+<#--        <nav class="article-header--nav csc">-->
+<#--            <span class="article-header--navItem is-active">View Article Content</span>-->
+<#--        </nav>-->
     </div>
 </header>
 <header class="entry-header">
