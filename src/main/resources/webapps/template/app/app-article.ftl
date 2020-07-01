@@ -38,8 +38,8 @@
 <div class="single-column-layout single-column-layout-wide">
     <div id="commentEL" v-cloak style="width: 780px;margin: auto;">
         <meta v-bind:content="'UserComments:'+commentCount" itemprop="interactionCount">
-        <h3 class="responses-title csc">Comments</h3>
-        <ol id='comment-list' class="commentlist">
+        <h3 v-if="commentCount > 0" class="responses-title csc">Comments</h3>
+        <ol v-if="commentCount > 0" id='comment-list' class="commentlist">
             <li v-for="item in comments" class="comment" itemtype="http://schema.org/Comment" v-bind:data-id="item.id"
                 itemscope="" itemprop="comment">
                 <div v-bind:id="'comment-' + item.id" class="comment-block">
