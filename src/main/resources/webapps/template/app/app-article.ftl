@@ -6,7 +6,6 @@
     <#include "common/app-css.ftl"/>
     <link rel="icon" type="image/x-icon" href="/webapps/asserts/image/favicon.ico"/>
     <link href="https://resources.hicsc.com/ajax/libs/hicsc/comment.css" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/emojione/4.5.0/lib/js/emojione.min.js" rel="stylesheet">
     <link href="https://resources.hicsc.com/ajax/libs/emojionearea/emojionearea.min.css" rel="stylesheet">
     <#include "common/app-baidu.ftl"/>
     <style>.hljs {
@@ -134,7 +133,7 @@
 <script src="https://resources.hicsc.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://resources.hicsc.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
 <script src="https://resources.hicsc.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/emojione/4.5.0/lib/js/emojione.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emojione@4.5.0/lib/js/emojione.min.js"></script>
 <script src="/webapps/asserts/js/notify.js"></script>
 <script src="/webapps/asserts/js/utils.js"></script>
 <script src="https://resources.hicsc.com/ajax/libs/emojionearea/emojionearea.min.js"></script>
