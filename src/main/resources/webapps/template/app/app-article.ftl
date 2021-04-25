@@ -45,7 +45,7 @@
                     <div class="comment-info u-clearfix">
                         <div class="comment-avatar">
                             <img height="40" width="40" class="avatar"
-                                 v-bind:src="'https://secure.gravatar.com/avatar/' + item.emailHash + '?s=40&amp;d=mm&amp;r=x'">
+                                 v-bind:src="'https://cdn.v2ex.com/gravatar/' + item.emailHash + '?s=40&amp;d=mm&amp;r=x'">
                         </div>
                         <div class="comment-meta">
                             <div class="comment-author" itemprop="author">{{item.author}}
@@ -67,7 +67,7 @@
                             <div class="comment-info u-clearfix">
                                 <div class="comment-avatar">
                                     <img height="40" width="40" class="avatar"
-                                         v-bind:src="'https://secure.gravatar.com/avatar/' + child.emailHash + '?s=40&amp;d=mm&amp;r=x'">
+                                         v-bind:src="'https://cdn.v2ex.com/gravatar/' + child.emailHash + '?s=40&amp;d=mm&amp;r=x'">
                                 </div>
                                 <div class="comment-meta">
                                     <div class="comment-author" itemprop="author">{{child.author}}
