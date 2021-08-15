@@ -8,6 +8,8 @@ import cn.moondev.framework.model.PaginationDTO;
 import cn.moondev.framework.provider.markdown.MarkdownOperations;
 import com.google.common.base.Strings;
 import com.google.common.cache.Cache;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +17,12 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
-import java.util.TreeMap;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
 
 /**
  * 公司简介
@@ -231,11 +230,16 @@ public class ArticleService extends BaseService {
 
     public Map<String, List<Article>> archive() {
         List<Article> articles = mapper.all();
-        return articles.stream().collect(
-                Collectors.groupingBy(
-                        Article::getYear,
-                        () -> new TreeMap(Comparator.naturalOrder().reversed()),
-                        Collectors.toList()));
+        Map<String, List<Article>> map = Maps.newTreeMap((o1, o2) -> o2.compareTo(o1));
+        for (Article article : articles) {
+            List<Article> itemList = map.get(article.getYear());
+            if (Objects.isNull(itemList)) {
+                itemList = Lists.newLinkedList();
+                map.put(article.getYear(), itemList);
+            }
+            itemList.add(article);
+        }
+        return map;
     }
 
     public void updateShowFlag(String id, int flag) {

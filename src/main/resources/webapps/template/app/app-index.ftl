@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="widget">
-                <div class="heading-title csc">Posts</div>
+                <div class="heading-title csc">Give Me Five</div>
                 <ul class="widget-article-list widget-article-list-withIcon">
                     <#list hots as item>
                         <li class="widget-article-item">
