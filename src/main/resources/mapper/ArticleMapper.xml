@@ -102,7 +102,9 @@
         SELECT id,title,image,aformat,mformat,view_count,comment_count,publish_time
         FROM t_article,
         (SELECT ((1/COUNT(*))*100) as n FROM t_article) as x
-        WHERE `status` = 1 and (badge = '' OR badge IS NULL) AND shows = 1 AND RAND()<=x.n
+        WHERE `status` = 1 and (badge = '' OR badge IS NULL)
+            AND shows = 1
+            <![CDATA[ AND RAND()<=x.n ]]>
         ORDER BY RAND()
         limit 5
     </select>
